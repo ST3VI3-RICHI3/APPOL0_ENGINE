@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Runtime.InteropServices;
 using System.Reflection;
-using OpenTK;
+using SharpDX;
 
 namespace ST3_ENGINE
 {
