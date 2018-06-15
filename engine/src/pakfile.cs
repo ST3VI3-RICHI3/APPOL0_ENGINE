@@ -1,41 +1,73 @@
 using System;
+using System.IO;
+using System.Xml;
+using System.Runtime.InteropServices;
+using System.Reflection;
+using System.Threading;
 
 namespace ST3_ENGINE
 {
     class Pakgram
     {
-        static void Check(string pakfile)
+        public class Format
         {
-
-        }
-
-        static void Create(string folder)
-        {
-
-        }
-
-        static void Load(string pakfile)
-        {
-
-        }
-
-        static void Main(string[] args)
-        {
-            var unpackorpack = args[0];
-            for (var arg = 0; arg < args.Length; arg++)
+            public class Header
             {
-                if (args[arg] == "/C")
+                public int signature = 7367526;
+                public int version = 0x01;
+            }
+        }
+        public void Check(string pakfile)
+        {
+
+        }
+
+        public void Create(string folder)
+        {
+
+        }
+
+        public void Load(string pakfile)
+        {
+            string filetounpack = Environment.CurrentDirectory + "/" + pakfile + ".pkf";
+            using (StreamReader sr = new StreamReader(filetounpack))
+            {
+                // Read the file, then output binary gibberish to console for teh lulz of debugging
+                string line = sr.ReadToEnd();
+                string sig = line.Substring(0,3);
+                if (sig=="pkf")
                 {
-                    Check(args[arg++]);
+                    Console.WriteLine(Environment.CurrentDirectory + "/" + pakfile + ".pkf" + " is a valid PacKFile.");
                 }
-                if (args[arg] == "-C")
+                else
                 {
-                    Create(args[arg++]);
+                    Console.Beep(800, 150);
+                    Thread.Sleep(50);
+                    Console.Beep(800, 150);
+                    Thread.Sleep(50);
+                    Console.Beep(800, 500);
+                    Thread.Sleep(500);
+                    Console.Beep(800, 750);
+                    Thread.Sleep(50);
+                    Console.Beep(800, 750);
+                    Console.WriteLine(Environment.CurrentDirectory + "/" + pakfile + ".pkf" + " is NOT a valid PacKFile.");
                 }
-                if (args[arg] == "-L")
-                {
-                    Load(args[arg++]);
-                }
+            }
+        }
+
+        public void Pak(string option, string pkf)
+        {
+            if (option == "/C")
+            {
+                Check(pkf);
+            }
+            if (option == "-C")
+            {
+                Create(pkf);
+            }
+            if (option == "-L")
+            {
+                Load(pkf);
             }
         }
     }
