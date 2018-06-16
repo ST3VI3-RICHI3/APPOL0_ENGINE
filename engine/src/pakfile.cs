@@ -1,74 +1,95 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Xml;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace ST3_ENGINE
 {
     class Pakgram
     {
-        public class Format
+        public string[] Check(string pakfile)
         {
-            public class Header
-            {
-                public int signature = 7367526;
-                public int version = 0x01;
-            }
-        }
-        public void Check(string pakfile)
-        {
-
+            string[] na = {"na"};
+            return na;
         }
 
-        public void Create(string folder)
+        public string[] Create(string folder)
         {
-
+            string[] na = {"na"};
+            return na;
         }
 
-        public void Load(string pakfile)
+        public string[] Load(string pakfile)
         {
             string filetounpack = Environment.CurrentDirectory + "/" + pakfile + ".pkf";
             using (StreamReader sr = new StreamReader(filetounpack))
             {
-                // Read the file, then output binary gibberish to console for teh lulz of debugging
                 string line = sr.ReadToEnd();
                 string sig = line.Substring(0,3);
                 if (sig=="pkf")
                 {
-                    Console.WriteLine(Environment.CurrentDirectory + "/" + pakfile + ".pkf" + " is a valid PacKFile.");
+                    Console.WriteLine(Environment.CurrentDirectory + "/" + pakfile + ".pkf" + " is a PacKFile.");
                 }
                 else
                 {
-                    Console.Beep(800, 150);
-                    Thread.Sleep(50);
-                    Console.Beep(800, 150);
-                    Thread.Sleep(50);
-                    Console.Beep(800, 500);
-                    Thread.Sleep(500);
-                    Console.Beep(800, 750);
-                    Thread.Sleep(50);
-                    Console.Beep(800, 750);
-                    Console.WriteLine(Environment.CurrentDirectory + "/" + pakfile + ".pkf" + " is NOT a valid PacKFile.");
+                    Console.WriteLine(Environment.CurrentDirectory + "/" + pakfile + ".pkf" + " is NOT a PacKFile.");
+                    Environment.Exit(-1);
                 }
+                int fileamount = line.Substring(3,2).ToCharArray()[0];
+                fileamount += line.Substring(3,2).ToCharArray()[1];
+                int size_of_archive_scanned = 5;
+                string[] files = {};
+                try
+                {
+                    for (int i=0; i < fileamount; i++)
+                    {
+                        int filesize = line.Substring(size_of_archive_scanned,3).ToCharArray()[2];
+                        filesize += line.Substring(size_of_archive_scanned,3).ToCharArray()[1] * 256;
+                        filesize += line.Substring(size_of_archive_scanned,3).ToCharArray()[0] * 65536;
+                        size_of_archive_scanned += 3;
+                        int filenamesize = line.Substring(size_of_archive_scanned,1).ToCharArray()[0];
+                        size_of_archive_scanned++;
+                        string filename = line.Substring(size_of_archive_scanned,filenamesize);
+                        size_of_archive_scanned += filenamesize;
+                        string file = line.Substring(size_of_archive_scanned, filesize + 1);
+                        size_of_archive_scanned += filesize;
+                        Array.Resize(ref files,files.Length + 1);
+                        files.SetValue(filename, files.Length - 1);
+                        Array.Resize(ref files,files.Length + 1);
+                        files.SetValue(file, files.Length - 1);
+                        Console.WriteLine(filename + " Loaded.");
+                    }
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Console.WriteLine("Loading of PacKFile FAILED. File may be corrupt or incorrect.");
+                    Environment.Exit(-1);
+                }
+                Console.WriteLine("Loading of PacKFile Succeeded.");
+                return files;
             }
         }
 
-        public void Pak(string option, string pkf)
+        public string[] Pak(string option, string pkf)
         {
             if (option == "/C")
             {
-                Check(pkf);
+                return Check(pkf);
             }
             if (option == "-C")
             {
-                Create(pkf);
+                return Create(pkf);
             }
             if (option == "-L")
             {
-                Load(pkf);
+                return Load(pkf);
             }
+            string[] na = {"Could not load PacKFile: No option chosen..."};
+            return na;
         }
     }
 }

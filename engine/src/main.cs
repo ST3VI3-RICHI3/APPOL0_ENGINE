@@ -17,7 +17,13 @@ namespace ST3_ENGINE
               //Add stuff when needed
         	  }
             Pakgram paker = new Pakgram();
-            paker.Pak("-L", "testfile");
+            string[] gamedata = paker.Pak("-L", "testfile");
+            Console.WriteLine("Tesesest");
+            for (int i=0; i<gamedata.Length; i++)
+            {
+                Console.WriteLine(gamedata[i]);
+            }
+            Console.WriteLine("Tesesesting SUCCeeded!!!!!!");
         }
     }
 }
