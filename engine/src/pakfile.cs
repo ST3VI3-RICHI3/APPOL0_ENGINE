@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Apolo
+namespace Apollo
 {
     class Pakgram
     {

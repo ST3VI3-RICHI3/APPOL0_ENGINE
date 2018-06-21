@@ -11,7 +11,7 @@ using System.Xml;
 using System.Runtime.InteropServices;
 using System.Reflection;
 
-namespace Apolo
+namespace Apollo
 {
     public class Tesesest : Form
     {
