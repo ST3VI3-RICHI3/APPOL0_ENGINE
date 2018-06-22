@@ -1,21 +1,20 @@
 ﻿using System;
-using System.Drawing;
-using System.Windows;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows;
 using System.Windows.Forms;
 using System.Xml;
-using System.Runtime.InteropServices;
-using System.Reflection;
 
 namespace Apollo
 {
     public class Tesesest : Form
     {
-        private TextBox textBox1;
         public Tesesest()
         {
             // Initialize the window...

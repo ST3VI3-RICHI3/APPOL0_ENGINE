@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{ABBB55EE-DE4A-4487-BCD1-CC9A3FD5F079}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/main.cs">
+    <Files>
+      <File FileName="src/main.cs" Line="48" Column="48" />
+      <File FileName="src/pakfile.cs" Line="36" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="engine" expanded="True" selected="True">
+            <Node name="engine" expanded="True">
+              <Node name="References" expanded="True" />
+              <Node name="src" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.engine PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
