@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="src\main.cs" />
     <Compile Include="src\pakfile.cs" />
+    <Compile Include="src\bin\apig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,6 +49,9 @@
     <Reference Include="Mono.CSharp" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
