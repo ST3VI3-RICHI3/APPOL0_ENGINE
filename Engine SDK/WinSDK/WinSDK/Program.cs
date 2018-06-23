@@ -28,9 +28,12 @@ namespace WinSDK
             Splash();
             Console.WriteLine("Done!");
             Console.WriteLine(" ");
+            Console.WriteLine("Waiting 1500 to show multithread...");
+            Thread.Sleep(1500);
+            Console.WriteLine(" ");
             Console.WriteLine("Load Core...");
             //Load files here
-            Console.WriteLine("Done!");
+            Console.WriteLine("Done!"); //after this the main app will load and run.
             Console.Write("press any key to continue");
             Console.ReadKey(); 
             Environment.Exit(0);
