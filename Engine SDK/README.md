@@ -14,7 +14,7 @@ The APOLL0 ENGINE SDK is a work in progress, only download and use if you are a 
    - [x] Add text 
    - [x] Windows.Forms (Loading & running)
    - [x] Basic formatting (line breaks ETC)
-   - [ ] Stop Windows.Forms pausing the output console
+   - [X] Stop Windows.Forms pausing the output console
 
 ### Other
 - [x] Add SharpDX

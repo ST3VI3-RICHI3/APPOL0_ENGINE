@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,31 +8,40 @@ using SharpDX;
 
 namespace WinSDK
 {
-    static class Program
+    internal static class Program
     {
         static void Main()
         {
             Console.Title = "Debug output | APOLL0 SDK";
             Console.WriteLine("System output check");
-            System.Threading.Thread.Sleep(500);
+            Thread.Sleep(500);
             Console.WriteLine("Hello World");
             Console.Beep();
             Console.WriteLine("Ok!");
-            System.Threading.Thread.Sleep(500);
+            Thread.Sleep(500);
             Console.WriteLine(" ");
             Console.WriteLine("Initalise window");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Console.WriteLine("Done!");
             Console.WriteLine("Start process...");
-            System.Threading.Thread.Sleep(1000);
+            Splash();
             Console.WriteLine("Done!");
-            Application.Run(new Load());
             Console.WriteLine(" ");
-            Console.WriteLine("Application Exit");
+            Console.WriteLine("Load Core...");
+            //Load files here
+            Console.WriteLine("Done!");
             Console.Write("press any key to continue");
-            Console.ReadKey();
+            Console.ReadKey(); 
             Environment.Exit(0);
+        }
+        static void Splash()
+        {
+            var thread = new Thread(() =>
+            {
+                Application.Run(new SplashScreen());
+            });
+            thread.Start();
         }
     }
 }
