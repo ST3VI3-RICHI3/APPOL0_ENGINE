@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SharpDX;
 
 namespace WinSDK
 {
@@ -25,7 +26,7 @@ namespace WinSDK
             Console.WriteLine("Start process...");
             System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Done!");
-            Application.Run(new Form1());
+            Application.Run(new Load());
             Console.WriteLine(" ");
             Console.WriteLine("Application Exit");
             Console.Write("press any key to continue");
