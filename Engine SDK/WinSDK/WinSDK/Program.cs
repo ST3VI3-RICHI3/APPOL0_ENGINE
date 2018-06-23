@@ -22,8 +22,7 @@ namespace WinSDK
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Console.WriteLine("Done!");
-            Console.WriteLine(" ");
-            Console.WriteLine("Starting process...");
+            Console.WriteLine("Start process...");
             System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Done!");
             Application.Run(new Form1());
