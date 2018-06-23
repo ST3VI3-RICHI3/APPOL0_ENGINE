@@ -8,3 +8,13 @@ C:\Users\Alex\Documents\Visual Studio 2017\Projects\WinSDK\WinSDK\obj\Debug\WinS
 C:\Users\Alex\Documents\Visual Studio 2017\Projects\WinSDK\WinSDK\obj\Debug\WinSDK.exe
 C:\Users\Alex\Documents\Visual Studio 2017\Projects\WinSDK\WinSDK\obj\Debug\WinSDK.pdb
 C:\Users\Alex\Documents\Visual Studio 2017\Projects\WinSDK\WinSDK\obj\Debug\WinSDK.Form1.resources
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\WinSDK.exe.config
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\WinSDK.exe
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\WinSDK.pdb
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Form1.resources
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.GenerateResource.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.exe
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.pdb

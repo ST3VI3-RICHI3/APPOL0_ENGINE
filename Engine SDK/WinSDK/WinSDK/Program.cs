@@ -8,10 +8,6 @@ namespace WinSDK
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
         static void Main()
         {
             Console.Title = "Debug output | APOLL0 SDK";
@@ -31,7 +27,11 @@ namespace WinSDK
             System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Done!");
             Application.Run(new Form1());
-            
+            Console.WriteLine(" ");
+            Console.WriteLine("Application Exit");
+            Console.Write("press any key to continue");
+            Console.ReadKey();
+            Environment.Exit(0);
         }
     }
 }

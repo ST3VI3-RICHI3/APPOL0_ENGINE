@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,12 +7,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WinSDK")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A SDK for APOLL0 ENGINE")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WinSDK")]
+[assembly: AssemblyCompany("ST3VI3 STUDIOS")]
+[assembly: AssemblyProduct("APOLL0 SDK (Windows)")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("~")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -34,3 +35,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("en-150")]
+
