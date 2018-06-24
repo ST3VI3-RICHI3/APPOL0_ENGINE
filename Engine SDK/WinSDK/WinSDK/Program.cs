@@ -27,13 +27,11 @@ namespace WinSDK
             Console.WriteLine("Start process...");
             var thread = new Thread(() =>
             {
-
                 Application.Run(new SplashScreen());
             });
             thread.Start();
             Console.WriteLine("Done!");
             Console.WriteLine(" ");
-            Console.WriteLine("Waiting 2500 to show multithread...");
             Thread.Sleep(2500);
             Console.WriteLine(" ");
             Console.WriteLine("Load Core...");

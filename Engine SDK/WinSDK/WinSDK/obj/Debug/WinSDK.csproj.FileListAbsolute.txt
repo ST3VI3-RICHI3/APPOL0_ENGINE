@@ -17,11 +17,7 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.CoreCompileInputs.cache
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.exe
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.pdb
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Load.resources
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\aa\WinSDK.resources.dll
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.dll
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.xml
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Load.aa.resources
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\aa\WinSDK.resources.dll
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.CopyComplete
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.SplashScreen.resources
