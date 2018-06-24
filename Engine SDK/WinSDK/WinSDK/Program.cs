@@ -25,7 +25,12 @@ namespace WinSDK
             Application.SetCompatibleTextRenderingDefault(false);
             Console.WriteLine("Done!");
             Console.WriteLine("Start process...");
-            Splash();
+            var thread = new Thread(() =>
+            {
+
+                Application.Run(new SplashScreen());
+            });
+            thread.Start();
             Console.WriteLine("Done!");
             Console.WriteLine(" ");
             Console.WriteLine("Waiting 2500 to show multithread...");
@@ -34,17 +39,6 @@ namespace WinSDK
             Console.WriteLine("Load Core...");
             //Load files here
             Console.WriteLine("Done!"); //after this the main app will load and run.
-            Console.Write("press any key to continue");
-            Console.ReadKey(); 
-            Environment.Exit(0);
-        }
-        static void Splash()
-        {
-            var thread = new Thread(() =>
-            {
-                Application.Run(new SplashScreen());
-            });
-            thread.Start();
         }
     }
 }
