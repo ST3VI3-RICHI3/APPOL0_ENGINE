@@ -101,7 +101,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Scene1.fbx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
