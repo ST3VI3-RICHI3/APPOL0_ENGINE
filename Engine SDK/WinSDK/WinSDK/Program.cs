@@ -28,8 +28,8 @@ namespace WinSDK
             Splash();
             Console.WriteLine("Done!");
             Console.WriteLine(" ");
-            Console.WriteLine("Waiting 1500 to show multithread...");
-            Thread.Sleep(1500);
+            Console.WriteLine("Waiting 2500 to show multithread...");
+            Thread.Sleep(2500);
             Console.WriteLine(" ");
             Console.WriteLine("Load Core...");
             //Load files here

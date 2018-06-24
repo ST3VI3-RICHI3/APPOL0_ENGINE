@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WinSDK
@@ -15,6 +16,11 @@ namespace WinSDK
         public SplashScreen()
         {
             InitializeComponent();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
