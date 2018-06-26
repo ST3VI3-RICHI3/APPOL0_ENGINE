@@ -29,7 +29,11 @@ namespace WinSDK
                     {
                         dev = true;
                         Console.WriteLine("Dev arg found!");
-                        Console.WriteLine("Start process...");
+                        Console.WriteLine("Start dev process ...");
+                        var devthread = new Thread(() =>
+                        {
+                            Application.Run(new DevMenu());
+                        });
                     }
                 }
             }
@@ -48,13 +52,6 @@ namespace WinSDK
             {
                 Application.Run(new SplashScreen());
             });
-            if (dev == true)
-            {
-                thread = new Thread(() =>
-                {
-                    Application.Run(new DevMenu());
-                });
-            }
             thread.Start();
             Console.WriteLine("Done!");
             Thread.Sleep(2500);
