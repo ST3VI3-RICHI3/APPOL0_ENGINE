@@ -21,3 +21,4 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.CopyComplete
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.exe
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.pdb
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\WinSDK.pdb
