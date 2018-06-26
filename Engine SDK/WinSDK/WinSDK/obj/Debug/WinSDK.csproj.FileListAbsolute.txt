@@ -21,3 +21,4 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.xml
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.CopyComplete
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.SplashScreen.resources
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.DevMenu.resources
