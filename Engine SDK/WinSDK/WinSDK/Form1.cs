@@ -21,5 +21,10 @@ namespace WinSDK
         {
             WinSDK.DevCommands.Beep();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WinSDK.DevCommands.Splash_screen();
+        }
     }
 }
