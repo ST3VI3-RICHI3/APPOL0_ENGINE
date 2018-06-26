@@ -34,6 +34,7 @@ namespace WinSDK
                         {
                             Application.Run(new DevMenu());
                         });
+                        devthread.Start();
                     }
                 }
             }

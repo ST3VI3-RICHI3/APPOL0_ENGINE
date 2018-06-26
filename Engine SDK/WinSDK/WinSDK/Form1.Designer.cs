@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.DEV_Beep = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -44,7 +46,7 @@
             // DEV_Beep
             // 
             this.DEV_Beep.AutoSize = true;
-            this.DEV_Beep.Location = new System.Drawing.Point(13, 37);
+            this.DEV_Beep.Location = new System.Drawing.Point(12, 36);
             this.DEV_Beep.Name = "DEV_Beep";
             this.DEV_Beep.Size = new System.Drawing.Size(75, 30);
             this.DEV_Beep.TabIndex = 1;
@@ -70,5 +72,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button DEV_Beep;
+        private System.Windows.Forms.Timer timer1;
     }
 }
