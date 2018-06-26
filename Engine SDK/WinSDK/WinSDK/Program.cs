@@ -12,15 +12,17 @@ namespace WinSDK
     {
         private static void Main(string[] args)
         {
+            bool nosplash = false;
             bool dev = false;
             Console.Title = "Debug output | APOLL0 SDK";
             Console.WriteLine("System output check");
             Thread.Sleep(500);
             Console.WriteLine("Hello World");
+            System.Media.SystemSounds.Beep.Play();
             Console.WriteLine("Ok!");
             Thread.Sleep(500);
             Console.WriteLine(" ");
-            Console.WriteLine("Arguement check");
+            Console.WriteLine("Argument check");
             for (var i = 0; i < args.Length; i++)
             {
                 if (dev == false)
@@ -28,36 +30,65 @@ namespace WinSDK
                     if (args[i] == "-dev")
                     {
                         dev = true;
-                        Console.WriteLine("Dev arg found!");
-                        var devthread = new Thread(() =>
+                        Console.WriteLine("Dev argument found!");
+                        Console.Write("Open Developer menu? Y/N ");
+                        try
                         {
-                            Application.Run(new DevMenu());
-                        });
-                        Console.WriteLine("Start dev process ...");
-                        devthread.Start();
+                            if (Console.ReadKey().Key == ConsoleKey.Y)
+                            {
+                                var devthread = new Thread(() =>
+                                {
+                                    Application.Run(new DevMenu());
+                                });
+                                Console.WriteLine(" ");
+                                Console.WriteLine("Start dev process ...");
+                                devthread.Start();
+                                Console.WriteLine(" ");
+                            }
+                        }
+                        catch
+                        {
+                            if (Console.ReadKey().Key == ConsoleKey.N)
+                            {
+                                Console.WriteLine(" ");
+                                Console.WriteLine("DevMenu not loaded.");
+                                Console.WriteLine(" ");
+                            }
+                        }
+                    }
+                    if (args[i] == "-nosplash")
+                    {
+                        nosplash = true;
+                        Console.WriteLine("nosplash argument found!");
                     }
                 }
             }
             if (args.Length == 0)
             {
-                Console.WriteLine("No args found.");
+                Console.WriteLine("No arguments found.");
             }
             Thread.Sleep(500);
             Console.WriteLine(" ");
-            Console.WriteLine("Initalise window");
+            Console.WriteLine("Initialise window");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Console.WriteLine("Done!");
-            Console.WriteLine("Start process...");
-            var thread = new Thread(() =>
+            Console.WriteLine("Start splash screen...");
+            if (nosplash == false)
             {
-                Application.Run(new SplashScreen());
-            });
-            //thread.Start();
-            //Console.WriteLine("Done!");
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.WriteLine("Failiure: Disabled for current build.");
-            Console.BackgroundColor = ConsoleColor.Black;
+                var thread = new Thread(() =>
+                {
+                    Application.Run(new SplashScreen());
+                });
+                thread.Start();
+                Console.WriteLine("Done!");
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("Failiure: Disabled for session.");
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
             Thread.Sleep(2500);
             Console.WriteLine(" ");
             Console.WriteLine("Load Core...");
