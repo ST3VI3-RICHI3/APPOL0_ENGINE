@@ -53,8 +53,11 @@ namespace WinSDK
             {
                 Application.Run(new SplashScreen());
             });
-            thread.Start();
-            Console.WriteLine("Done!");
+            //thread.Start();
+            //Console.WriteLine("Done!");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("Failiure: Disabled for current build");
+            Console.BackgroundColor = ConsoleColor.Black;
             Thread.Sleep(2500);
             Console.WriteLine(" ");
             Console.WriteLine("Load Core...");
