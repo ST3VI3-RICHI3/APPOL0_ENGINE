@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SharpDX;
+using Apollo;
 
 namespace WinSDK
 {
@@ -89,9 +90,10 @@ namespace WinSDK
                 Console.WriteLine("Failiure: Disabled for session.");
                 Console.BackgroundColor = ConsoleColor.Black;
             }
-            Thread.Sleep(2500);
             Console.WriteLine(" ");
             Console.WriteLine("Load Core...");
+            Pakgram paker = new Pakgram();
+            paker.Pak("-L", "testfile");
             //Load files here
             Console.WriteLine("Done!"); //after this the main app will load and run.
         }

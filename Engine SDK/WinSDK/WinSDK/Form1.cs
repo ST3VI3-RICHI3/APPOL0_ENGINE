@@ -26,5 +26,10 @@ namespace WinSDK
         {
             WinSDK.DevCommands.Splash_screen();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            var text = textBox1.Text;
+    }
     }
 }
