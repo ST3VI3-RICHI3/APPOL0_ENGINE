@@ -121,8 +121,6 @@ namespace WinSDK
                 Console.WriteLine("!!!WARNING!!!");
                 Console.Write("An error will occur if the path or file is incorrect, are you shure? Y/N ");
                 Console.BackgroundColor = ConsoleColor.Black;
-
-
                 try
                 {
                     if (Console.ReadKey().Key == ConsoleKey.Y && Console.ReadKey().Key != ConsoleKey.N)
