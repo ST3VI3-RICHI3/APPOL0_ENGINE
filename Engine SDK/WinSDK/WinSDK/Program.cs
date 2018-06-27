@@ -117,13 +117,14 @@ namespace WinSDK
         {
             public static void load(string Path)
             {
+                invalid:
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("!!!WARNING!!!");
                 Console.Write("An error will occur if the path or file is incorrect, are you shure? Y/N ");
                 Console.BackgroundColor = ConsoleColor.Black;
                 try
                 {
-                    if (Console.ReadKey().Key == ConsoleKey.Y && Console.ReadKey().Key != ConsoleKey.N)
+                    if (Console.ReadKey().Key == ConsoleKey.Y)
                     {
                         Console.WriteLine(" ");
                         Pakgram paker = new Pakgram();
@@ -132,14 +133,20 @@ namespace WinSDK
                 }
                 catch
                 {
-                    if (Console.ReadKey().Key == ConsoleKey.N && Console.ReadKey().Key != ConsoleKey.Y)
+                    try
                     {
-                        Console.WriteLine(" ");
-                        Console.WriteLine("Load Cancled!");
+                        if (Console.ReadKey().Key == ConsoleKey.N)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine("Load Cancled!");
+                        }
                     }
-                    else
+                    catch
                     {
-                        Console.WriteLine("Invalid key press, load cancled");
+                        if (Console.ReadKey().Key != ConsoleKey.Y && Console.ReadKey().Key != ConsoleKey.N)
+                        {
+                            Console.WriteLine("Invalid key press, load cancled");
+                        }
                     }
                 }
             }
