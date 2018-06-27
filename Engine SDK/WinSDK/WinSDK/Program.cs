@@ -93,7 +93,7 @@ namespace WinSDK
             Console.WriteLine(" ");
             Console.WriteLine("Load Core...");
             Pakgram paker = new Pakgram();
-            paker.Pak("-L", "testfile");
+            paker.Pak("-L", "testfil");
             //Load files here
             Console.WriteLine("Done!"); //after this the main app will load and run.
         }
