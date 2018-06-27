@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{E030BEAB-43B1-4DA8-BAE4-8AE3ED10CA20}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WinSDK/pakfile.cs">
+    <Files>
+      <File FileName="WinSDK/main.cs" Line="1" Column="1" />
+      <File FileName="WinSDK/pakfile.cs" Line="29" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.WinSDK PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

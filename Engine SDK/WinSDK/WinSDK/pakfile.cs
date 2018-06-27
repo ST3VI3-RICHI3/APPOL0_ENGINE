@@ -23,9 +23,14 @@ namespace Apollo
             return na;
         }
 
-        public string[] Load(string pakfile)
-        {
-            string filetounpack = Environment.CurrentDirectory + "/" + pakfile + ".pkf";
+		public string[] Load(string pakfile)
+		{
+			string filetounpack = Environment.CurrentDirectory + "/" + pakfile + ".pkf";
+			if (!File.Exists(filetounpack))
+			{
+				Console.WriteLine("The specified file does not exist, Exiting...");
+				Environment.Exit(-1);
+			}
             using (StreamReader sr = new StreamReader(filetounpack))
             {
                 string line = sr.ReadToEnd();
