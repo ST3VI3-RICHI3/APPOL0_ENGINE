@@ -120,8 +120,9 @@ namespace WinSDK
                 invalid:
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("!!!WARNING!!!");
-                Console.Write("An error will occur if the path or file is incorrect, are you shure? Y/N ");
+                Console.WriteLine("An error will occur if the path or file is incorrect, are you shure? Y/N ");
                 Console.BackgroundColor = ConsoleColor.Black;
+                Console.Write("Note: A invalid key will cancel this without notification.");
                 try
                 {
                     if (Console.ReadKey().Key == ConsoleKey.Y)
@@ -133,21 +134,12 @@ namespace WinSDK
                 }
                 catch
                 {
-                    try
+                    if (Console.ReadKey().Key == ConsoleKey.N)
                     {
-                        if (Console.ReadKey().Key == ConsoleKey.N)
-                        {
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Load Cancled!");
-                        }
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Load Cancled!");
                     }
-                    catch
-                    {
-                        if (Console.ReadKey().Key != ConsoleKey.Y && Console.ReadKey().Key != ConsoleKey.N)
-                        {
-                            Console.WriteLine("Invalid key press, load cancled");
-                        }
-                    }
+
                 }
             }
         }
