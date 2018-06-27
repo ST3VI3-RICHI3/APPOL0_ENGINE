@@ -29,7 +29,19 @@ namespace WinSDK
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var text = textBox1.Text;
-    }
+            if (textBox1.TextLength <= 1)
+            {
+                button2.Enabled = false;
+            }
+            if (textBox1.TextLength >= 1)
+            {
+                button2.Enabled = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            WinSDK.DevCommands.packFile.load(textBox1.Text);
+        }
     }
 }

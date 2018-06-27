@@ -90,12 +90,14 @@
             // button2
             // 
             this.button2.AutoSize = true;
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(12, 160);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 30);
             this.button2.TabIndex = 5;
             this.button2.Text = "Load PackFile";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // DevMenu
             // 

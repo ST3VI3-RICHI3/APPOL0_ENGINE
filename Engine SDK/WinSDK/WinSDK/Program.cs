@@ -113,5 +113,38 @@ namespace WinSDK
             });
             thread.Start();
         }
+        public class packFile
+        {
+            public static void load(string Path)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("!!!WARNING!!!");
+                Console.Write("An error will occur if the path or file is incorrect, are you shure? Y/N ");
+                Console.BackgroundColor = ConsoleColor.Black;
+
+
+                try
+                {
+                    if (Console.ReadKey().Key == ConsoleKey.Y && Console.ReadKey().Key != ConsoleKey.N)
+                    {
+                        Console.WriteLine(" ");
+                        Pakgram paker = new Pakgram();
+                        paker.Pak("-L", Path);
+                    }
+                }
+                catch
+                {
+                    if (Console.ReadKey().Key == ConsoleKey.N && Console.ReadKey().Key != ConsoleKey.Y)
+                    {
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Load Cancled!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid key press, load cancled");
+                    }
+                }
+            }
+        }
     }
 }
