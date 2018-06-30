@@ -1,0 +1,11 @@
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\netcoreapp2.0\Cypher Source.deps.json
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\netcoreapp2.0\Cypher Source.runtimeconfig.json
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\netcoreapp2.0\Cypher Source.runtimeconfig.dev.json
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\netcoreapp2.0\Cypher Source.dll
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\netcoreapp2.0\Cypher Source.pdb
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\netcoreapp2.0\Cypher Source.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\netcoreapp2.0\Cypher Source.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\netcoreapp2.0\Cypher Source.AssemblyInfoInputs.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\netcoreapp2.0\Cypher Source.AssemblyInfo.cs
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\netcoreapp2.0\Cypher Source.dll
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\netcoreapp2.0\Cypher Source.pdb

@@ -117,7 +117,7 @@ namespace WinSDK
         {
             public static void load(string Path)
             {
-                invalid:
+                
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("!!!WARNING!!!");
                 Console.WriteLine("An error will occur if the path or file is incorrect, are you shure? Y/N ");
