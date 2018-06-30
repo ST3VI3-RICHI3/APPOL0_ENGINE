@@ -22,6 +22,12 @@ namespace Apollo
             }
         }
     }
+    class utility
+    {
+        public static void title(string title)
+        {
+            Console.Title = title;
+        }
     class Packfiles
     {
         public string[] Check(string pakfile)
