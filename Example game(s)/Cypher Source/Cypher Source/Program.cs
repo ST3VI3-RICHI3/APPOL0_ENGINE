@@ -29,17 +29,41 @@ namespace Cypher_Source
             }
             Console.Clear();
             utility.title("Cipher Source");
-            Text.typefast(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
-			Text.typefast(true, "8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
-			Text.typefast(true, "8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
-			Text.typefast(true, "88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
-			Text.typefast(true, "88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
-			Text.typefast(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
+            Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
+			Text.print(true, "8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
+			Text.print(true, "8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
+			Text.print(true, "88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
+			Text.print(true, "88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
+			Text.print(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
             Text.print(true, " ");
 			title_slogan_animation();
             Text.print(true, " ");
-            Text.print(false, "press any key to play.");
+            Text.typefast(false, "press any key to play.");
             Console.ReadKey(true);
+            Console.Clear();
+            Text.print(true, "Encryption is a fallacy.");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Text.type(true, "Imagine you are in 1991.");
+            Text.type(true, "You are an armature hacker who chose a group called 'Cipher'.");
+            time.sleep(2500);
+            Text.type(true, "Here is your'e test.");
+            time.sleep(2500);
+            var gametime = 0; //how long it has been in seconds since timer starts
+            var gametimethread = new Thread(() =>
+            {
+                while (true)
+                {
+                    gametime = gametime + 1;
+                    time.sleep(1000);
+                }
+            });
+            while (true)
+            {
+                gametime = gametime + 1;
+                Text.print(false, gametime + " ");
+                time.sleep(1000);
+            }
         }
         private static void title_slogan_animation()
         {

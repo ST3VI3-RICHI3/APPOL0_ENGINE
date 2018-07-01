@@ -21,19 +21,53 @@ namespace Apollo
                 Console.Write(text);
             }
         }
+		public static void type(bool newline, string text)
+        {
+            bool newlineenabled = false;
+			if (newline == true)
+			{
+
+                newlineenabled = true;
+            }
+			for (var i = 0; i < text.Length; i++)
+			{
+				if (text.Substring(i, 1) == " ")
+				{
+					Thread.Sleep(50);
+				}
+				Thread.Sleep(50);
+				Console.Write(text.Substring(i,1));
+			}
+            if (newlineenabled==true && newlineenabled != false)
+            {
+                Console.WriteLine("");
+            }
+        }
+		public static void typefast(bool newline, string text)
+        {
+            if (newline == true)
+            {
+                Console.WriteLine("");
+            }
+            for (var i = 0; i < text.Length; i++)
+            {
+                Thread.Sleep(10);
+                Console.Write(text.Substring(i, 1));
+            }
+        }
+    }
+	class time
+    {
+        public static void sleep(int time)
+        {
+            Thread.Sleep(time);
+        }
     }
     class utility
     {
         public static void title(string title)
         {
             Console.Title = title;
-        }
-    }
-    class time
-    {
-        public static void sleep(int time)
-        {
-            Thread.Sleep(time);
         }
     }
     class Packfiles

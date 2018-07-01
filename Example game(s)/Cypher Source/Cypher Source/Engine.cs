@@ -23,10 +23,12 @@ namespace Apollo
         }
 		public static void type(bool newline, string text)
         {
+            bool newlineenabled = false;
 			if (newline == true)
 			{
-				Console.WriteLine("");
-			}
+
+                newlineenabled = true;
+            }
 			for (var i = 0; i < text.Length; i++)
 			{
 				if (text.Substring(i, 1) == " ")
@@ -36,6 +38,10 @@ namespace Apollo
 				Thread.Sleep(50);
 				Console.Write(text.Substring(i,1));
 			}
+            if (newlineenabled==true && newlineenabled != false)
+            {
+                Console.WriteLine("");
+            }
         }
 		public static void typefast(bool newline, string text)
         {
