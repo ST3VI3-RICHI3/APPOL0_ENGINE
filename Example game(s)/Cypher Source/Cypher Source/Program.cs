@@ -37,6 +37,7 @@ namespace Cypher_Source
             Text.print(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee ");
             Text.print(true, " ");
             Text.print(true, " ");
+            Text.print(true, "Load started");
             Console.ReadKey();
         }
     }
