@@ -28,6 +28,7 @@ namespace Apollo
         {
             Console.Title = title;
         }
+    }
     class Packfiles
     {
         public string[] Check(string pakfile)
