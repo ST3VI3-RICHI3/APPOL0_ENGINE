@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -27,6 +28,13 @@ namespace Apollo
         public static void title(string title)
         {
             Console.Title = title;
+        }
+    }
+    class time
+    {
+        public static void sleep(int time)
+        {
+            Thread.Sleep(time);
         }
     }
     class Packfiles
