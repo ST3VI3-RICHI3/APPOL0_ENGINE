@@ -28,6 +28,7 @@ namespace Cypher_Source
                 Environment.Exit(-1);
             }
             Console.Clear();
+            utility.title("Cipher Source");
             Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                              ");
             Text.print(true, "8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee ");
             Text.print(true, "8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8    ");
