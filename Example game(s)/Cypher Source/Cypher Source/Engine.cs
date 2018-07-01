@@ -64,13 +64,6 @@ namespace Apollo
             Console.Title = title;
         }
     }
-    class time
-    {
-        public static void sleep(int time)
-        {
-            Thread.Sleep(time);
-        }
-    }
     class Packfiles
     {
         public string[] Check(string pakfile)
