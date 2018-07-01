@@ -1,9 +1,9 @@
-﻿//8\"\"\"\"8                               8\"\"\"\"8                              
-//8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee 
-//8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8    
-//88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee 
-//88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88   
-//88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee 
+﻿//8\"\"\"\"8                               8\"\"\"\"8
+//8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee
+//8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8
+//88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee
+//88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88
+//88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee
 
 using System;
 using System.Threading;
@@ -45,9 +45,9 @@ namespace Cypher_Source
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Text.type(true, "Imagine you are in 1991.");
-            Text.type(true, "You are an armature hacker who chose a group called 'Cipher'.");
+            Text.type(true, "You are an amateur hacker who chose the group name 'Cipher'.");
             time.sleep(2500);
-            Text.type(true, "Here is your'e test.");
+            Text.type(true, "Here is your test.");
             time.sleep(2500);
             var gametime = 0; //how long it has been in seconds since timer starts
             var gametimethread = new Thread(() =>
