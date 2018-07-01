@@ -21,6 +21,41 @@ namespace Apollo
                 Console.Write(text);
             }
         }
+		public static void type(bool newline, string text)
+        {
+			if (newline == true)
+			{
+				Console.WriteLine("");
+			}
+			for (var i = 0; i < text.Length; i++)
+			{
+				if (text.Substring(i, 1) == " ")
+				{
+					Thread.Sleep(50);
+				}
+				Thread.Sleep(50);
+				Console.Write(text.Substring(i,1));
+			}
+        }
+		public static void typefast(bool newline, string text)
+        {
+            if (newline == true)
+            {
+                Console.WriteLine("");
+            }
+            for (var i = 0; i < text.Length; i++)
+            {
+                Thread.Sleep(10);
+                Console.Write(text.Substring(i, 1));
+            }
+        }
+    }
+	class time
+    {
+        public static void sleep(int time)
+        {
+            Thread.Sleep(time);
+        }
     }
     class utility
     {
