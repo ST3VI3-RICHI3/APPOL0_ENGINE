@@ -58,12 +58,7 @@ namespace Cypher_Source
                     time.sleep(1000);
                 }
             });
-            while (true)
-            {
-                gametime = gametime + 1;
-                Text.print(false, gametime + " ");
-                time.sleep(1000);
-            }
+            
         }
         private static void title_slogan_animation()
         {
