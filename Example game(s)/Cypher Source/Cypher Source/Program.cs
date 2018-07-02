@@ -45,7 +45,7 @@ namespace Cypher_Source
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Text.type(true, "Imagine you are in 1991.");
-            Text.type(true, "You are an amateur hacker who chose the group name 'Cipher'.");
+            Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
             time.sleep(2500);
             Text.type(true, "Here is your test.");
             time.sleep(2500);
@@ -58,7 +58,8 @@ namespace Cypher_Source
                     time.sleep(1000);
                 }
             });
-            
+            Console.ReadKey();
+
         }
         private static void title_slogan_animation()
         {
