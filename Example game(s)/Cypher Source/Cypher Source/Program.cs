@@ -58,7 +58,7 @@ namespace Cypher_Source
                     time.sleep(1000);
                 }
             });
-            Console.ReadKey();
+            Console.ReadKey(true);
 
         }
         private static void title_slogan_animation()
