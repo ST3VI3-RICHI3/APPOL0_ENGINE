@@ -139,7 +139,7 @@ namespace Apollo
                 return files;
             }
         }
-        
+
 
         public string[] Pak(string option, string pkf)
         {
@@ -156,6 +156,95 @@ namespace Apollo
                 return Load(pkf);
             }
             string[] na = {"Could not load PacKFile: No option chosen..."};
+            return na;
+        }
+    }
+    class Savefiles
+    {
+        public string[] Check(string savefile)
+        {
+            string[] na = {"na"};
+            return na;
+        }
+
+        public string[] Save(string savefile)
+        {
+            string[] na = {"na"};
+            return na;
+        }
+
+        public string[] Load(string savefile)
+        {
+            string filetoload = Environment.CurrentDirectory + "/" + savefile + ".svp";
+            if (!File.Exists(filetoload))
+            {
+              Console.WriteLine("The specified file does not exist, Exiting...");
+              Environment.Exit(-1);
+            }
+                using (StreamReader sr = new StreamReader(filetoload))
+                {
+                    string line = sr.ReadToEnd();
+                    string sig = line.Substring(0, 3);
+                    if (sig == "svp")
+                    {
+                        Console.WriteLine(Environment.CurrentDirectory + "/" + savefile + ".svp" + " is a SaVePack.");
+                    }
+                    else
+                    {
+                        Console.WriteLine(Environment.CurrentDirectory + "/" + savefile + ".svp" + " is NOT a SaVePack.");
+                        Environment.Exit(-1);
+                    }
+                    int fileamount = line.Substring(3, 2).ToCharArray()[0];
+                    fileamount += line.Substring(3, 2).ToCharArray()[1];
+                    int size_of_archive_scanned = 5;
+                    string[] files = { };
+                    try
+                    {
+                        for (int i = 0; i < fileamount; i++)
+                        {
+                            int filesize = line.Substring(size_of_archive_scanned, 3).ToCharArray()[2];
+                            filesize += line.Substring(size_of_archive_scanned, 3).ToCharArray()[1] * 256;
+                            filesize += line.Substring(size_of_archive_scanned, 3).ToCharArray()[0] * 65536;
+                            size_of_archive_scanned += 3;
+                            int filenamesize = line.Substring(size_of_archive_scanned, 1).ToCharArray()[0];
+                            size_of_archive_scanned++;
+                            string filename = line.Substring(size_of_archive_scanned, filenamesize);
+                            size_of_archive_scanned += filenamesize;
+                            string file = line.Substring(size_of_archive_scanned, filesize + 1);
+                            size_of_archive_scanned += filesize;
+                            Array.Resize(ref files, files.Length + 1);
+                            files.SetValue(filename, files.Length - 1);
+                            Array.Resize(ref files, files.Length + 1);
+                            files.SetValue(file, files.Length - 1);
+                            Console.WriteLine(filename + " Loaded.");
+                        }
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        Console.WriteLine("Loading of SaVePack FAILED. File may be corrupt or incorrect.");
+                        Environment.Exit(-1);
+                    }
+                    Console.WriteLine("Loading of SaVePack Succeeded.");
+                    return files;
+                }
+            }
+
+
+        public string[] Sav(string option, string svp)
+        {
+            if (option == "/C")
+            {
+                return Check(svp);
+            }
+            if (option == "-S")
+            {
+                return Save(svp);
+            }
+            if (option == "-L")
+            {
+                return Load(svp);
+            }
+            string[] na = {"Could not load SaVePack: No option chosen..."};
             return na;
         }
     }
