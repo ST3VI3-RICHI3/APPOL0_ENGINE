@@ -26,7 +26,6 @@ namespace Apollo
             bool newlineenabled = false;
 			if (newline == true)
 			{
-
                 newlineenabled = true;
             }
 			for (var i = 0; i < text.Length; i++)
