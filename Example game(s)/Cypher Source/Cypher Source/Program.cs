@@ -15,6 +15,7 @@ namespace Cypher_Source
     {
         static void Main(string[] args)
         {
+            var gametime = 0; //how long it has been in seconds since timer starts
             Console.WriteLine("APOLL0 text test.");
             try
             {
@@ -27,6 +28,7 @@ namespace Cypher_Source
                 Thread.Sleep(5000);
                 Environment.Exit(-1);
             }
+            Text.print(true, "Loading recourses");
             Console.Clear();
             utility.title("Cipher Source");
             Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
@@ -36,21 +38,7 @@ namespace Cypher_Source
 			Text.print(true, "88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
 			Text.print(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
             Text.print(true, " ");
-			title_slogan_animation();
-            Text.print(true, " ");
-            Text.typefast(false, "press any key to play.");
-            Console.ReadKey(true);
-            Console.Clear();
-            Text.print(true, "Encryption is a fallacy.");
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Text.type(true, "Imagine you are in 1991.");
-            Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
-            time.sleep(2500);
-            Text.type(true, "Here is your test.");
-            time.sleep(2500);
-            var gametime = 0; //how long it has been in seconds since timer starts
-            var gametimethread = new Thread(() =>
+            var GameTimeThread = new Thread(() =>
             {
                 while (true)
                 {
@@ -58,6 +46,28 @@ namespace Cypher_Source
                     time.sleep(1000);
                 }
             });
+            title_slogan_animation();
+            Text.print(true, " ");
+            Text.typefast(false, "press any key to play.");
+            Console.ReadKey(true);
+            Console.Clear();
+            Text.print(true, "Encryption is a fallacy.");
+            Console.Clear();
+            Text.print(false,"Creating save");
+            Text.print(true, ".");
+            Text.print(false, "starting");
+            //Save creation save here
+            Console.Clear();
+            Text.print(false, "Creating save");
+            Text.print(true, ".....Done!");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Text.type(true, "Imagine you are in 1991.");
+            Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
+            time.sleep(2500);
+            Text.type(true, "Here is your test.");
+            time.sleep(2500);
+            GameTimeThread.Start();
             Console.ReadKey(true);
 
         }

@@ -54,6 +54,10 @@ namespace Apollo
                 Console.Write(text.Substring(i, 1));
             }
         }
+        public static void newline()
+        {
+            Console.WriteLine("");
+        }
     }
 	class time
     {
