@@ -29,6 +29,14 @@ namespace Cypher_Source
                 Environment.Exit(-1);
             }
             Text.print(true, "Loading recourses");
+            for (var i = 0; i < args.Length; i++)
+            {
+                if (args[i] == "-pizza")
+                {
+                    System.Media.SoundPlayer pizzatime = new System.Media.SoundPlayer(@"pizza.wav");
+                    pizzatime.Play();
+                }
+            }
             Console.Clear();
             utility.title("Cipher Source");
             Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
