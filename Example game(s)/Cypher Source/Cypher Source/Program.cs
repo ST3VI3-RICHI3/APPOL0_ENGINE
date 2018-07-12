@@ -15,6 +15,7 @@ namespace Cypher_Source
     {
         static void Main(string[] args)
         {
+            bool DeveloperMode = false;
             var gametime = 0; //how long it has been in seconds since timer starts
             Console.WriteLine("APOLL0 text test.");
             try
@@ -29,6 +30,14 @@ namespace Cypher_Source
                 Environment.Exit(-1);
             }
             Text.print(true, "Loading recourses");
+            var GameTimeThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    gametime = gametime + 1;
+                    time.sleep(1000);
+                }
+            });
             bool PizzaEE = false;
             System.Media.SoundPlayer pizzatime = null;
             for (var i = 0; i < args.Length; i++)
@@ -48,14 +57,6 @@ namespace Cypher_Source
 			Text.print(true, "88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
 			Text.print(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
             Text.print(true, " ");
-            var GameTimeThread = new Thread(() =>
-            {
-                while (true)
-                {
-                    gametime = gametime + 1;
-                    time.sleep(1000);
-                }
-            });
             title_slogan_animation();
             Text.print(true, " ");
             Text.typefast(false, "press any key to play.");
@@ -67,22 +68,62 @@ namespace Cypher_Source
             Console.Clear();
             Text.print(true, "Encryption is a fallacy.");
             Console.Clear();
+            Text.print(false, "Character name? ");
+            string name = Console.ReadLine();
             Text.print(false,"Creating save");
             Text.print(true, ".");
             Text.print(false, "starting");
             //Save creation save here
             Console.Clear();
             Text.print(false, "Creating save");
-            Apollo.Savefiles save = null;
+            //Apollo.Savefiles save = null;
             Text.print(true, ".....Done!");
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Text.type(true, "Imagine you are in 1991.");
             Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
-            time.sleep(2000);
+            time.sleep(1000);
             Text.type(true, "Here is your test.");
+            Apollo.Text.newline();
+            Text.print(false, "Home/" + name + "> ");
+            time.sleep(1000);
+            Text.type(true, "clear");
+            time.sleep(250);
+            Console.Clear();
+            Text.print(false, "Home/" + name + "> ");
+            time.sleep(1000);
+            Text.type(true, "ssh 124.268.1.26");
+            time.sleep(250);
+            Text.print(true, "Connecting to: "+"'124.268.1.26'");
             time.sleep(2500);
+            Text.print(true, "Connected");
+            time.sleep(500);
+            Text.newline();
+            Text.print(true, "Message from 124.268.1.26: Welcome to the Cipher test server.");
+            Text.print(true, "This server will give you a series of tests ranging from easy to hard.");
+            Text.print(true, "This will set your skill level so we can send you missons of your'e difficulty.");
+            Text.print(true, "Type 'start' to start the test");
+            Text.newline();
+            CommandFail:
+            Text.print(false, "Home/" + name + "> ");
+            string Command = Console.ReadLine();
+            if (Command == "start")
+            {
+                goto Continue;
+            }
+            if (Command == "exit")
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                Text.print(true, "Unknown command: '" + Command + "'");
+                goto CommandFail;
+            }
+            Continue:
             GameTimeThread.Start();
+            Text.print(false, "Home/" + name + "> ");
+            Command = Console.ReadLine();
             Console.ReadKey(true);
 
         }
