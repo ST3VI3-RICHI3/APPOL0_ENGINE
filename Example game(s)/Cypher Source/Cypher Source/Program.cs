@@ -29,12 +29,14 @@ namespace Cypher_Source
                 Environment.Exit(-1);
             }
             Text.print(true, "Loading recourses");
+            bool PizzaEE = false;
+            System.Media.SoundPlayer pizzatime = null;
             for (var i = 0; i < args.Length; i++)
             {
                 if (args[i] == "-pizza")
                 {
-                    System.Media.SoundPlayer pizzatime = new System.Media.SoundPlayer(@"pizza.wav");
-                    pizzatime.PlayLooping();
+                    pizzatime = new System.Media.SoundPlayer(@"pizza.wav");
+                    PizzaEE = true;
                 }
             }
             Console.Clear();
@@ -58,6 +60,10 @@ namespace Cypher_Source
             Text.print(true, " ");
             Text.typefast(false, "press any key to play.");
             Console.ReadKey(true);
+            if (PizzaEE == true)
+            {
+                pizzatime.PlayLooping();
+            }
             Console.Clear();
             Text.print(true, "Encryption is a fallacy.");
             Console.Clear();
@@ -67,12 +73,13 @@ namespace Cypher_Source
             //Save creation save here
             Console.Clear();
             Text.print(false, "Creating save");
+            Apollo.Savefiles save = null;
             Text.print(true, ".....Done!");
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Text.type(true, "Imagine you are in 1991.");
             Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
-            time.sleep(2500);
+            time.sleep(2000);
             Text.type(true, "Here is your test.");
             time.sleep(2500);
             GameTimeThread.Start();
