@@ -34,7 +34,7 @@ namespace Cypher_Source
                 if (args[i] == "-pizza")
                 {
                     System.Media.SoundPlayer pizzatime = new System.Media.SoundPlayer(@"pizza.wav");
-                    pizzatime.Play();
+                    pizzatime.PlayLooping();
                 }
             }
             Console.Clear();
