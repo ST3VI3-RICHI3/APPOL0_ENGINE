@@ -185,7 +185,7 @@ namespace Apollo
                     StreamWriter.Write(varsizehigh + varsizemid + varsizelow);
                     char varnamesize = data[i*3+1].ToCharArray()[0];
                     StreamWriter.Write(varnamesize);
-                    string vartowrite = data[i*3+2]
+                    string vartowrite = data[i * 3 + 2];
                     StreamWriter.Write(vartowrite);
                 }
             }
