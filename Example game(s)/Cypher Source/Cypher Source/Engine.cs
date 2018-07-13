@@ -201,7 +201,7 @@ namespace Apollo
               Console.WriteLine("The specified file does not exist, Exiting...");
               Environment.Exit(-1);
             }
-                using (StreamReader sr = new StreamReader(filetoload))
+                using (StreamReader sr = new StreamReader(File.Open(filetoload, FileMode.Create)))
                 {
                     string line = sr.ReadToEnd(); //
                     string sig = line.Substring(0, 3);
