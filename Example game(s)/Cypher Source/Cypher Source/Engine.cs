@@ -170,10 +170,25 @@ namespace Apollo
             return na;
         }
 
-        public string[] Save(string savefile)
+        public void Save(string savefile, string[] data)
         {
-            string[] na = {"na"};
-            return na;
+            string filetosave = Environment.CurrentDirectory + "/" + savefile + ".svp";
+            using (StreamWriter sw = File.Create(filetosave))
+            {
+                StreamWriter.Write("svp");
+                StreamWriter.Write(data.Length/3);
+                for (int i = 0; i < data.Length/3; i++)
+                {
+                    char varsizehigh = data[i*3].ToCharArray()[2];
+                    char varsizemid = data[i*3].ToCharArray()[1];
+                    char varsizelow = data[i*3].ToCharArray()[0];
+                    StreamWriter.Write(varsizehigh + varsizemid + varsizelow);
+                    char varnamesize = data[i*3+1].ToCharArray()[0];
+                    StreamWriter.Write(varnamesize);
+                    string vartowrite = data[i*3+2]
+                    StreamWriter.Write(vartowrite);
+                }
+            }
         }
 
         public string[] Load(string savefile)
@@ -186,7 +201,7 @@ namespace Apollo
             }
                 using (StreamReader sr = new StreamReader(filetoload))
                 {
-                    string line = sr.ReadToEnd();
+                    string line = sr.ReadToEnd(); //
                     string sig = line.Substring(0, 3);
                     if (sig == "svp")
                     {
