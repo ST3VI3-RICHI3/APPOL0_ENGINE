@@ -61,18 +61,19 @@ namespace Cypher_Source
             Text.print(true, " ");
             Text.typefast(false, "press any key to play.");
             Console.ReadKey(true);
-            if (PizzaEE == true)
-            {
-                pizzatime.PlayLooping();
-            }
             Console.Clear();
             Text.print(true, "Encryption is a fallacy.");
+            time.sleep(100);
             Console.Clear();
             Text.print(false, "Character name? ");
             string name = Console.ReadLine();
             Text.print(false,"Creating save");
             Text.print(true, ".");
             Text.print(false, "starting");
+            if (PizzaEE == true)
+            {
+                pizzatime.PlayLooping();
+            }
             //Save creation save here
             Console.Clear();
             Text.print(false, "Creating save");
@@ -114,6 +115,18 @@ namespace Cypher_Source
             if (Command == "exit")
             {
                 Environment.Exit(0);
+            }
+            if (Command == "help")
+            {
+                time.sleep(250);
+                Text.newline();
+                Text.print(true, "Current available commands:");
+                Text.print(true, "start");
+                Text.print(true, "help");
+                Text.print(true, "exit");
+                Text.newline();
+                time.sleep(250);
+                goto CommandFail;
             }
             else
             {
