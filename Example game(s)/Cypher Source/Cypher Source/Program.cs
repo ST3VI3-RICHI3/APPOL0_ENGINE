@@ -47,6 +47,10 @@ namespace Cypher_Source
                     pizzatime = new System.Media.SoundPlayer(@"pizza.wav");
                     PizzaEE = true;
                 }
+                if (args[i] == "-dev")
+                {
+                    DeveloperMode = true;
+                }
             }
             Console.Clear();
             utility.title("Cipher Source");
