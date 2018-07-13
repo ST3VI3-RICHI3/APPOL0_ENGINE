@@ -173,20 +173,22 @@ namespace Apollo
         public void Save(string savefile, string[] data)
         {
             string filetosave = Environment.CurrentDirectory + "/" + savefile + ".svp";
-            using (StreamWriter sw = File.Create(filetosave))
+            using (ByteWriter sw = new ByteWriter(filetosave))
             {
-                StreamWriter.Write("svp");
-                StreamWriter.Write(data.Length/3);
-                for (int i = 0; i < data.Length/3; i++)
+                sw.Write("svp");
+                sw.Write(data.Length/2);
+                for (int i = 0; i < data.Length/2; i++)
                 {
-                    char varsizehigh = data[i*3].ToCharArray()[2];
-                    char varsizemid = data[i*3].ToCharArray()[1];
-                    char varsizelow = data[i*3].ToCharArray()[0];
-                    StreamWriter.Write(varsizehigh + varsizemid + varsizelow);
-                    char varnamesize = data[i*3+1].ToCharArray()[0];
-                    StreamWriter.Write(varnamesize);
-                    string vartowrite = data[i*3+2]
-                    StreamWriter.Write(vartowrite);
+                    byte[3] varint24 = data[i*2+1].Length;
+                    sw.Write(varint24);
+                    byte varnamesize = Convert.ToByte(data[i*2].Length);
+                    sw.Write(varnamesize);
+                    byte[] vartowrite = new byte[data[i*3+2].Length];
+                    for(var j = 0; j<data[i*3+2].Length; j++)
+                    {
+                        vartowrite[j] = data[i*3+2].Chars[j];
+                    }
+                    sw.Write(vartowrite);
                 }
             }
         }
