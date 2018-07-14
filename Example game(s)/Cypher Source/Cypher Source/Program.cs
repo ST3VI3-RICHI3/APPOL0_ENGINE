@@ -54,6 +54,10 @@ namespace Cypher_Source
                 }
             }
             Console.Clear();
+            Console.Beep();
+            Text.print(false, "Boot from CD/DVD");
+            time.sleep(5000);
+            Console.Clear();
             utility.title("Cipher Source");
             Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
 			Text.print(true, "8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
@@ -72,6 +76,34 @@ namespace Cypher_Source
             Console.Clear();
             Text.print(false, "Character name? ");
             string name = Console.ReadLine();
+            if (name == "")
+            {
+                var RNGName = random.Next(0, 5);
+                if (RNGName == 0)
+                {
+                    name = "Jimmy";
+                }
+                if (RNGName == 1)
+                {
+                    name = "Bob";
+                }
+                if (RNGName == 2)
+                {
+                    name = "Billy";
+                }
+                if (RNGName == 3)
+                {
+                    name = "Bin Man Bob";
+                }
+                if (RNGName == 4)
+                {
+                    name = "Sally";
+                }
+                if (RNGName == 5)
+                {
+                    name = "Jessica";
+                }
+            }
             Text.print(false,"Creating save");
             Text.print(true, ".");
             Text.print(false, "starting");
@@ -101,7 +133,7 @@ namespace Cypher_Source
             Text.type(true, "ssh 124.268.1.26");
             time.sleep(250);
             Text.print(true, "Connecting to: "+"'124.268.1.26'");
-            time.sleep(random.Next(1000, 5000));
+            time.sleep(random.Next(0, 10000));
             Text.print(true, "Connected");
             time.sleep(500);
             Text.newline();
@@ -133,6 +165,7 @@ namespace Cypher_Source
                 time.sleep(250);
                 goto CommandFail;
             }
+            if (Command == "") {goto CommandFail;}
             else
             {
                 Text.print(true, "Unknown command: '" + Command + "'");
