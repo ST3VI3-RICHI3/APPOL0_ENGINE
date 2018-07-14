@@ -52,6 +52,11 @@ namespace Cypher_Source
                 {
                     DeveloperMode = true;
                 }
+                if (args[i] == "-load_Test")
+                {
+                    Savefiles.Load("Test");
+                    Console.ReadLine();
+                }
             }
             Console.Clear();
             Console.Beep();
@@ -119,10 +124,13 @@ namespace Cypher_Source
             }
             Console.Clear();
             Text.print(false, "Creating save");
+            int Stage = 1;
             string[] SaveData;
-            SaveData = new string[2];
+            SaveData = new string[4];
             SaveData[0] = "name";
             SaveData[1] = name;
+            SaveData[2] = "Stage";
+            SaveData[3] = Stage.ToString();
             Savefiles.Save(SavName, SaveData);
             Text.print(true, ".....Done!");
             Console.Clear();

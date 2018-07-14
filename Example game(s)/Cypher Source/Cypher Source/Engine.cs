@@ -178,7 +178,7 @@ namespace Apollo
             string filetosave = Environment.CurrentDirectory + "/" + savefile + ".svp";
             using (BinaryWriter sw = new BinaryWriter(File.Open(filetosave, FileMode.Create)))
             {
-                sw.Write("svp");
+                sw.Write(0x707673);
                 sw.Write((short)(data.Length / 2));
                 for (int i = 0; i < data.Length / 2; i++)
                 {
@@ -212,9 +212,9 @@ namespace Apollo
                 Console.WriteLine("The specified file does not exist, Exiting...");
                 Environment.Exit(-1);
             }
-            using (StreamReader sr = new StreamReader(File.Open(filetoload, FileMode.Create)))
+            using (StreamReader sr = new StreamReader(filetoload))
             {
-                string line = sr.ReadToEnd(); //
+                string line = sr.ReadToEnd();
                 string sig = line.Substring(0, 3);
                 if (sig == "svp")
                 {
