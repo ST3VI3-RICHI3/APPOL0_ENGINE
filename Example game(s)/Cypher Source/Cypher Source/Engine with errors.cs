@@ -182,14 +182,18 @@ namespace Apollo
                 sw.Write(data.Length / 2);
                 for (int i = 0; i < data.Length / 2; i++)
                 {
-                    byte[3] varint24 = Convert.ToByte(data[i * 2 + 1].Length);
-                    sw.Write(varint24);
+                    int varint = data[i * 2 + 1].Length;
+                    byte[] bytes = new byte[3];
+                    bytes[0] = (byte)(intValue >> 16);
+                    bytes[1] = (byte)(intValue >> 8);
+                    bytes[2] = (byte)intValue;
+                    sw.Write(bytes);
                     byte varnamesize = Convert.ToByte(data[i * 2].Length);
                     sw.Write(varnamesize);
-                    byte[] vartowrite = new byte[data[i * 2 + 1].Length];
+                    byte[] vartowrite = new byte[varint];
                     for (var j = 0; j < data[i * 2 + 1].Length; j++)
                     {
-                        vartowrite[j] = data[i * 3 + 2].ToCharArray()[j];
+                        vartowrite[j] = Convert.ToByte(data[i * 2 + 1].ToCharArray()[j]);
                     }
                     sw.Write(vartowrite);
                 }
