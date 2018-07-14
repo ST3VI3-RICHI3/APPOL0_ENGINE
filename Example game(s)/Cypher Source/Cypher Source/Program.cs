@@ -15,6 +15,7 @@ namespace Cypher_Source
     {
         static void Main(string[] args)
         {
+            var random = Apollo.utility.random;
             bool DeveloperMode = false;
             var gametime = 0; //how long it has been in seconds since timer starts
             Console.WriteLine("APOLL0 text test.");
@@ -100,7 +101,7 @@ namespace Cypher_Source
             Text.type(true, "ssh 124.268.1.26");
             time.sleep(250);
             Text.print(true, "Connecting to: "+"'124.268.1.26'");
-            time.sleep(2500);
+            time.sleep(random.Next(1000, 5000));
             Text.print(true, "Connected");
             time.sleep(500);
             Text.newline();
