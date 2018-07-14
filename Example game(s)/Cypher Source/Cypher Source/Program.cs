@@ -76,6 +76,8 @@ namespace Cypher_Source
             Console.Clear();
             Text.print(false, "Character name? ");
             string name = Console.ReadLine();
+            Text.print(false, "Save name? ");
+            string SavName = Console.ReadLine();
             if (name == "")
             {
                 var RNGName = random.Next(0, 5);
@@ -104,6 +106,10 @@ namespace Cypher_Source
                     name = "Jessica";
                 }
             }
+            if (SavName == "")
+            {
+                SavName = "Save";
+            }
             Text.print(false,"Creating save");
             Text.print(true, ".");
             Text.print(false, "starting");
@@ -111,10 +117,13 @@ namespace Cypher_Source
             {
                 pizzatime.PlayLooping();
             }
-            //Save creation save here
             Console.Clear();
             Text.print(false, "Creating save");
-            //Apollo.Savefiles save = null;
+            string[] SaveData;
+            SaveData = new string[2];
+            SaveData[0] = "name";
+            SaveData[1] = name;
+            Savefiles.Save(SavName, SaveData);
             Text.print(true, ".....Done!");
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;

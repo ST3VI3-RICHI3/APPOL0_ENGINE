@@ -173,10 +173,10 @@ namespace Apollo
             return na;
         }
 
-        public void Save(string savefile, string[] data)
+        public string[] Save(string savefile, string[] data)
         {
             string filetosave = Environment.CurrentDirectory + "/" + savefile + ".svp";
-            using (BinaryWriter sw = new BinaryWriter(filetosave))
+            using (BinaryWriter sw = new BinaryWriter(File.Open(filetosave, FileMode.Create)))
             {
                 sw.Write("svp");
                 sw.Write(data.Length / 2);
@@ -184,9 +184,9 @@ namespace Apollo
                 {
                     int varint = data[i * 2 + 1].Length;
                     byte[] bytes = new byte[3];
-                    bytes[0] = (byte)(intValue >> 16);
-                    bytes[1] = (byte)(intValue >> 8);
-                    bytes[2] = (byte)intValue;
+                    bytes[0] = (byte)(varint >> 16);
+                    bytes[1] = (byte)(varint >> 8);
+                    bytes[2] = (byte)varint;
                     sw.Write(bytes);
                     byte varnamesize = Convert.ToByte(data[i * 2].Length);
                     sw.Write(varnamesize);
@@ -198,6 +198,9 @@ namespace Apollo
                     sw.Write(vartowrite);
                 }
             }
+            string[] returnval = new string[1];
+            returnval[0] = "Done.";
+            return returnval;
         }
 
         public string[] Load(string savefile)
@@ -257,7 +260,7 @@ namespace Apollo
         }
 
 
-        public string[] Sav(string option, string svp)
+        public string[] Sav(string option, string svp, string[] dat)
         {
             if (option == "/C")
             {
@@ -265,7 +268,7 @@ namespace Apollo
             }
             if (option == "-S")
             {
-                return Save(svp);
+                return Save(svp, dat);
             }
             if (option == "-L")
             {
