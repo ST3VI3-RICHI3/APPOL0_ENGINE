@@ -176,8 +176,16 @@ namespace Apollo
             string filetosave = Environment.CurrentDirectory + "/" + savefile + ".svp";
             using (BinaryWriter sw = new BinaryWriter(File.Open(filetosave, FileMode.Create)))
             {
-                sw.Write(0x707673);
-                sw.Write((short)(data.Length / 2));
+                byte[] signature = new byte[3];
+                signature[0] = 0x73;
+                signature[1] = 0x76;
+                signature[2] = 0x70;
+                sw.Write(signature);
+                short files = (short)(data.Length / 2);
+                byte[] leng = new byte[2];
+                leng[0] = (byte)(files >> 8);
+                leng[1] = (byte)(files);
+                sw.Write(leng);
                 for (int i = 0; i < data.Length / 2; i++)
                 {
                     int varint = data[i * 2 + 1].Length;
@@ -188,13 +196,10 @@ namespace Apollo
                     sw.Write(bytes);
                     byte varnamesize = Convert.ToByte(data[i * 2].Length);
                     sw.Write(varnamesize);
-                    sw.Write(data[i*2]);
-                    byte[] vartowrite = new byte[varint];
-                    for (var j = 0; j < data[i * 2 + 1].Length; j++)
-                    {
-                        vartowrite[j] = Convert.ToByte(data[i * 2 + 1].ToCharArray()[j]);
-                    }
-                    sw.Write(vartowrite);
+                    byte[] varname = Encoding.ASCII.GetBytes(data[i*2]);
+                    sw.Write(varname);
+                    byte[] vartosave = Encoding.ASCII.GetBytes(data[i*2+1]);
+                    sw.Write(vartosave);
                 }
             }
             string[] returnval = new string[1];
