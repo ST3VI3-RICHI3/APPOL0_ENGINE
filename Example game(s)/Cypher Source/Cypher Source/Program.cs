@@ -6,6 +6,7 @@
 //88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee
 
 using System;
+using System.IO;
 using System.Threading;
 using Apollo;
 
@@ -13,8 +14,10 @@ namespace Cypher_Source
 {
     class Program
     {
+        private static string[] SaveData;
         static void Main(string[] args)
         {
+            string version = "0.1.5";
             var random = Apollo.utility.random;
             bool DeveloperMode = false;
             var gametime = 0; //how long it has been in seconds since timer starts
@@ -52,9 +55,24 @@ namespace Cypher_Source
                 {
                     DeveloperMode = true;
                 }
+                if (args[i] == "-save_Test")
+                {
+                    SaveData = new string[6];
+                    SaveData[0] = "name";
+                    SaveData[1] = "EGName";
+                    SaveData[2] = "Stage";
+                    SaveData[3] = "1";
+                    SaveData[4] = "Version";
+                    SaveData[5] = version;
+                    Savefiles.Save("Test", SaveData);
+                }
                 if (args[i] == "-load_Test")
                 {
-                    Savefiles.Load("Test");
+                    SaveData = Savefiles.Load("Test");
+                    for (int j = 0; j < SaveData.Length; j++)
+                    {
+                        Console.WriteLine(SaveData[j]);
+                    }
                     Console.ReadLine();
                 }
             }
@@ -65,11 +83,11 @@ namespace Cypher_Source
             Console.Clear();
             utility.title("Cipher Source");
             Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
-			Text.print(true, "8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
-			Text.print(true, "8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
-			Text.print(true, "88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
-			Text.print(true, "88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
-			Text.print(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
+            Text.print(true, "8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
+            Text.print(true, "8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
+            Text.print(true, "88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
+            Text.print(true, "88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
+            Text.print(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
             Text.print(true, " ");
             title_slogan_animation();
             Text.print(true, " ");
@@ -79,13 +97,13 @@ namespace Cypher_Source
             Text.print(true, "Encryption is a fallacy.");
             time.sleep(100);
             Console.Clear();
-            Text.print(false, "Character name? ");
-            string name = Console.ReadLine();
             Text.print(false, "Save name? ");
             string SavName = Console.ReadLine();
+            Text.print(false, "Character name? ");
+            string name = Console.ReadLine();
             if (name == "")
             {
-                var RNGName = random.Next(0, 5);
+                var RNGName = random.Next(0, 10);
                 if (RNGName == 0)
                 {
                     name = "Jimmy";
@@ -110,29 +128,37 @@ namespace Cypher_Source
                 {
                     name = "Jessica";
                 }
+                else
+                {
+                    name = "Nelly";
+                }
             }
             if (SavName == "")
             {
                 SavName = "Save";
             }
-            Text.print(false,"Creating save");
-            Text.print(true, ".");
-            Text.print(false, "starting");
-            if (PizzaEE == true)
+            if (File.Exists(SavName + ".svp") == true)
             {
-                pizzatime.PlayLooping();
+                SaveData = Savefiles.Load(SavName);
+                goto SaveSkip;
             }
-            Console.Clear();
-            Text.print(false, "Creating save");
+            Text.print(false, "Getting variables");
             int Stage = 1;
-            string[] SaveData;
-            SaveData = new string[4];
+            SaveData = new string[6];
             SaveData[0] = "name";
             SaveData[1] = name;
             SaveData[2] = "Stage";
             SaveData[3] = Stage.ToString();
+            SaveData[4] = "Version";
+            SaveData[5] = version;
+            Text.print(false,"..Creating save");
             Savefiles.Save(SavName, SaveData);
-            Text.print(true, ".....Done!");
+            Text.print(false, "..starting");
+            SaveSkip:
+            if (PizzaEE == true)
+            {
+                pizzatime.PlayLooping();
+            }
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Text.type(true, "Imagine you are in 1991.");

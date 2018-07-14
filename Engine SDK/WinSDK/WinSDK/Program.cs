@@ -92,8 +92,7 @@ namespace WinSDK
             }
             Console.WriteLine(" ");
             Console.WriteLine("Load Core...");
-            Pakgram paker = new Pakgram();
-            paker.Pak("-L", "testfile");
+            Packfiles.Load("testfile");
             //Load files here
             Console.WriteLine("Done!"); //after this the main app will load and run.
         }
@@ -128,8 +127,7 @@ namespace WinSDK
                     if (Console.ReadKey().Key == ConsoleKey.Y)
                     {
                         Console.WriteLine(" ");
-                        Pakgram paker = new Pakgram();
-                        paker.Pak("-L", Path);
+                        Packfiles.Load(Path);
                     }
                 }
                 catch

@@ -76,19 +76,19 @@ namespace Apollo
     }
     class Packfiles
     {
-        public string[] Check(string pakfile)
+        public static string[] Check(string pakfile)
         {
             string[] na = { "na" };
             return na;
         }
 
-        public string[] Create(string folder)
+        public static string[] Create(string folder)
         {
             string[] na = { "na" };
             return na;
         }
 
-        public string[] Load(string pakfile)
+        public static string[] Load(string pakfile)
         {
             string filetounpack = Environment.CurrentDirectory + "/" + pakfile + ".pkf";
             if (!File.Exists(filetounpack))
@@ -248,15 +248,11 @@ namespace Apollo
                         Console.WriteLine(filename + " Loaded.");
                     }
                 }
-                catch
-                {
-
-                }
-                /*catch (ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
                     Console.WriteLine("Loading of SaVePack FAILED. File may be corrupt or incorrect.");
                     Environment.Exit(-1);
-                }*/
+                }
                 Console.WriteLine("Loading of SaVePack Succeeded.");
                 return files;
             }

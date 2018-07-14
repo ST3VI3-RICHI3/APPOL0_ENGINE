@@ -39,8 +39,7 @@ namespace Apollo
             Console.Beep();
             Console.WriteLine("APPOL0 Engine Loading...");
             // Load game files...
-            Pakgram paker = new Pakgram();
-            string[] gamedata = paker.Pak("-L", "testfile");
+            string[] gamedata = Packfiles.Load("testfile");
             // Dump packed data to console (Debug, Temporary)...
             Console.WriteLine("Tesesest");
             for (int i=0; i<gamedata.Length; i++)
