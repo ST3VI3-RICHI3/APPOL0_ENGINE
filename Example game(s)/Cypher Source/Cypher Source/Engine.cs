@@ -1,5 +1,3 @@
-//WARNING: DO NOT COMPILE THIS VERSION, It is for errors.
-
 using System;
 using System.Threading;
 using System.IO;
