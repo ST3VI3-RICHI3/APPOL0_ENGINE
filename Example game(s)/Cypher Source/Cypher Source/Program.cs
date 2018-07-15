@@ -65,6 +65,7 @@ namespace Cypher_Source
                     SaveData[4] = "Version";
                     SaveData[5] = version;
                     Savefiles.Save("Test", SaveData);
+                    Environment.Exit(0);
                 }
                 if (args[i] == "-load_Test")
                 {
