@@ -76,6 +76,10 @@ namespace Cypher_Source
                     }
                     Console.ReadLine();
                 }
+                if (args[i] == "-Novid")
+                {
+                    goto NoVid;
+                }
             }
             Console.Clear();
             Console.Beep();
@@ -94,17 +98,24 @@ namespace Cypher_Source
             Text.print(true, " ");
             Text.typefast(false, "press any key to play.");
             Console.ReadKey(true);
+            NoVid:
             Console.Clear();
             Text.print(true, "Encryption is a fallacy.");
             time.sleep(100);
             Console.Clear();
             Text.print(false, "Save name? ");
             string SavName = Console.ReadLine();
+            string name;
+            if (File.Exists(SavName + ".svp") == true)
+            {
+                SaveData = Savefiles.Load(SavName);
+                goto SaveSkip;
+            }
             Text.print(false, "Character name? ");
-            string name = Console.ReadLine();
+            name = Console.ReadLine();
             if (name == "")
             {
-                var RNGName = random.Next(0, 10);
+                var RNGName = random.Next(0, 5);
                 if (RNGName == 0)
                 {
                     name = "Jimmy";
@@ -129,19 +140,17 @@ namespace Cypher_Source
                 {
                     name = "Jessica";
                 }
-                else
-                {
-                    name = "Nelly";
-                }
             }
+
             if (SavName == "")
             {
                 SavName = "Save";
-            }
-            if (File.Exists(SavName + ".svp") == true)
-            {
-                SaveData = Savefiles.Load(SavName);
-                goto SaveSkip;
+                while (File.Exists(SavName + ".svp") == true)
+                {
+                    int s = 0;
+                    s++;
+                    SavName = "Save" + s.ToString();
+                }
             }
             Text.print(false, "Getting variables");
             int Stage = 1;
@@ -156,6 +165,13 @@ namespace Cypher_Source
             Savefiles.Save(SavName, SaveData);
             Text.print(false, "..starting");
             SaveSkip:
+            name = SaveData[1];
+            Stage = Int32.Parse(SaveData[3]);
+            if (Stage == 1)
+            {
+                goto S1;
+            }
+            S1:
             if (PizzaEE == true)
             {
                 pizzatime.PlayLooping();
