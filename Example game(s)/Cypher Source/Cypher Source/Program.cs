@@ -233,9 +233,14 @@ namespace Cypher_Source
             }
             Continue:
             GameTimeThread.Start();
+            Text.newline();
+            Text.print(true, "Message from 124.268.1.26: The timer has started. We'll start out with simple stuff, then get harder as we go.");
+            Text.print(true, "Fist you need to open your'e cracker. you only have a simple one at the moment but you can buy better & faster ones later.");
+            Text.newline();
+            Text.print(true, "Open cracker by trping 'XCrack'");
+            Text.newline();
             Text.print(false, "Home/" + name + "> ");
             Command = Console.ReadLine();
-            Console.ReadKey(true);
 
         }
         private static void title_slogan_animation()

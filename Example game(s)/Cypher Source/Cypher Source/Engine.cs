@@ -253,11 +253,15 @@ namespace Apollo
                         Console.WriteLine(filename + " Loaded.");
                     }
                 }
-                catch (ArgumentOutOfRangeException)
+                catch
+                {
+
+                }
+                /*catch (ArgumentOutOfRangeException)
                 {
                     Console.WriteLine("Loading of SaVePack FAILED. File may be corrupt or incorrect.");
                     Environment.Exit(-1);
-                }
+                }*/
                 Console.WriteLine("Loading of SaVePack Succeeded.");
                 return files;
             }
