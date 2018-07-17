@@ -6,3 +6,7 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cyphe
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.exe
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.pdb
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\Cypher Source.exe.manifest
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\Cypher Source.application
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.exe.manifest
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.application

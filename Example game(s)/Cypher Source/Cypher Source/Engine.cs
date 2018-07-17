@@ -171,9 +171,9 @@ namespace Apollo
             return na;
         }
 
-        public static string[] Save(string savefile, string[] data)
+        public static string[] Save(string savefile, string[] data, string ending = ".svp")
         {
-            string filetosave = Environment.CurrentDirectory + "/" + savefile + ".svp";
+            string filetosave = Environment.CurrentDirectory + "/" + savefile + ending;
             using (BinaryWriter sw = new BinaryWriter(File.Open(filetosave, FileMode.Create)))
             {
                 byte[] signature = new byte[3];
@@ -207,9 +207,9 @@ namespace Apollo
             return returnval;
         }
 
-        public static string[] Load(string savefile)
+        public static string[] Load(string savefile, string ending = ".svp")
         {
-            string filetoload = Environment.CurrentDirectory + "/" + savefile + ".svp";
+            string filetoload = Environment.CurrentDirectory + "/" + savefile + ending;
             if (!File.Exists(filetoload))
             {
                 Console.WriteLine("The specified file does not exist, Exiting...");
@@ -253,15 +253,11 @@ namespace Apollo
                         Console.WriteLine(filename + " Loaded.");
                     }
                 }
-                catch
-                {
-
-                }
-                /*catch (ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
                     Console.WriteLine("Loading of SaVePack FAILED. File may be corrupt or incorrect.");
                     Environment.Exit(-1);
-                }*/
+                }
                 Console.WriteLine("Loading of SaVePack Succeeded.");
                 return files;
             }
