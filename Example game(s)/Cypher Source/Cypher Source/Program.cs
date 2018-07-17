@@ -20,7 +20,6 @@ namespace Cypher_Source
             string version = "0.1.5";
             var random = Apollo.utility.random;
             bool DeveloperMode = false;
-            var gametime = 0; //how long it has been in seconds since timer starts
             Console.WriteLine("APOLL0 text test.");
             try
             {
@@ -34,14 +33,6 @@ namespace Cypher_Source
                 Environment.Exit(-1);
             }
             Text.print(true, "Loading recourses");
-            var GameTimeThread = new Thread(() =>
-            {
-                while (true)
-                {
-                    gametime = gametime + 1;
-                    time.sleep(1000);
-                }
-            });
             bool PizzaEE = false;
             System.Media.SoundPlayer pizzatime = null;
             for (var i = 0; i < args.Length; i++)
@@ -161,87 +152,21 @@ namespace Cypher_Source
             SaveData[3] = Stage.ToString();
             SaveData[4] = "Version";
             SaveData[5] = version;
-            Text.print(false,"..Creating save");
+            Text.print(false, "..Creating save");
             Savefiles.Save(SavName, SaveData);
             Text.print(false, "..starting");
             SaveSkip:
             name = SaveData[1];
             Stage = Int32.Parse(SaveData[3]);
-            if (Stage == 1)
-            {
-                goto S1;
-            }
-            S1:
             if (PizzaEE == true)
             {
                 pizzatime.PlayLooping();
             }
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Text.type(true, "Imagine you are in 1991.");
-            Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
-            time.sleep(1000);
-            Text.type(true, "Here is your test.");
-            Apollo.Text.newline();
-            Text.print(false, "Home/" + name + "> ");
-            time.sleep(1000);
-            Text.type(true, "clear");
-            time.sleep(250);
-            Console.Clear();
-            Text.print(false, "Home/" + name + "> ");
-            time.sleep(1000);
-            Text.type(true, "ssh 124.268.1.26");
-            time.sleep(250);
-            Text.print(true, "Connecting to: "+"'124.268.1.26'");
-            time.sleep(random.Next(0, 10000));
-            Text.print(true, "Connected");
-            time.sleep(500);
-            Text.newline();
-            Text.print(true, "Message from 124.268.1.26: Welcome to the Cipher test server.");
-            Text.print(true, "This server will give you a series of tests ranging from easy to hard.");
-            Text.print(true, "This will set your skill level so we can send you missons of your'e difficulty.");
-            Text.print(true, "Type 'start' to start the test");
-            Text.newline();
-            CommandFail:
-            Text.print(false, "Home/" + name + "> ");
-            string Command = Console.ReadLine();
-            if (Command == "start")
+            if (Stage == 1)
             {
-                goto Continue;
+                Stage1(SavName);
             }
-            if (Command == "exit")
-            {
-                Environment.Exit(0);
-            }
-            if (Command == "help")
-            {
-                time.sleep(250);
-                Text.newline();
-                Text.print(true, "Current available commands:");
-                Text.print(true, "start");
-                Text.print(true, "help");
-                Text.print(true, "exit");
-                Text.newline();
-                time.sleep(250);
-                goto CommandFail;
-            }
-            if (Command == "") {goto CommandFail;}
-            else
-            {
-                Text.print(true, "Unknown command: '" + Command + "'");
-                goto CommandFail;
-            }
-            Continue:
-            GameTimeThread.Start();
-            Text.newline();
-            Text.print(true, "Message from 124.268.1.26: The timer has started. We'll start out with simple stuff, then get harder as we go.");
-            Text.print(true, "Fist you need to open your'e cracker. you only have a simple one at the moment but you can buy better & faster ones later.");
-            Text.newline();
-            Text.print(true, "Open cracker by trping 'XCrack'");
-            Text.newline();
-            Text.print(false, "Home/" + name + "> ");
-            Command = Console.ReadLine();
-
+            
         }
         private static void title_slogan_animation()
         {
@@ -305,6 +230,128 @@ namespace Cypher_Source
             Text.print(false, ".");
             time.sleep(1000);
             Text.print(true, " ");
+        }
+        private static void Stage1(string SavName)
+        {
+            var random = Apollo.utility.random;
+            string[] SaveData = Savefiles.Load(SavName);
+            string name = SaveData[1];
+            var gametime = 0; //how long it has been in seconds since timer starts
+            var GameTimeThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    gametime = gametime + 1;
+                    time.sleep(1000);
+                }
+            });
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Text.type(true, "Imagine you are in 1991.");
+            Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
+            time.sleep(1000);
+            Text.type(true, "Here is your test.");
+            Apollo.Text.newline();
+            Text.print(false, "Home/" + name + "> ");
+            time.sleep(1000);
+            Text.type(true, "clear");
+            time.sleep(250);
+            Console.Clear();
+            Text.print(false, "Home/" + name + "> ");
+            time.sleep(1000);
+            Text.type(true, "ssh 124.268.1.26");
+            time.sleep(250);
+            Text.print(true, "Connecting to: " + "'124.268.1.26'");
+            time.sleep(random.Next(0, 10000));
+            Text.print(true, "Connected");
+            time.sleep(500);
+            S1Restart:
+            Text.newline();
+            Text.print(true, "Message from 124.268.1.26: Welcome to the Cipher test server.");
+            Text.print(true, "This server will give you a series of tests ranging from easy to hard.");
+            Text.print(true, "This will set your skill level so we can send you missons of your'e difficulty.");
+            Text.print(true, "Type 'start' to start the test");
+            Text.newline();
+            CommandFail:
+            Text.print(false, "Home/" + name + "> ");
+            string Command = Console.ReadLine();
+            if (Command == "start")
+            {
+                goto Continue;
+            }
+            if (Command == "exit")
+            {
+                Environment.Exit(0);
+            }
+            if (Command == "help")
+            {
+                time.sleep(250);
+                Text.newline();
+                Text.print(true, "Current available commands:");
+                Text.print(true, "start");
+                Text.print(true, "help");
+                Text.print(true, "exit");
+                Text.newline();
+                time.sleep(250);
+                goto CommandFail;
+            }
+            if (Command == "") { goto CommandFail; }
+            else
+            {
+                Text.print(true, "Unknown command: '" + Command + "'");
+                goto CommandFail;
+            }
+            Continue:
+            GameTimeThread.Start();
+            Text.newline();
+            Text.print(true, "Message from 124.268.1.26: The timer has started. We'll start out with simple stuff, then get harder as we go.");
+            Text.print(true, "Fist you need to open your'e cracker. At the moment you only have a simple one but you can buy better & faster ones later.");
+            Text.newline();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Text.print(true, "Open cracker by trping 'XCrack'");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Text.newline();
+            CommandFail2:
+            Text.print(false, "Home/" + name + "> ");
+            Command = Console.ReadLine();
+            if (Command == "XCrack")
+            {
+                goto Continue2;
+            }
+            if (Command == "exit")
+            {
+                Environment.Exit(0);
+            }
+            if (Command == "help")
+            {
+                time.sleep(250);
+                Text.newline();
+                Text.print(true, "Current available commands:");
+                Text.print(true, "Help");
+                Text.print(true, "XCrack");
+                Text.print(true, "restart");
+                Text.print(true, "exit");
+                Text.newline();
+                time.sleep(250);
+                goto CommandFail;
+            }
+            if (Command == "restart")
+            {
+                goto S1Restart;
+            }
+            else
+            {
+                Text.print(true, "Unknown command: '" + Command + "'");
+                goto CommandFail2;
+            }
+            Continue2:
+            Text.newline();
+            Text.print(true, "XCrack");
+            Text.print(true, "Copyright to NameHere.");
+            Text.newline();
+            Text.print(true, "Connection found, starting automaticly");
+            Text.newline();
+            Text.print(false, "Crack: [====================================================================================================]");
         }
     }
 }
