@@ -291,7 +291,11 @@ namespace Apollo
     {
          class Graphics2D
         {
-            
+            public static void Draw(int LengthX, int LengthY)
+            {
+                Pen DrawingSystem = null;
+                //Iv'e gave up for the moment
+            }
         }
     }
 }
