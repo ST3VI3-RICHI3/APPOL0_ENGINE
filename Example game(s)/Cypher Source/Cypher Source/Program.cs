@@ -14,7 +14,7 @@ namespace Cypher_Source
 {
     class Program
     {
-        private static string[] SaveData;
+        private static string[] SaveData = null;
         static void Main(string[] args)
         {
             string version = "0.1.5";
@@ -347,11 +347,19 @@ namespace Cypher_Source
             Continue2:
             Text.newline();
             Text.print(true, "XCrack");
-            Text.print(true, "Copyright to NameHere.");
+            Text.print(true, "Copyright to MrBitz.");
             Text.newline();
             Text.print(true, "Connection found, starting automaticly");
             Text.newline();
-            Text.print(false, "Crack: [====================================================================================================]");
+            Text.print(false, "Crack: [==");
+            time.sleep(500);
+            Text.print(false, "================================================");
+            time.sleep(500);
+            Text.print(true, "==================================================");
+            Text.newline();
+            Text.print(true, "Username: admin");
+            Text.print(true, "Password: 123456");
+            Text.newline();
         }
     }
 }
