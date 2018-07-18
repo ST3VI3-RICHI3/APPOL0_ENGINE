@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Drawing;
 
 namespace Apollo
 {
@@ -284,6 +285,13 @@ namespace Apollo
             }
             string[] na = { "Could not load SaVePack: No option chosen..." };
             return na;
+        }
+    }
+    class Graphics
+    {
+         class Graphics2D
+        {
+            
         }
     }
 }

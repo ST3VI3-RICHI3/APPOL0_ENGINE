@@ -355,11 +355,67 @@ namespace Cypher_Source
             time.sleep(500);
             Text.print(false, "================================================");
             time.sleep(500);
-            Text.print(true, "==================================================");
+            Text.print(true, "==================================================]");
             Text.newline();
             Text.print(true, "Username: admin");
             Text.print(true, "Password: 123456");
             Text.newline();
+            CommandFail3:
+            Text.print(false, "Home/" + name + "> ");
+            Command = Console.ReadLine();
+            if (Command == "login")
+            {
+                goto Continue3;
+            }
+            if (Command == "exit")
+            {
+                Environment.Exit(0);
+            }
+            if (Command == "help")
+            {
+                time.sleep(250);
+                Text.newline();
+                Text.print(true, "Current available commands:");
+                Text.print(true, "Help");
+                Text.print(true, "login");
+                Text.print(true, "restart");
+                Text.print(true, "exit");
+                Text.newline();
+                time.sleep(250);
+                goto CommandFail3;
+            }
+            if (Command == "restart")
+            {
+                goto S1Restart;
+            }
+            else
+            {
+                Text.print(true, "Unknown command: '" + Command + "'");
+                goto CommandFail3;
+            }
+            Continue3:
+            time.sleep(250);
+            Text.print(false, "login as: ");
+            string puzz1_username = Console.ReadLine();
+            Text.print(false, "Password for "+puzz1_username+":");
+            string puzz1_passwd = Console.ReadLine();
+            if (puzz1_username == "admin")
+            {
+                for (var i = 0; i < 6; i++)
+                {
+                    if (puzz1_passwd == "123456")
+                    {
+                        goto puzz1FinalStage;
+                    }
+                }
+            }
+            else
+            {
+                Text.print(true, "Access denied");
+                goto CommandFail3;
+            }
+            puzz1FinalStage:
+            Text.print(true, "Ok, your'e in.");
         }
     }
 }
