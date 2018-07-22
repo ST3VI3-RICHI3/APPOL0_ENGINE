@@ -291,10 +291,12 @@ namespace Apollo
     {
          class Graphics2D
         {
+            private static int X = 0;
+            private static int Y = 0;
             public static void Draw(int LengthX, int LengthY)
             {
                 Pen DrawingSystem = null;
-                //Iv'e gave up for the moment
+                DrawingSystem.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
             }
         }
     }

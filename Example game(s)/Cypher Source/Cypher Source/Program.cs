@@ -15,6 +15,7 @@ namespace Cypher_Source
     class Program
     {
         private static string[] SaveData = null;
+        private static Thread GameTimeThread = null;
         static void Main(string[] args)
         {
             string version = "0.1.5";
@@ -236,8 +237,13 @@ namespace Cypher_Source
             var random = Apollo.utility.random;
             string[] SaveData = Savefiles.Load(SavName);
             string name = SaveData[1];
-            var gametime = 0; //how long it has been in seconds since timer starts
-            var GameTimeThread = new Thread(() =>
+            string stage = SaveData[3];
+            if (stage == "1Final")
+            {
+                goto puzz1FinalStage;
+            }
+            int gametime = 0; //how long it has been in seconds since timer starts
+            GameTimeThread = new Thread(() =>
             {
                 while (true)
                 {
@@ -360,6 +366,9 @@ namespace Cypher_Source
             Text.print(true, "Username: admin");
             Text.print(true, "Password: 123456");
             Text.newline();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Text.print(true, "Type 'login to log in. (obviously)'");
+            Console.ForegroundColor = ConsoleColor.Green;
             CommandFail3:
             Text.print(false, "Home/" + name + "> ");
             Command = Console.ReadLine();
@@ -415,7 +424,57 @@ namespace Cypher_Source
                 goto CommandFail3;
             }
             puzz1FinalStage:
-            Text.print(true, "Ok, your'e in.");
+            Text.print(true, "Ok, your'e in. The following things should be simple, if you know the basic command line.");
+            Text.print(true, "It is just a simple file transfer.");
+            Text.newline();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Text.print(true, "Type 'dir', then open 'File downloader' by typing 'FDownload'");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Text.newline();
+            CommandFail4:
+            Text.print(false, "root/admin/"+"> ");
+            Command = Console.ReadLine();
+            if (Command == "FDownload")
+            {
+                goto Continue4;
+            }
+            if (Command == "dir")
+            {
+                Text.newline();
+                Text.print(true, "Direcory listing of root/admin");
+                Text.newline();
+                Text.print(true, "TestInfo");
+                Text.newline();
+            }
+            if (Command == "exit")
+            {
+                Environment.Exit(0);
+            }
+            if (Command == "help")
+            {
+                time.sleep(250);
+                Text.newline();
+                Text.print(true, "Current available commands:");
+                Text.print(true, "Help");
+                Text.print(true, "dir");
+                Text.print(true, "FDownload");
+                Text.print(true, "restart");
+                Text.print(true, "exit");
+                Text.newline();
+                time.sleep(250);
+                goto CommandFail3;
+            }
+            if (Command == "restart")
+            {
+                goto S1Restart;
+            }
+            else
+            {
+                Text.print(true, "Unknown command: '" + Command + "'");
+                goto CommandFail4;
+            }
+            Continue4:
+            Text.print(true, "File Download (FDOownload)    Copyright to SampleName.");
         }
     }
 }
