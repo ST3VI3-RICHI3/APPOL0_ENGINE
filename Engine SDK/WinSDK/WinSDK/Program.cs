@@ -15,15 +15,34 @@ namespace WinSDK
         {
             bool nosplash = false;
             bool dev = false;
-            Console.Title = "Debug output | APOLL0 SDK";
+            try
+            {
+                Console.Title = "Debug output | APOLL0 SDK";
+            }
+            catch
+            {
+
+            }
             Console.WriteLine("System output check");
             Thread.Sleep(500);
-            Console.WriteLine("Hello World");
-            System.Media.SystemSounds.Beep.Play();
-            Console.WriteLine("Ok!");
-            Thread.Sleep(500);
-            Console.WriteLine(" ");
-            Console.WriteLine("Argument check");
+            try
+            {
+                Text.print(true, "Hello World");
+                Console.Beep();
+                Text.print(true, "Ok!");
+            }
+            catch
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("!!!FAILSAFE!!!");
+                Console.WriteLine("Error in displayng text. Exiting in 5000ms");
+                time.sleep(5000);
+                Environment.Exit(-1);
+            }
+            time.sleep(500);
+            Text.newline();
+            Text.print(true,  "Argument check");
             for (var i = 0; i < args.Length; i++)
             {
                 if (dev == false)
@@ -31,7 +50,7 @@ namespace WinSDK
                     if (args[i] == "-dev")
                     {
                         dev = true;
-                        Console.WriteLine("Dev argument found!");
+                        Text.print(true, "Dev argument found!");
                         Console.Write("Open Developer menu? Y/N ");
                         try
                         {
@@ -41,40 +60,40 @@ namespace WinSDK
                                 {
                                     Application.Run(new DevMenu());
                                 });
-                                Console.WriteLine(" ");
-                                Console.WriteLine("Start dev process ...");
+                                Text.print(true, " ");
+                                Text.print(true, "Start dev process ...");
                                 devthread.Start();
-                                Console.WriteLine(" ");
+                                Text.print(true, " ");
                             }
                         }
                         catch
                         {
                             if (Console.ReadKey().Key == ConsoleKey.N)
                             {
-                                Console.WriteLine(" ");
-                                Console.WriteLine("DevMenu not loaded.");
-                                Console.WriteLine(" ");
+                                Text.print(true, " ");
+                                Text.print(true, "DevMenu not loaded.");
+                                Text.print(true, " ");
                             }
                         }
                     }
                     if (args[i] == "-nosplash")
                     {
                         nosplash = true;
-                        Console.WriteLine("nosplash argument found!");
+                        Text.print(true, "nosplash argument found!");
                     }
                 }
             }
             if (args.Length == 0)
             {
-                Console.WriteLine("No arguments found.");
+                Text.print(true, "No arguments found.");
             }
-            Thread.Sleep(500);
-            Console.WriteLine(" ");
-            Console.WriteLine("Initialise window");
+            time.sleep(500);
+            Text.print(true, " ");
+            Text.print(true, "Initialise window");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Console.WriteLine("Done!");
-            Console.WriteLine("Start splash screen...");
+            Text.print(true, "Done!");
+            Text.print(true, "Start splash screen...");
             if (nosplash == false)
             {
                 var thread = new Thread(() =>
@@ -82,19 +101,19 @@ namespace WinSDK
                     Application.Run(new SplashScreen());
                 });
                 thread.Start();
-                Console.WriteLine("Done!");
+                Text.print(true, "Done!");
             }
             else
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine("Failiure: Disabled for session.");
+                Text.print(true, "Failiure: Disabled for session.");
                 Console.BackgroundColor = ConsoleColor.Black;
             }
-            Console.WriteLine(" ");
-            Console.WriteLine("Load Core...");
-            Packfiles.Load("testfile");
+            Text.print(true, " ");
+            Text.print(true, "Load Core...");
             //Load files here
-            Console.WriteLine("Done!"); //after this the main app will load and run.
+            Text.print(true, "Done!"); //after this the main app will load and run.
+
         }
     }
     internal static class DevCommands
@@ -102,7 +121,7 @@ namespace WinSDK
         public static void Beep()
         {
             Console.Beep();
-            Console.WriteLine("Dev command: Beep");
+            Text.print(true, "Dev command: Beep");
         }
         public static void Splash_screen()
         {
@@ -118,15 +137,15 @@ namespace WinSDK
             {
                 
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine("!!!WARNING!!!");
-                Console.WriteLine("An error will occur if the path or file is incorrect, are you shure? Y/N ");
+                Text.print(true, "!!!WARNING!!!");
+                Text.print(true, "An error will occur if the path or file is incorrect, are you shure? Y/N ");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Write("Note: A invalid key will cancel this without notification.");
                 try
                 {
                     if (Console.ReadKey().Key == ConsoleKey.Y)
                     {
-                        Console.WriteLine(" ");
+                        Text.print(true, " ");
                         Packfiles.Load(Path);
                     }
                 }
@@ -134,11 +153,15 @@ namespace WinSDK
                 {
                     if (Console.ReadKey().Key == ConsoleKey.N)
                     {
-                        Console.WriteLine(" ");
-                        Console.WriteLine("Load Cancled!");
+                        Text.print(true, " ");
+                        Text.print(true, "Load Cancled!");
                     }
 
                 }
+            }
+            public static void Create(string name)
+            {
+                packFile.Create(name);
             }
         }
     }

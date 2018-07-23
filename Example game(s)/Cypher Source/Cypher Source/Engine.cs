@@ -77,19 +77,19 @@ namespace Apollo
     }
     class Packfiles
     {
-        public string[] Check(string pakfile)
+        public static string[] Check(string pakfile)
         {
             string[] na = { "na" };
             return na;
         }
 
-        public string[] Create(string folder)
+        public static string[] Create(string name)
         {
             string[] na = { "na" };
             return na;
         }
 
-        public string[] Load(string pakfile)
+        public static string[] Load(string pakfile)
         {
             string filetounpack = Environment.CurrentDirectory + "/" + pakfile + ".pkf";
             if (!File.Exists(filetounpack))
@@ -146,7 +146,7 @@ namespace Apollo
         }
 
 
-        public string[] Pak(string option, string pkf)
+        public static string[] Pak(string option, string pkf)
         {
             if (option == "/C")
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Drawing;
 
 namespace Apollo
 {
@@ -82,7 +83,7 @@ namespace Apollo
             return na;
         }
 
-        public static string[] Create(string folder)
+        public static string[] Create(string name)
         {
             string[] na = { "na" };
             return na;
@@ -145,7 +146,7 @@ namespace Apollo
         }
 
 
-        public string[] Pak(string option, string pkf)
+        public static string[] Pak(string option, string pkf)
         {
             if (option == "/C")
             {
@@ -171,13 +172,21 @@ namespace Apollo
             return na;
         }
 
-        public static string[] Save(string savefile, string[] data)
+        public static string[] Save(string savefile, string[] data, string ending = ".svp")
         {
-            string filetosave = Environment.CurrentDirectory + "/" + savefile + ".svp";
+            string filetosave = Environment.CurrentDirectory + "/" + savefile + ending;
             using (BinaryWriter sw = new BinaryWriter(File.Open(filetosave, FileMode.Create)))
             {
-                sw.Write(0x707673);
-                sw.Write((short)(data.Length / 2));
+                byte[] signature = new byte[3];
+                signature[0] = 0x73;
+                signature[1] = 0x76;
+                signature[2] = 0x70;
+                sw.Write(signature);
+                short files = (short)(data.Length / 2);
+                byte[] leng = new byte[2];
+                leng[0] = (byte)(files >> 8);
+                leng[1] = (byte)(files);
+                sw.Write(leng);
                 for (int i = 0; i < data.Length / 2; i++)
                 {
                     int varint = data[i * 2 + 1].Length;
@@ -188,13 +197,10 @@ namespace Apollo
                     sw.Write(bytes);
                     byte varnamesize = Convert.ToByte(data[i * 2].Length);
                     sw.Write(varnamesize);
-                    sw.Write(data[i*2]);
-                    byte[] vartowrite = new byte[varint];
-                    for (var j = 0; j < data[i * 2 + 1].Length; j++)
-                    {
-                        vartowrite[j] = Convert.ToByte(data[i * 2 + 1].ToCharArray()[j]);
-                    }
-                    sw.Write(vartowrite);
+                    byte[] varname = Encoding.ASCII.GetBytes(data[i*2]);
+                    sw.Write(varname);
+                    byte[] vartosave = Encoding.ASCII.GetBytes(data[i*2+1]);
+                    sw.Write(vartosave);
                 }
             }
             string[] returnval = new string[1];
@@ -202,9 +208,9 @@ namespace Apollo
             return returnval;
         }
 
-        public static string[] Load(string savefile)
+        public static string[] Load(string savefile, string ending = ".svp")
         {
-            string filetoload = Environment.CurrentDirectory + "/" + savefile + ".svp";
+            string filetoload = Environment.CurrentDirectory + "/" + savefile + ending;
             if (!File.Exists(filetoload))
             {
                 Console.WriteLine("The specified file does not exist, Exiting...");
@@ -248,11 +254,15 @@ namespace Apollo
                         Console.WriteLine(filename + " Loaded.");
                     }
                 }
-                catch (ArgumentOutOfRangeException)
+                catch
+                {
+
+                }
+                /*catch (ArgumentOutOfRangeException)
                 {
                     Console.WriteLine("Loading of SaVePack FAILED. File may be corrupt or incorrect.");
                     Environment.Exit(-1);
-                }
+                }*/
                 Console.WriteLine("Loading of SaVePack Succeeded.");
                 return files;
             }
@@ -275,6 +285,19 @@ namespace Apollo
             }
             string[] na = { "Could not load SaVePack: No option chosen..." };
             return na;
+        }
+    }
+    class Graphics
+    {
+         class Graphics2D
+        {
+            private static int X = 0;
+            private static int Y = 0;
+            public static void Draw(int LengthX, int LengthY)
+            {
+                Pen DrawingSystem = null;
+                DrawingSystem.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
+            }
         }
     }
 }

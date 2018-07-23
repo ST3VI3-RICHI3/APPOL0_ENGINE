@@ -15,6 +15,7 @@ namespace Apollo
 {
     public class Tesesest : Form
     {
+
         public Tesesest()
         {
             // Initialize the window...
@@ -25,12 +26,15 @@ namespace Apollo
         }
         private void InitializeComponent()
         {
-            // Initialize the window...
             this.SuspendLayout();
+            // 
+            // Tesesest
+            // 
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Name = "Tesesest";
             this.Text = "Apoll0 Test";
             this.ResumeLayout(false);
-            this.PerformLayout();
+
         }
         [STAThread]
         public static void Main()
