@@ -42,7 +42,7 @@ namespace WinSDK
             }
             time.sleep(500);
             Text.newline();
-            Text.print(true,  "Argument check");
+            Text.print(true, "Argument check");
             for (var i = 0; i < args.Length; i++)
             {
                 if (dev == false)
@@ -94,12 +94,12 @@ namespace WinSDK
             Application.SetCompatibleTextRenderingDefault(false);
             Text.print(true, "Done!");
             Text.print(true, "Start splash screen...");
+            var thread = new Thread(() =>
+            {
+                Application.Run(new SplashScreen());
+            });
             if (nosplash == false)
             {
-                var thread = new Thread(() =>
-                {
-                    Application.Run(new SplashScreen());
-                });
                 thread.Start();
                 Text.print(true, "Done!");
             }
@@ -108,12 +108,34 @@ namespace WinSDK
                 Console.BackgroundColor = ConsoleColor.Red;
                 Text.print(true, "Failiure: Disabled for session.");
                 Console.BackgroundColor = ConsoleColor.Black;
+                WinSDK.Error.Errors[Error.Errors.Length + 1] = "Splash screen: Disabled due to '-nosplash'.";
             }
             Text.print(true, " ");
             Text.print(true, "Load Core...");
             //Load files here
             Text.print(true, "Done!"); //after this the main app will load and run.
 
+            Text.newline();
+            SSWait:
+            if (thread.IsAlive != true)
+            {
+                Text.print(true, "Start main window...");
+
+                Thread MainWinThread = new Thread(() =>
+                {
+                    Application.Run(new MainWindow.MainWindow());
+                });
+
+#pragma warning disable CS0618 // Type or member is obsolete
+                MainWinThread.ApartmentState = ApartmentState.STA;
+#pragma warning restore CS0618 // Type or member is obsolete
+                MainWinThread.Start();
+            }
+            else
+            {
+                goto SSWait;
+            }
+            Text.print(true, "Done!");
         }
     }
     internal static class DevCommands

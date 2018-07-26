@@ -443,7 +443,7 @@ namespace Cypher_Source
                 Text.newline();
                 Text.print(true, "Direcory listing of root/admin");
                 Text.newline();
-                Text.print(true, "TestInfo");
+                Text.print(true, "TestInfo.txt");
                 Text.newline();
             }
             if (Command == "exit")
@@ -475,6 +475,26 @@ namespace Cypher_Source
             }
             Continue4:
             Text.print(true, "File Download (FDOownload)    Copyright to SampleName.");
+            FileNotFound:
+            Text.newline();
+            Text.print(false, "File to download:");
+            string FTD = Console.ReadLine();
+            if (FTD == "TestInfo.txt")
+            {
+                Text.print(false, "Downloading file " + FTD);
+                for (var i = 0; i <= 3; i++)
+                {
+                    time.sleep(random.Next(1000, 5000));
+                    Text.print(false, ".");
+                }
+                Text.newline();
+                Text.print(true, " File downloaded!");
+            }
+            else
+            {
+                Text.type(true, "Error: File not found.");
+                goto FileNotFound;
+            }
         }
     }
 }
