@@ -26,8 +26,6 @@ namespace MainWindow
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem Settings;
-        private Panel panel1;
-        private RichTextBox CodeWindow;
         private ToolStripMenuItem openToolStripMenuItem;
 
         public MainWindow()
@@ -50,8 +48,6 @@ namespace MainWindow
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.CodeWindow = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,30 +128,10 @@ namespace MainWindow
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(16, 40);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 290);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // CodeWindow
-            // 
-            this.CodeWindow.BackColor = System.Drawing.Color.DimGray;
-            this.CodeWindow.Location = new System.Drawing.Point(858, 40);
-            this.CodeWindow.Name = "CodeWindow";
-            this.CodeWindow.Size = new System.Drawing.Size(500, 697);
-            this.CodeWindow.TabIndex = 2;
-            this.CodeWindow.Text = "";
-            // 
             // MainWindow
             // 
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.CodeWindow);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Green;
             this.MainMenuStrip = this.menuStrip1;

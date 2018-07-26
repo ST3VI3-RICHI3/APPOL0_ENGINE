@@ -11,8 +11,8 @@ namespace Test2DGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D texture;
-        Vector2 position;
+        Texture2D PlayerTexture;
+        Vector2 PlayerPos;
         
         public Game1()
         {
@@ -29,13 +29,13 @@ namespace Test2DGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            position = new Vector2(0, 0);
-            texture = new Texture2D(this.GraphicsDevice, 150, 150);
-            Color[] ColorData = new Color[150 * 150];
-            for (int i = 0; i < 22500; i++)
+            PlayerPos = new Vector2(0, 0);
+            PlayerTexture = new Texture2D(this.GraphicsDevice, 100, 100);
+            Color[] ColorData = new Color[100 * 100];
+            for (int i = 0; i < 10000; i++)
             {
                 ColorData[i] = Color.Green;
-                texture.SetData<Color>(ColorData);
+                PlayerTexture.SetData<Color>(ColorData);
             }
             base.Initialize();
         }
@@ -76,38 +76,66 @@ namespace Test2DGame
                 // TODO: Add your update logic here
                 //--Controls--\\
                 int speed = 2;
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0||Keyboard.GetState().IsKeyDown(Keys.D))
                 {
-                    position.X += speed;
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0)
+                    {
+                        PlayerPos.X += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * speed;
+                    }
+                    else
+                    {
+                        PlayerPos.X += speed;
+                    }
                 }
-                if (Keyboard.GetState().IsKeyDown(Keys.A))
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0 || Keyboard.GetState().IsKeyDown(Keys.A))
                 {
-                    position.X = position.X - speed;
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0)
+                    {
+                        PlayerPos.X = PlayerPos.X + GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * speed;
+                    }
+                    else 
+                    {
+                        PlayerPos.X = PlayerPos.X - speed;
+                    }
                 }
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0||Keyboard.GetState().IsKeyDown(Keys.W))
                 {
-                    position.Y = position.Y - speed;
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0)
+                    {
+                        PlayerPos.Y = PlayerPos.Y - GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y * speed;
+                    }
+                    else
+                    {
+                        PlayerPos.Y = PlayerPos.Y - speed;
+                    }
                 }
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0||Keyboard.GetState().IsKeyDown(Keys.S))
                 {
-                    position.Y += speed;
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0)
+                    {
+                        PlayerPos.Y = PlayerPos.Y - GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y * speed;
+                    }
+                    else
+                    {
+                        PlayerPos.Y += speed;
+                    }
                 }
                 //--WindowColitions--\\
-                if (position.X > this.GraphicsDevice.Viewport.Width - 150)
+                if (PlayerPos.X > this.GraphicsDevice.Viewport.Width - 100)
                 {
-                    position.X = this.GraphicsDevice.Viewport.Width - 150;
+                    PlayerPos.X = this.GraphicsDevice.Viewport.Width - 100;
                 }
-                if (position.Y > this.GraphicsDevice.Viewport.Height - 150)
+                if (PlayerPos.Y > this.GraphicsDevice.Viewport.Height - 100)
                 {
-                    position.Y = this.GraphicsDevice.Viewport.Height - 150;
+                    PlayerPos.Y = this.GraphicsDevice.Viewport.Height - 100;
                 }
-                if (position.X < 0)
+                if (PlayerPos.X < 0)
                 {
-                    position.X = 0;
+                    PlayerPos.X = 0;
                 }
-                if (position.Y < 0)
+                if (PlayerPos.Y < 0)
                 {
-                    position.Y = 0;
+                    PlayerPos.Y = 0;
                 }
                 //--Update--\\
                 base.Update(gameTime);
@@ -120,9 +148,9 @@ namespace Test2DGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, position);
+            spriteBatch.Draw(PlayerTexture, PlayerPos);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
