@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Test2DGame
+namespace GamePreveiw
 {
     /// <summary>
     /// This is the main type for your game.
@@ -11,9 +11,7 @@ namespace Test2DGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D texture;
-        Vector2 position;
-        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -29,14 +27,7 @@ namespace Test2DGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            position = new Vector2(0, 0);
-            texture = new Texture2D(this.GraphicsDevice, 150, 150);
-            Color[] ColorData = new Color[150 * 150];
-            for (int i = 0; i < 22500; i++)
-            {
-                ColorData[i] = Color.Green;
-                texture.SetData<Color>(ColorData);
-            }
+
             base.Initialize();
         }
 
@@ -68,50 +59,12 @@ namespace Test2DGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (IsActive)
-            {
-                if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                    Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
-                // TODO: Add your update logic here
-                //--Controls--\\
-                int speed = 2;
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
-                {
-                    position.X += speed;
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.A))
-                {
-                    position.X = position.X - speed;
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
-                {
-                    position.Y = position.Y - speed;
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
-                {
-                    position.Y += speed;
-                }
-                //--WindowColitions--\\
-                if (position.X > this.GraphicsDevice.Viewport.Width - 150)
-                {
-                    position.X = this.GraphicsDevice.Viewport.Width - 150;
-                }
-                if (position.Y > this.GraphicsDevice.Viewport.Height - 150)
-                {
-                    position.Y = this.GraphicsDevice.Viewport.Height - 150;
-                }
-                if (position.X < 0)
-                {
-                    position.X = 0;
-                }
-                if (position.Y < 0)
-                {
-                    position.Y = 0;
-                }
-                //--Update--\\
-                base.Update(gameTime);
-            }
+            // TODO: Add your update logic here
+
+            base.Update(gameTime);
         }
 
         /// <summary>
@@ -120,10 +73,8 @@ namespace Test2DGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-            spriteBatch.Begin();
-            spriteBatch.Draw(texture, position);
-            spriteBatch.End();
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

@@ -10,6 +10,8 @@ using System.Text;
 using System.Windows;
 using System.Windows.Forms;
 using System.Xml;
+using MonoGame;
+using OpenGL;
 
 namespace MainWindow
 {
@@ -24,6 +26,8 @@ namespace MainWindow
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem Settings;
+        private Panel panel1;
+        private RichTextBox CodeWindow;
         private ToolStripMenuItem openToolStripMenuItem;
 
         public MainWindow()
@@ -41,11 +45,13 @@ namespace MainWindow
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Settings = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CodeWindow = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,9 +103,17 @@ namespace MainWindow
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // openFileDialog
+            // toolStripSeparator2
             // 
-            this.openFileDialog.FileName = "openFileDialog1";
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // Settings
+            // 
+            this.Settings.Name = "Settings";
+            this.Settings.Size = new System.Drawing.Size(180, 22);
+            this.Settings.Text = "Settings";
+            this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // toolStripSeparator1
             // 
@@ -114,23 +128,36 @@ namespace MainWindow
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
+            // openFileDialog
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.openFileDialog.FileName = "openFileDialog1";
             // 
-            // Settings
+            // panel1
             // 
-            this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(180, 22);
-            this.Settings.Text = "Settings";
-            this.Settings.Click += new System.EventHandler(this.Settings_Click);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(16, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(500, 290);
+            this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // CodeWindow
+            // 
+            this.CodeWindow.BackColor = System.Drawing.Color.DimGray;
+            this.CodeWindow.Location = new System.Drawing.Point(858, 40);
+            this.CodeWindow.Name = "CodeWindow";
+            this.CodeWindow.Size = new System.Drawing.Size(500, 697);
+            this.CodeWindow.TabIndex = 2;
+            this.CodeWindow.Text = "";
             // 
             // MainWindow
             // 
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.CodeWindow);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.Color.Green;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -175,6 +202,11 @@ namespace MainWindow
         private void Settings_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }
