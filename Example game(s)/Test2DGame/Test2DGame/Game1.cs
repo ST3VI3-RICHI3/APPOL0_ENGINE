@@ -120,6 +120,10 @@ namespace Test2DGame
                         PlayerPos.Y += speed;
                     }
                 }
+                if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
+                {
+                    GamePad.SetVibration(PlayerIndex.One, 10, 10);
+                }
                 //--WindowColitions--\\
                 if (PlayerPos.X > this.GraphicsDevice.Viewport.Width - 100)
                 {
