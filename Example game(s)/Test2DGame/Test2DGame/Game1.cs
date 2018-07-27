@@ -58,7 +58,7 @@ namespace Test2DGame
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            PlayerTexture.Dispose();
         }
 
         /// <summary>
