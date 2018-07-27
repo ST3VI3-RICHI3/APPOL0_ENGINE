@@ -36,8 +36,14 @@
     <StartupObject>WinSDK.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Lidgren.Network, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="MonoGame.Framework.Net, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MonoGame.Framework.WpfInterop, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WpfInterop.1.5.3\lib\net45\MonoGame.Framework.WpfInterop.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="SharpDX, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
@@ -60,19 +66,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomCommands.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="DevMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DevMenu.Designer.cs">
       <DependentUpon>DevMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Error.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Error.Designer.cs">
-      <DependentUpon>Error.cs</DependentUpon>
     </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
@@ -88,9 +87,6 @@
     </Compile>
     <EmbeddedResource Include="DevMenu.resx">
       <DependentUpon>DevMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Error.resx">
-      <DependentUpon>Error.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>

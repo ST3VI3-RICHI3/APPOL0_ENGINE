@@ -12,8 +12,7 @@ namespace Test2DGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D PlayerTexture;
-        Vector2 PlayerPos;
-        
+        Vector2 PlayerPos;     
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -28,6 +27,7 @@ namespace Test2DGame
         /// </summary>
         protected override void Initialize()
         {
+            System.Random random = new System.Random();
             // TODO: Add your initialization logic here
             PlayerPos = new Vector2(0, 0);
             PlayerTexture = new Texture2D(this.GraphicsDevice, 100, 100);
@@ -120,10 +120,6 @@ namespace Test2DGame
                         PlayerPos.Y += speed;
                     }
                 }
-                if (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed)
-                {
-                    GamePad.SetVibration(PlayerIndex.One, 10, 10);
-                }
                 //--WindowColitions--\\
                 if (PlayerPos.X > this.GraphicsDevice.Viewport.Width - 100)
                 {
@@ -141,6 +137,8 @@ namespace Test2DGame
                 {
                     PlayerPos.Y = 0;
                 }
+                //--Collisions--\\
+                
                 //--Update--\\
                 base.Update(gameTime);
             }
@@ -152,7 +150,7 @@ namespace Test2DGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
             spriteBatch.Draw(PlayerTexture, PlayerPos);
             spriteBatch.End();

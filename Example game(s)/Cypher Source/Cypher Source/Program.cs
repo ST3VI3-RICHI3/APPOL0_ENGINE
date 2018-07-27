@@ -445,6 +445,7 @@ namespace Cypher_Source
                 Text.newline();
                 Text.print(true, "TestInfo.txt");
                 Text.newline();
+                goto CommandFail4;
             }
             if (Command == "exit")
             {
@@ -488,13 +489,17 @@ namespace Cypher_Source
                     Text.print(false, ".");
                 }
                 Text.newline();
-                Text.print(true, " File downloaded!");
+                Text.print(true, "File downloaded!");
             }
             else
             {
-                Text.type(true, "Error: File not found.");
+                Text.print(true, "Error: File not found.");
                 goto FileNotFound;
             }
+            Continue5:
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Text.print(true, "Type exit to continue");
+            Console.ForegroundColor = ConsoleColor.Green;
         }
     }
 }

@@ -108,7 +108,6 @@ namespace WinSDK
                 Console.BackgroundColor = ConsoleColor.Red;
                 Text.print(true, "Failiure: Disabled for session.");
                 Console.BackgroundColor = ConsoleColor.Black;
-                WinSDK.Error.Errors[Error.Errors.Length + 1] = "Splash screen: Disabled due to '-nosplash'.";
             }
             Text.print(true, " ");
             Text.print(true, "Load Core...");
