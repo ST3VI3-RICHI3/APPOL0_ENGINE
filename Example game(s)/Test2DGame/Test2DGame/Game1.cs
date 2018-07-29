@@ -152,7 +152,9 @@ namespace Test2DGame
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
+#pragma warning disable CS0618 // Type or member is obsolete
             spriteBatch.Draw(PlayerTexture, PlayerPos);
+#pragma warning restore CS0618 // Type or member is obsolete
             spriteBatch.End();
             // TODO: Add your drawing code here
 

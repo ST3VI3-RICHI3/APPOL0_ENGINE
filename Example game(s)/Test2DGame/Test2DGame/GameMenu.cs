@@ -81,7 +81,9 @@ namespace Test2DGame
             // TODO: Add your drawing code here
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+#pragma warning disable CS0618 // Type or member is obsolete
             spriteBatch.Draw(logo, logoPos);
+#pragma warning restore CS0618 // Type or member is obsolete
             spriteBatch.End();
             base.Draw(gameTime);
         }
