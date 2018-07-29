@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Alex/Documents/GitHub/APPOL0_ENGINE/Example game(s)/Test2DGame/Test2DGame/Content/icon.bmp</SourceFile>
-  <SourceTime>2018-07-27T17:25:37.3680281+01:00</SourceTime>
+  <SourceTime>2018-07-28T17:13:50.0548492+01:00</SourceTime>
   <DestFile>C:/Users/Alex/Documents/GitHub/APPOL0_ENGINE/Example game(s)/Test2DGame/Test2DGame/Content/bin/DesktopGL/icon.xnb</DestFile>
-  <DestTime>2018-07-27T21:47:11.4255919+01:00</DestTime>
+  <DestTime>2018-07-28T17:34:52.6794155+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T15:05:36+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

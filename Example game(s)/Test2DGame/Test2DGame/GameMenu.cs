@@ -29,9 +29,9 @@ namespace Test2DGame
         {
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
-            logo = Content.Load<Texture2D>("icon");
+            logo = Content.Load<Texture2D>("icon.bmp");
             logoPos.X = this.GraphicsDevice.Viewport.Width / 2;
-            logoPos.Y = this.GraphicsDevice.Viewport.Height / 4;
+            logoPos.Y = this.GraphicsDevice.Viewport.Height / 8;
             base.Initialize();
         }
 
@@ -53,7 +53,7 @@ namespace Test2DGame
         /// </summary>
         protected override void UnloadContent()
         {
-
+            
         }
 
         /// <summary>
@@ -79,6 +79,7 @@ namespace Test2DGame
         protected override void Draw(GameTime gameTime)
         {
             // TODO: Add your drawing code here
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(logo, logoPos);
             spriteBatch.End();
