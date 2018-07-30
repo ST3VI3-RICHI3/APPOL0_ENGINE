@@ -1,6 +1,5 @@
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.csprojAssemblyReference.cache
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.csproj.CoreCompileInputs.cache
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\pizza.wav
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\Cypher Source.exe.config
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\Cypher Source.exe.manifest
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Cypher Source\Cypher Source\bin\Debug\Cypher Source.application

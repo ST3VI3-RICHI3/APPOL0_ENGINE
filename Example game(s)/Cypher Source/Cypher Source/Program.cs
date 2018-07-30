@@ -496,10 +496,11 @@ namespace Cypher_Source
                 Text.print(true, "Error: File not found.");
                 goto FileNotFound;
             }
-            Continue5:
+            Text.newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print(true, "Type exit to continue");
+            Text.print(true, "Type exit disconnect & finish your task");
             Console.ForegroundColor = ConsoleColor.Green;
+            Text.newline();
         }
     }
 }

@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MLoQ/yeS/X2Ji9AWu4XsMQyl1OueZrcTQYoV/6mgVAU=</dsig:DigestValue>
+        <dsig:DigestValue>P9oYqKLjXbWHx4efiecCEHeuwL6Xb39BDx4KZqkWwqM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -60,15 +60,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>wDmrlTz6aNIp269ZO0+f+NuBph+l7PSF+/aeuhX4N/I=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="pizza.wav" size="19738098">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>roGIB2qJZ2YpqOg/oJWKaOqr5uwmgZFx3VPm5s8bOxc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
