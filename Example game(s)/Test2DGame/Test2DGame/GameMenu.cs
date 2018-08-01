@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Lidgren.Network;
 
 namespace Test2DGame
 {
@@ -29,9 +30,9 @@ namespace Test2DGame
         {
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
-            logo = Content.Load<Texture2D>("icon.bmp");
-            logoPos.X = this.GraphicsDevice.Viewport.Width / 2;
-            logoPos.Y = this.GraphicsDevice.Viewport.Height / 8;
+            logo = Content.Load<Texture2D>("icon");
+            logoPos.X = this.GraphicsDevice.Viewport.Width / 2 - 12;
+            logoPos.Y = this.GraphicsDevice.Viewport.Height / 8 - 12;
             base.Initialize();
         }
 
