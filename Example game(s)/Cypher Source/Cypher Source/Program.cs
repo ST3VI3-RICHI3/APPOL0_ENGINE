@@ -5,6 +5,11 @@
 //88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88
 //88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee
 
+//----------------------Credits----------------------
+//Lead Programmer(s): ST3VI3 RICHI3 (Alex Stephenson)
+//                    Soldier_engie-demo
+//---------------------------------------------------
+
 using System;
 using System.IO;
 using System.Threading;
@@ -107,7 +112,7 @@ namespace Cypher_Source
             name = Console.ReadLine();
             if (name == "")
             {
-                var RNGName = random.Next(0, 5);
+                var RNGName = random.Next(0, 10);
                 if (RNGName == 0)
                 {
                     name = "Jimmy";
@@ -131,6 +136,18 @@ namespace Cypher_Source
                 if (RNGName == 5)
                 {
                     name = "Jessica";
+                }
+                if (RNGName == 6)
+                {
+                    name = "Jeff";
+                }
+                if (RNGName == 7)
+                {
+                    name = "Jacob";
+                }
+                if (RNGName == 8)
+                {
+                    name = "Katie";
                 }
             }
 
@@ -501,6 +518,8 @@ namespace Cypher_Source
             Text.print(true, "Type exit disconnect & finish your task");
             Console.ForegroundColor = ConsoleColor.Green;
             Text.newline();
+            Text.print(false, "Root/admin/" + ">");
+            Command = Console.ReadLine();
         }
     }
 }
