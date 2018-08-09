@@ -502,7 +502,7 @@ namespace Cypher_Source
                 Text.print(false, "Downloading file " + FTD);
                 for (var i = 0; i <= 3; i++)
                 {
-                    time.sleep(random.Next(1000, 5000));
+                    time.sleep(random.Next(500));
                     Text.print(false, ".");
                 }
                 Text.newline();
@@ -517,9 +517,32 @@ namespace Cypher_Source
             Console.ForegroundColor = ConsoleColor.Blue;
             Text.print(true, "Type exit disconnect & finish your task");
             Console.ForegroundColor = ConsoleColor.Green;
+            CommandFail5:
             Text.newline();
             Text.print(false, "Root/admin/" + ">");
             Command = Console.ReadLine();
+            if (Command == "exit")
+            {
+                goto Continue5;
+            }
+            else if (Command == "help")
+            {
+                Text.newline();
+                Text.print(true, "Current available commands:");
+                Text.print(true, "help");
+                Text.print(true, "exit");
+                goto CommandFail5;
+            }
+            else
+            {
+                Text.newline();
+                Text.print(true, "Unknown command: '" + Command + "'");
+                goto CommandFail5;
+            }
+            Continue5:
+            Text.newline();
+            time.sleep(250);
+            Text.print(true, "Message from 124.268.1.26: You did it! we've handled the rest for you as this is your'e first time.");
         }
     }
 }
