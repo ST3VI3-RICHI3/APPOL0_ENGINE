@@ -21,6 +21,7 @@ namespace Cypher_Source
     {
         private static string[] SaveData = null;
         private static Thread GameTimeThread = null;
+        private static string difficulty = "UNSET";
         static void Main(string[] args)
         {
             string version = "0.1.5";
@@ -54,13 +55,15 @@ namespace Cypher_Source
                 }
                 if (args[i] == "-save_Test")
                 {
-                    SaveData = new string[6];
+                    SaveData = new string[12];
                     SaveData[0] = "name";
                     SaveData[1] = "EGName";
                     SaveData[2] = "Stage";
                     SaveData[3] = "1";
                     SaveData[4] = "Version";
                     SaveData[5] = version;
+                    SaveData[6] = "difficulty";
+                    SaveData[7] = difficulty;
                     Savefiles.Save("Test", SaveData);
                     Environment.Exit(0);
                 }
@@ -163,26 +166,35 @@ namespace Cypher_Source
             }
             Text.print(false, "Getting variables");
             int Stage = 1;
-            SaveData = new string[6];
+            SaveData = new string[8];
             SaveData[0] = "name";
             SaveData[1] = name;
             SaveData[2] = "Stage";
             SaveData[3] = Stage.ToString();
             SaveData[4] = "Version";
             SaveData[5] = version;
+            SaveData[6] = "difficulty";
+            SaveData[7] = difficulty;
             Text.print(false, "..Creating save");
             Savefiles.Save(SavName, SaveData);
             Text.print(false, "..starting");
             SaveSkip:
             name = SaveData[1];
             Stage = Int32.Parse(SaveData[3]);
-            if (PizzaEE == true)
+            if (SaveData[5] != "0.1.7")
             {
-                pizzatime.PlayLooping();
+                Text.print(true, "Save outdated, Please delete the save & restart.");
             }
-            if (Stage == 1)
+            else
             {
-                Stage1(SavName);
+                if (PizzaEE == true)
+                {
+                    pizzatime.PlayLooping();
+                }
+                if (Stage == 1)
+                {
+                    Stage1(SavName);
+                }
             }
             
         }
@@ -254,15 +266,12 @@ namespace Cypher_Source
             var random = Apollo.utility.random;
             string[] SaveData = Savefiles.Load(SavName);
             string name = SaveData[1];
-            string stage = SaveData[3];
-            if (stage == "1Final")
-            {
-                goto puzz1FinalStage;
-            }
+            string difficulty = SaveData[7];
             int gametime = 0; //how long it has been in seconds since timer starts
+            bool timerenabled = true;
             GameTimeThread = new Thread(() =>
             {
-                while (true)
+                while (timerenabled == true)
                 {
                     gametime = gametime + 1;
                     time.sleep(1000);
@@ -543,6 +552,12 @@ namespace Cypher_Source
             Text.newline();
             time.sleep(250);
             Text.print(true, "Message from 124.268.1.26: You did it! we've handled the rest for you as this is your'e first time.");
+            timerenabled = false;
+            if (gametime <= 15000) {
+                difficulty = "AbsolouteGod";
+                SaveData[7] = difficulty;
+                Savefiles.Save(SavName, SaveData);
+            }
         }
     }
 }
