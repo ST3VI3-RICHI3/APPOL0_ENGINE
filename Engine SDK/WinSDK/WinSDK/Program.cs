@@ -179,6 +179,14 @@ namespace WinSDK
                     }
 
                 }
+                finally
+                {
+                    if (Console.ReadKey().Key != ConsoleKey.Y && Console.ReadKey().Key != ConsoleKey.N)
+                    {
+                        Text.newline();
+                        Text.print(true, "No valid input was detected, assuming no.");
+                    }
+                }
             }
             public static void Create(string name)
             {

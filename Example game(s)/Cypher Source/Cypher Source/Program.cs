@@ -55,15 +55,13 @@ namespace Cypher_Source
                 }
                 if (args[i] == "-save_Test")
                 {
-                    SaveData = new string[12];
+                    SaveData = new string[6];
                     SaveData[0] = "name";
                     SaveData[1] = "EGName";
                     SaveData[2] = "Stage";
                     SaveData[3] = "1";
                     SaveData[4] = "Version";
                     SaveData[5] = version;
-                    SaveData[6] = "difficulty";
-                    SaveData[7] = difficulty;
                     Savefiles.Save("Test", SaveData);
                     Environment.Exit(0);
                 }
@@ -166,15 +164,13 @@ namespace Cypher_Source
             }
             Text.print(false, "Getting variables");
             int Stage = 1;
-            SaveData = new string[8];
+            SaveData = new string[6];
             SaveData[0] = "name";
-            SaveData[1] = name;
+            SaveData[1] = "EGName";
             SaveData[2] = "Stage";
-            SaveData[3] = Stage.ToString();
+            SaveData[3] = "1";
             SaveData[4] = "Version";
             SaveData[5] = version;
-            SaveData[6] = "difficulty";
-            SaveData[7] = difficulty;
             Text.print(false, "..Creating save");
             Savefiles.Save(SavName, SaveData);
             Text.print(false, "..starting");
@@ -553,10 +549,8 @@ namespace Cypher_Source
             time.sleep(250);
             Text.print(true, "Message from 124.268.1.26: You did it! we've handled the rest for you as this is your'e first time.");
             timerenabled = false;
-            if (gametime <= 15000) {
+            if (gametime <= 10000) {
                 difficulty = "AbsolouteGod";
-                SaveData[7] = difficulty;
-                Savefiles.Save(SavName, SaveData);
             }
         }
     }
