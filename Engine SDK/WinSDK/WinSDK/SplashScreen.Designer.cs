@@ -44,7 +44,7 @@
             this.pictureBox1.Image = global::WinSDK.Properties.Resources.SplashScreen;
             this.pictureBox1.InitialImage = global::WinSDK.Properties.Resources.SplashScreen;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(333, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -54,7 +54,7 @@
             // ExitTimer
             // 
             this.ExitTimer.Enabled = true;
-            this.ExitTimer.Interval = 15000;
+            this.ExitTimer.Interval = 5000;
             this.ExitTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // SplashScreen
@@ -69,7 +69,7 @@
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SplashScreen";
