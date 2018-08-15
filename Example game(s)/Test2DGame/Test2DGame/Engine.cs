@@ -74,6 +74,18 @@ namespace Apollo
             Console.Title = title;
         }
         public static Random random = new Random();
+        public class notifications
+        {
+            public static void Send(string title, string text, int time)
+            {
+                System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
+                notifyIcon.BalloonTipTitle = title;
+                notifyIcon.BalloonTipText = text;
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(time);
+                notifyIcon.Dispose();
+            }
+        }
     }
     class Packfiles
     {
