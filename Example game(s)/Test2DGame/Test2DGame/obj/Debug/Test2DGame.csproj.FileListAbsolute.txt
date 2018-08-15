@@ -20,3 +20,4 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Test2DGame\Test2DGa
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Test2DGame\Test2DGame\obj\Debug\Test2DGame.csproj.CopyComplete
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Test2DGame\Test2DGame\obj\Debug\Test2DGame.exe
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Test2DGame\Test2DGame\obj\Debug\Test2DGame.pdb
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Example game(s)\Test2DGame\Test2DGame\bin\DesktopGL\AnyCPU\Debug\Content\Fonts\DefaultFont.xnb

@@ -9,10 +9,13 @@ namespace Test2DGame
     /// </summary>
     public class Game1 : Game
     {
+        bool Paused;
         GraphicsDeviceManager graphics;
+        int PauseCooldown = 0;
         SpriteBatch spriteBatch;
         Texture2D PlayerTexture;
-        Vector2 PlayerPos;     
+        Vector2 PlayerPos;
+        SpriteFont DefaultFont;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -47,6 +50,7 @@ namespace Test2DGame
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+            DefaultFont = Content.Load<SpriteFont>("Fonts/DefaultFont");
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
@@ -70,54 +74,75 @@ namespace Test2DGame
         {
             if (IsActive)
             {
-                if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                    Exit();
-
-                // TODO: Add your update logic here
-                //--Controls--\\
-                int speed = 2;
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0||Keyboard.GetState().IsKeyDown(Keys.D))
+                if (Paused == true)
                 {
-                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0)
+                    if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     {
-                        PlayerPos.X += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * speed;
-                    }
-                    else
-                    {
-                        PlayerPos.X += speed;
+                        IsMouseVisible = false;
+                        Paused = false;
                     }
                 }
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0 || Keyboard.GetState().IsKeyDown(Keys.A))
+                if (Paused == false)
                 {
-                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0)
+                    if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     {
-                        PlayerPos.X = PlayerPos.X + GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * speed;
+                        if (PauseCooldown == 0)
+                        {
+                            Paused = true;
+                            IsMouseVisible = true;
+                            PauseCooldown = 15;
+                            System.Threading.Thread.Sleep(250);
+                        }
                     }
-                    else 
+                    if (PauseCooldown != 0)
                     {
-                        PlayerPos.X = PlayerPos.X - speed;
+                        PauseCooldown = PauseCooldown - 1;
                     }
-                }
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0||Keyboard.GetState().IsKeyDown(Keys.W))
-                {
-                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0)
+                    //--Controls--\\
+                    int speed = 3;
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0 || Keyboard.GetState().IsKeyDown(Keys.D))
                     {
-                        PlayerPos.Y = PlayerPos.Y - GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y * speed;
+                        if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0)
+                        {
+                            PlayerPos.X += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * speed;
+                        }
+                        else
+                        {
+                            PlayerPos.X += speed;
+                        }
                     }
-                    else
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0 || Keyboard.GetState().IsKeyDown(Keys.A))
                     {
-                        PlayerPos.Y = PlayerPos.Y - speed;
+                        if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < 0)
+                        {
+                            PlayerPos.X = PlayerPos.X + GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * speed;
+                        }
+                        else
+                        {
+                            PlayerPos.X = PlayerPos.X - speed;
+                        }
                     }
-                }
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0||Keyboard.GetState().IsKeyDown(Keys.S))
-                {
-                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0)
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0 || Keyboard.GetState().IsKeyDown(Keys.W))
                     {
-                        PlayerPos.Y = PlayerPos.Y - GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y * speed;
+                        if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0)
+                        {
+                            PlayerPos.Y = PlayerPos.Y - GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y * speed;
+                        }
+                        else
+                        {
+                            PlayerPos.Y = PlayerPos.Y - speed;
+                        }
                     }
-                    else
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0 || Keyboard.GetState().IsKeyDown(Keys.S))
                     {
-                        PlayerPos.Y += speed;
+                        if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < 0)
+                        {
+                            PlayerPos.Y = PlayerPos.Y - GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y * speed;
+                        }
+                        else
+                        {
+                            PlayerPos.Y += speed;
+                        }
                     }
                 }
                 //--WindowColitions--\\
@@ -154,6 +179,12 @@ namespace Test2DGame
             spriteBatch.Begin();
 #pragma warning disable CS0618 // Type or member is obsolete
             spriteBatch.Draw(PlayerTexture, PlayerPos);
+            spriteBatch.DrawString(DefaultFont, "Player", PlayerPos, Color.White);
+            if (Paused == true)
+            {
+                Vector2 TextPos = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 4);
+                spriteBatch.DrawString(DefaultFont, "Paused", TextPos, Color.White);
+            }
 #pragma warning restore CS0618 // Type or member is obsolete
             spriteBatch.End();
             // TODO: Add your drawing code here

@@ -13,7 +13,7 @@ namespace Test2DGame
         [STAThread]
         static void Main()
         {
-            using (var game = new GameMenu())
+            using (var game = new Game1())
                 game.Run();
         }
     }
