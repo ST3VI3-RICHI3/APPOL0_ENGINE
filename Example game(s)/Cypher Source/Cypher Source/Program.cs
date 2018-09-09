@@ -177,22 +177,14 @@ namespace Cypher_Source
             SaveSkip:
             name = SaveData[1];
             Stage = Int32.Parse(SaveData[3]);
-            if (SaveData[5] != "0.1.7")
+            if (PizzaEE == true)
             {
-                Text.print(true, "Save outdated, Please delete the save & restart.");
+                pizzatime.PlayLooping();
             }
-            else
+            if (Stage == 1)
             {
-                if (PizzaEE == true)
-                {
-                    pizzatime.PlayLooping();
-                }
-                if (Stage == 1)
-                {
-                    Stage1(SavName);
-                }
+                Stage1(SavName);
             }
-            
         }
         private static void title_slogan_animation()
         {
@@ -262,7 +254,7 @@ namespace Cypher_Source
             var random = Apollo.utility.random;
             string[] SaveData = Savefiles.Load(SavName);
             string name = SaveData[1];
-            string difficulty = SaveData[7];
+            //string difficulty = SaveData[7];
             int gametime = 0; //how long it has been in seconds since timer starts
             bool timerenabled = true;
             GameTimeThread = new Thread(() =>
