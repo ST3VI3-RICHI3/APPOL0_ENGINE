@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Xml;
 using MonoGame;
 using MonoGame.Framework.WpfInterop;
+using WinSDK;
 
 namespace MainWindow
 {
@@ -138,6 +139,8 @@ namespace MainWindow
             this.editorGameVeiw1.Size = new System.Drawing.Size(400, 278);
             this.editorGameVeiw1.TabIndex = 1;
             this.editorGameVeiw1.Text = "editorGameVeiw1";
+            this.editorGameVeiw1.Visible = false;
+            this.editorGameVeiw1.Click += new System.EventHandler(this.editorGameVeiw1_Click);
             // 
             // MainWindow
             // 
@@ -163,6 +166,7 @@ namespace MainWindow
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             editorGameVeiw1.Enabled = true;
+            editorGameVeiw1.Visible = true;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -210,6 +214,11 @@ namespace MainWindow
         }
 
         private void elementHost1_ChildChanged_1(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void editorGameVeiw1_Click(object sender, EventArgs e)
         {
 
         }

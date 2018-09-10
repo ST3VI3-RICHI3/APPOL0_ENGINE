@@ -10,7 +10,7 @@ namespace WinSDK
 {
     class EditorGameVeiw : DrawWindow
     {
-        string WelcomeMessage = "No project loaded";
+        string WelcomeMessage = "No content";
 
         protected override void Initialize()
         {
@@ -20,9 +20,9 @@ namespace WinSDK
         protected override void Draw()
         {
             base.Draw();
-            BackColor = System.Drawing.Color.Black;
+            Editor.BackgroundColor = Microsoft.Xna.Framework.Color.Black;
             Editor.spriteBatch.Begin();
-            
+
             Editor.spriteBatch.DrawString(Editor.Font, WelcomeMessage, new Vector2(
                 (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(WelcomeMessage).X / 2),
                 (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
