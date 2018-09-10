@@ -26,6 +26,7 @@ namespace MainWindow
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem Settings;
+        private WinSDK.EditorGameVeiw editorGameVeiw1;
         private ToolStripMenuItem openToolStripMenuItem;
 
         public MainWindow()
@@ -48,6 +49,7 @@ namespace MainWindow
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.editorGameVeiw1 = new WinSDK.EditorGameVeiw();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,10 +130,20 @@ namespace MainWindow
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // editorGameVeiw1
+            // 
+            this.editorGameVeiw1.Enabled = false;
+            this.editorGameVeiw1.Location = new System.Drawing.Point(10, 34);
+            this.editorGameVeiw1.Name = "editorGameVeiw1";
+            this.editorGameVeiw1.Size = new System.Drawing.Size(400, 278);
+            this.editorGameVeiw1.TabIndex = 1;
+            this.editorGameVeiw1.Text = "editorGameVeiw1";
+            // 
             // MainWindow
             // 
-            this.BackColor = System.Drawing.Color.Lime;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.editorGameVeiw1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
@@ -140,6 +152,7 @@ namespace MainWindow
             this.Text = "APOLL0 SDK";
             this.TransparencyKey = System.Drawing.Color.Lime;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -149,7 +162,7 @@ namespace MainWindow
 
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            editorGameVeiw1.Enabled = true;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,6 +200,16 @@ namespace MainWindow
         }
 
         private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void elementHost1_ChildChanged_1(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
         {
 
         }
