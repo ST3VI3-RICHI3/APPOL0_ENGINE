@@ -28,6 +28,8 @@ namespace MainWindow
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem Settings;
         private WinSDK.EditorGameVeiw editorGameVeiw1;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem closeProjectToolStripMenuItem;
         private ToolStripMenuItem openToolStripMenuItem;
 
         public MainWindow()
@@ -51,6 +53,8 @@ namespace MainWindow
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.editorGameVeiw1 = new WinSDK.EditorGameVeiw();
+            this.closeProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +75,8 @@ namespace MainWindow
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.closeProjectToolStripMenuItem,
             this.toolStripSeparator2,
             this.Settings,
             this.toolStripSeparator1,
@@ -84,46 +90,46 @@ namespace MainWindow
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.projectToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // projectToolStripMenuItem
             // 
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.projectToolStripMenuItem.Text = "Project";
             this.projectToolStripMenuItem.Click += new System.EventHandler(this.projectToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(131, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // Settings
             // 
             this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(134, 22);
+            this.Settings.Size = new System.Drawing.Size(180, 22);
             this.Settings.Text = "Settings";
             this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(131, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeyDisplayString = "Alt+F4";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -141,6 +147,21 @@ namespace MainWindow
             this.editorGameVeiw1.Text = "editorGameVeiw1";
             this.editorGameVeiw1.Visible = false;
             this.editorGameVeiw1.Click += new System.EventHandler(this.editorGameVeiw1_Click);
+            // 
+            // closeProjectToolStripMenuItem
+            // 
+            this.closeProjectToolStripMenuItem.Name = "closeProjectToolStripMenuItem";
+            this.closeProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeProjectToolStripMenuItem.Text = "Close project";
+            this.closeProjectToolStripMenuItem.Visible = false;
+            this.closeProjectToolStripMenuItem.Click += new System.EventHandler(this.closeProjectToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Visible = false;
+            this.toolStripSeparator3.Click += new System.EventHandler(this.toolStripSeparator3_Click);
             // 
             // MainWindow
             // 
@@ -167,6 +188,8 @@ namespace MainWindow
         {
             editorGameVeiw1.Enabled = true;
             editorGameVeiw1.Visible = true;
+            closeProjectToolStripMenuItem.Visible = true;
+            toolStripSeparator3.Visible = true;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -180,12 +203,13 @@ namespace MainWindow
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            editorGameVeiw1.Dispose();
             Environment.Exit(0);
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+            
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,6 +243,19 @@ namespace MainWindow
         }
 
         private void editorGameVeiw1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editorGameVeiw1.Enabled = false;
+            editorGameVeiw1.Visible = false;
+            closeProjectToolStripMenuItem.Visible = false;
+            toolStripSeparator3.Visible = false;
+        }
+
+        private void toolStripSeparator3_Click(object sender, EventArgs e)
         {
 
         }
