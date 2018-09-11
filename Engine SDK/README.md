@@ -17,6 +17,6 @@ The APOLL0 ENGINE SDK is a work in progress, only download and use if you are a 
    - [X] Stop Windows.Forms pausing the output console
 ### Editor
    - [X] In-editor game veiw
-   - [] In-editor sound, texture & model browser
+   - [ ] In-editor sound, texture & model browser
 ### Other
 - [x] Add MonoGame
