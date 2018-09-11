@@ -225,7 +225,8 @@ namespace Apollo
             string filetoload = Environment.CurrentDirectory + "/" + savefile + ending;
             if (!File.Exists(filetoload))
             {
-                Console.WriteLine("The specified file does not exist, Exiting...");
+                Console.WriteLine("The specified file does not exist. Exiting in five seconds.");
+                System.Threading.Thread.Sleep(5000);
                 Environment.Exit(-1);
             }
             using (StreamReader sr = new StreamReader(filetoload))

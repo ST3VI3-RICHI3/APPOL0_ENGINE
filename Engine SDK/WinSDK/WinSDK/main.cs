@@ -142,7 +142,7 @@ namespace MainWindow
             this.editorGameVeiw1.Enabled = false;
             this.editorGameVeiw1.Location = new System.Drawing.Point(10, 34);
             this.editorGameVeiw1.Name = "editorGameVeiw1";
-            this.editorGameVeiw1.Size = new System.Drawing.Size(400, 278);
+            this.editorGameVeiw1.Size = new System.Drawing.Size(450, 330);
             this.editorGameVeiw1.TabIndex = 1;
             this.editorGameVeiw1.Text = "editorGameVeiw1";
             this.editorGameVeiw1.Visible = false;
@@ -197,8 +197,8 @@ namespace MainWindow
             OpenFileDialog OpenProject = new OpenFileDialog();
             OpenProject.Title = "Open project";
             OpenProject.DefaultExt = ".aproj";
-            var FileToOpen = OpenProject.ShowDialog();
-            //Apollo.Savefiles.Load("idk", ".aproj");
+            var FileToOpen = OpenProject.ShowDialog().ToString();
+            //Apollo.Savefiles.Load(FileToOpen, ".aproj");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
