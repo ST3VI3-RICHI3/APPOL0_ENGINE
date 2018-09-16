@@ -1,0 +1,1 @@
+{"rustc":8427573639476503995,"features":"[\"rayon\"]","target":7661583989468036549,"profile":7990393541957723157,"path":4571671404035278790,"deps":[["byteorder v1.2.6","byteorder",5507468847232752823],["rayon v1.0.2","rayon",10886357913406380508]],"local":[{"Precalculated":"0.1.15"}],"rustflags":[],"edition":"Edition2015"}
