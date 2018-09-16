@@ -8,7 +8,7 @@ using MonoGame.Forms.Controls;
 
 namespace WinSDK
 {
-    class EditorGameVeiw : DrawWindow
+    class EditorPlaceholderVeiw : DrawWindow
     {
         string WelcomeMessage = "No content";
 

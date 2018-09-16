@@ -47,3 +47,4 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.XAudio2.xml
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.Direct2D1.xml
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.XInput.xml
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.ProjectSelect.resources

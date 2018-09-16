@@ -94,7 +94,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditorGameVeiw.cs">
+    <Compile Include="EditorPlaceholderVeiw.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Engine.cs" />
@@ -103,6 +103,12 @@
     </Compile>
     <Compile Include="DevMenu.Designer.cs">
       <DependentUpon>DevMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectSelect.Designer.cs">
+      <DependentUpon>ProjectSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
@@ -116,14 +122,11 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserPrefs.cs" />
-    <Compile Include="UserPrefs.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>UserPrefs.settings</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="DevMenu.resx">
       <DependentUpon>DevMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSelect.resx">
+      <DependentUpon>ProjectSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
@@ -398,10 +401,6 @@
     </Compile>
     <None Include="testfile.pkf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="UserPrefs.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>UserPrefs.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

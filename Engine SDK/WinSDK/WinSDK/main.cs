@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Xml;
@@ -27,7 +28,7 @@ namespace MainWindow
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem Settings;
-        private WinSDK.EditorGameVeiw editorGameVeiw1;
+        private EditorPlaceholderVeiw editorGameVeiw1;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem closeProjectToolStripMenuItem;
         private ToolStripMenuItem openToolStripMenuItem;
@@ -52,7 +53,7 @@ namespace MainWindow
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.editorGameVeiw1 = new WinSDK.EditorGameVeiw();
+            this.editorGameVeiw1 = new WinSDK.EditorPlaceholderVeiw();
             this.closeProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
@@ -167,7 +168,7 @@ namespace MainWindow
             // 
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.editorGameVeiw1);
+            Controls.Add(editorGameVeiw1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
@@ -186,10 +187,23 @@ namespace MainWindow
 
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editorGameVeiw1.Enabled = true;
-            editorGameVeiw1.Visible = true;
-            closeProjectToolStripMenuItem.Visible = true;
-            toolStripSeparator3.Visible = true;
+            MainFnunctions.ProjectSelect();
+            while (ProjectSelect.GameSelected == "null") { }
+            if (ProjectSelect.GameSelected == "Console")
+            {
+
+            }
+            if (ProjectSelect.GameSelected == "2D")
+            {
+                editorGameVeiw1.Enabled = true;
+                editorGameVeiw1.Visible = true;
+                closeProjectToolStripMenuItem.Visible = true;
+                toolStripSeparator3.Visible = true;
+            }
+            if (ProjectSelect.GameSelected == "3D")
+            {
+
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -198,7 +212,7 @@ namespace MainWindow
             OpenProject.Title = "Open project";
             OpenProject.DefaultExt = ".aproj";
             var FileToOpen = OpenProject.ShowDialog().ToString();
-            //Apollo.Savefiles.Load(FileToOpen, ".aproj");
+            Apollo.Savefiles.Load(FileToOpen, ".aproj");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

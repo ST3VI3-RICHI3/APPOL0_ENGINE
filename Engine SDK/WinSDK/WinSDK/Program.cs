@@ -119,6 +119,7 @@ namespace WinSDK
             if (thread.IsAlive != true)
             {
                 Text.print(true, "Start main window...");
+                Text.print(true, "Done!");
 
                 Thread MainWinThread = new Thread(() =>
                 {
@@ -192,6 +193,12 @@ namespace WinSDK
             {
                 packFile.Create(name);
             }
+        }
+    }
+    internal static class MainFnunctions {
+        public static void ProjectSelect()
+        {
+            System.Windows.Forms.Application.Run(new ProjectSelect());
         }
     }
 }
