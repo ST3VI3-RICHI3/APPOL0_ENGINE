@@ -39,7 +39,8 @@ fn gfx_load_texture<F, R>(tex: &str, factory: &mut F) -> gfx::handle::ShaderReso
           R: gfx::Resources
 {
     use gfx::format::Rgba8;
-    let img = image::open(tex).unwrap().to_rgba();
+    let mut img = image::open(tex).unwrap().to_rgba();
+    img = image::imageops::flip_vertical(&img);
     let (width, height) = img.dimensions();
     let kind = gfx::texture::Kind::D2(width as u16, height as u16, gfx::texture::AaMode::Single);
     let (_, view) = factory.create_texture_immutable_u8::<Rgba8>(kind, gfx::texture::Mipmap::Provided, &[&img]).unwrap();
