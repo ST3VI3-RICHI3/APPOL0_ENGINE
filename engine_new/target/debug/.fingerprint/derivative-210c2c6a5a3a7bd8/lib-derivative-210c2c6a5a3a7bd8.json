@@ -1,0 +1,1 @@
+{"rustc":8427573639476503995,"features":"[]","target":5995316154940910621,"profile":7282077418741342047,"path":17607988950106352870,"deps":[["itertools v0.5.10","itertools",15951807941500267997],["quote v0.3.15","quote",6881517767243121007],["syn v0.10.8","syn",17499259532586039939]],"local":[{"Precalculated":"1.0.0"}],"rustflags":[],"edition":"Edition2015"}
