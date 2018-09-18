@@ -1,0 +1,11 @@
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\engine_new\target\rls\debug\deps\gfx_device_gl-ca37b2b8aa8f7ebb.rmeta: C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\lib.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\command.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\factory.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\info.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\shade.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\state.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\tex.rs
+
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\engine_new\target\rls\debug\deps\gfx_device_gl-ca37b2b8aa8f7ebb.d: C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\lib.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\command.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\factory.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\info.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\shade.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\state.rs C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\tex.rs
+
+C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\lib.rs:
+C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\command.rs:
+C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\factory.rs:
+C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\info.rs:
+C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\shade.rs:
+C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\state.rs:
+C:\Users\Alex\.cargo\registry\src\github.com-1ecc6299db9ec823\gfx_device_gl-0.15.3\src\tex.rs:
