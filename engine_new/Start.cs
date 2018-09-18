@@ -4,17 +4,24 @@ namespace AppStarter {
   public class program {
     public static void Main() {
       Console.WriteLine("ST3VI3 STUDIOS 2018, All rights reserved");
-      Console.WriteLine(" ");
+      Console.WriteLine("");
       Console.WriteLine("Warning: The Rust language must be installed along with cargo (cargo comes with rust), if theese are not installed please install by pushing 2");
-      Console.WriteLine(" ");
+      string option = null;
+      Reprompt:
+      Console.WriteLine("");
       Console.WriteLine("Please select an option:");
-      Console.WriteLine("1) Start the game (default)");
+      Console.WriteLine("1) Start a game (default)");
       Console.WriteLine("2) Install rust");
       Console.WriteLine("");
       Console.Write("Press [ENTER] to confirm ");
-      string option = "0";
+      option = null;
       option = Console.ReadLine();
-
+      Recheck:
+      if (option == "0") {
+        Console.WriteLine("");
+        Console.WriteLine("ERR: Invalid Operation, 'Null'");
+        goto Reprompt;
+      }
       if (option == "" | option == "1") {
         System.Diagnostics.Process StartProcess = new System.Diagnostics.Process();
         System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -23,6 +30,7 @@ namespace AppStarter {
         startInfo.Arguments = "/c cargo run";
         StartProcess.StartInfo = startInfo;
         StartProcess.Start();
+        Environment.Exit(0);
       }
       if (option == "2"){
         System.Diagnostics.Process RustInstall = new System.Diagnostics.Process();
@@ -30,6 +38,12 @@ namespace AppStarter {
         RuststartInfo.FileName = "rustup-init.exe";
         RustInstall.StartInfo = RuststartInfo;
         RustInstall.Start();
+        RustInstall.WaitForExit();
+        option = "1";
+        goto Recheck;
+      }
+      if (option == null) {
+        throw new InvalidOperationException();
       }
     }
   }
