@@ -62,41 +62,39 @@ pub struct Triangle {
     tex: u16,
 }
 
-pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], te: u16, fliptex: bool) -> Triangle {
+pub struct Quad {
+    v1: Vertex,
+    v2: Vertex,
+    v3: Vertex,
+    v4: Vertex,
+    tex: u16,
+}
+
+pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], te: u16) -> Triangle {
 	let translation = tm[0];
 	let rot = tm[1];
 	let scale = tm[2];
-    let mut trifb = Triangle {
+    let mut tri = Triangle {
         v1: Vertex { pos: [vrt1[0], vrt1[1], vrt1[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 0.0] },
         v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
         v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
-	    tex: te
+	tex: te
     };
-    if !fliptex
-    {
-        let mut tri = Triangle {
-            v1: Vertex { pos: [vrt1[0], vrt1[1], vrt1[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 0.0] },
-            v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
-            v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
-	        tex: te
-        };
-        return tri;
-    }
-    if fliptex
-    {
-        let mut tri = Triangle {
-            v1: Vertex { pos: [vrt1[0], vrt1[1], vrt1[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 1.0] },
-            v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
-            v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
-	        tex: te
-        };
-        return tri;
-    }
-    return trifb;
+    return tri;
 }
 
-pub fn septri(t1: &Triangle) -> [Vertex; 3] {
-    return [t1.v1, t1.v2, t1.v3];
+pub fn mkquad(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], vrt4: [f32; 3], tm: [[f32; 3]; 3], te: u16) -> Quad {
+	let translation = tm[0];
+	let rot = tm[1];
+	let scale = tm[2];
+    let mut quad = Quad {
+        v1: Vertex { pos: [vrt1[0], vrt1[1], vrt1[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 0.0] },
+        v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
+        v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
+        v4: Vertex { pos: [vrt4[0], vrt4[1], vrt4[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 1.0] },
+	tex: te
+    };
+    return quad;
 }
 
 pub fn main() {
@@ -139,31 +137,17 @@ pub fn main() {
                     [0.0, 0.0, 1.0, 0.0],
                     [0.0, 0.0, 0.0, 1.0]]
     };
-    
-    let shape0: [Vertex; 3] = septri(&tri1);
-    let (vb0, s0) = factory.create_vertex_buffer_with_slice(&shape0, ());
-    let tb0 = factory.create_constant_buffer(1);
-    let smp0 = factory.create_sampler_linear();
-    let tex0 = gfx_load_texture(tri1.tex, &mut factory);
-    let vd0 = pipe::Data {
-        vbuf: vb0,
-        transform: tb0,
-        tex: (tex0, smp0),
+    let verts: [Vertex; 3] = [testTriangle.v1, testTriangle.v2, testTriangle.v3];
+    let (vertex_buffer, slice) = factory.create_vertex_buffer_with_slice(&verts, ());
+    let transform_buffer = factory.create_constant_buffer(1);
+    let sampler = factory.create_sampler_linear();
+    let texture = gfx_load_texture(testTriangle.tex, &mut factory);
+    let data = pipe::Data {
+        vbuf: vertex_buffer,
+        transform: transform_buffer,
+        tex: (texture, sampler),
         out: color_view.clone(),
     };
-
-    let shape1: [Vertex; 3] = septri(&tri2);
-    let (vb1, s1) = factory.create_vertex_buffer_with_slice(&shape1, ());
-    let tb1 = factory.create_constant_buffer(1);
-    let smp1 = factory.create_sampler_linear();
-    let tex1 = gfx_load_texture(tri2.tex, &mut factory);
-    let vd1 = pipe::Data {
-        vbuf: vb1,
-        transform: tb1,
-        tex: (tex1, smp1),
-        out: color_view.clone(),
-    };
-
     let mut running = true;
     while running {
         events_loop.poll_events(|event| {
@@ -175,10 +159,8 @@ pub fn main() {
             }
         });
 	encoder.clear(&color_view, BLACK); //clear the framebuffer with a color(color needs to be an array of 4 f32s, RGBa)
-	encoder.update_buffer(&vd0.transform, &[TRANSFORM], 0); //update buffers
-	encoder.draw(&s0, &pso, &vd0); // draw commands with buffer data and attached pso
-    encoder.update_buffer(&vd1.transform, &[TRANSFORM], 0);
-    encoder.draw(&s1, &pso, &vd1);
+	encoder.update_buffer(&data.transform, &[TRANSFORM], 0); //update buffers
+	encoder.draw(&slice, &pso, &data); // draw commands with buffer data and attached pso
 	encoder.flush(&mut device); // execute draw commands
         window.swap_buffers().unwrap();
         device.cleanup();
