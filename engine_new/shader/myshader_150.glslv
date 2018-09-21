@@ -36,5 +36,16 @@ void main() {
 
     mat4 rt = rx * ry * rz;
     mat4 transform = tl * rt * sc;
+
+    mat4 proj = mat4(1);
+
+    proj[0][0] = 18/16 * 1/tan(16.0/18.0);
+    proj[1][1] = 1/tan(16.0/18.0);
+    proj[2][2] = 100.0/(99.0);
+    proj[3][2] = -100.0/(99.0);
+    proj[2][3] = 1;
+    proj[3][3] = 0;
+
+    transform = transform * proj;
     gl_Position = a_Pos * transform;
 }

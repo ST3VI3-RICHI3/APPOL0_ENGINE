@@ -103,7 +103,7 @@ pub fn main() {
     let mut events_loop = glutin::EventsLoop::new();
     let windowbuilder = glutin::WindowBuilder::new()
         .with_title("Triangle Example".to_string())
-        .with_dimensions(glutin::dpi::LogicalSize::new(512.0, 512.0));
+        .with_dimensions(glutin::dpi::LogicalSize::new(640.0, 360.0));
     let contextbuilder = glutin::ContextBuilder::new()
         .with_gl(GlRequest::Specific(OpenGl,(3,2)))
         .with_vsync(false);
@@ -114,14 +114,13 @@ pub fn main() {
         include_bytes!("../shader/myshader_150.glslf"),
         pipe::new()
     ).unwrap();
-    let mut encoder: gfx::Encoder<_, _> = factory.create_command_buffer().into();
-    let texture = gfx_load_texture(0, &mut factory);
+    let mut encoder: gfx::Encoder<_, _> = factory.create_command_buffer().into(); 
     let tri1 = mktri(
         [ -1.0, -1.0, 0.0 ],
         [ 1.0, -1.0, 0.0 ],
         [ -1.0, 1.0, 0.0 ],
-        [[0.0, 0.0, -0.5],
-        [0.0, 0.0, 0.0],
+        [[-1.0, 0.0, -1.0],
+        [0.0, 0.5, 0.0],
         [1.0, 1.0, 1.0]],
 	0, false);
 
@@ -129,8 +128,8 @@ pub fn main() {
         [ 1.0, 1.0, 0.0 ],
         [ -1.0, 1.0, 0.0 ],
         [ 1.0, -1.0, 0.0 ],
-        [[0.0, 0.0, -0.5],
-        [0.0, 0.0, 0.0],
+        [[-1.0, 0.0, -1.0],
+        [0.0, 0.5, 0.0],
         [1.0, 1.0, 1.0]],
 	0, true);
 //Identity Matrix
@@ -170,12 +169,7 @@ pub fn main() {
         events_loop.poll_events(|event| {
             if let glutin::Event::WindowEvent { event, .. } = event {
                 match event {
-                    glutin::WindowEvent::CloseRequested |
-                    glutin::WindowEvent::KeyboardInput {
-                        input: glutin::KeyboardInput {
-                            virtual_keycode: Some(glutin::VirtualKeyCode::Escape), ..
-                        }, ..
-                    } => running = false,
+                    glutin::WindowEvent::CloseRequested => running = false,
                     _ => {}
                 }
             }

@@ -1,0 +1,17 @@
+/home/ron/engine/APPOLL0_ENGINE/engine_new/target/debug/deps/libgfx-21e9dfb072216e38.rlib: /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/lib.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/encoder.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/factory.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/slice.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/mod.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/buffer.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/resource.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/target.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/bundle.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/shade.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/mod.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/pso.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/structure.rs
+
+/home/ron/engine/APPOLL0_ENGINE/engine_new/target/debug/deps/gfx-21e9dfb072216e38.d: /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/lib.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/encoder.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/factory.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/slice.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/mod.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/buffer.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/resource.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/target.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/bundle.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/shade.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/mod.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/pso.rs /home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/structure.rs
+
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/lib.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/encoder.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/factory.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/slice.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/mod.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/buffer.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/resource.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/target.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/pso/bundle.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/shade.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/mod.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/pso.rs:
+/home/ron/.cargo/registry/src/github.com-1ecc6299db9ec823/gfx-0.17.1/src/macros/structure.rs:
