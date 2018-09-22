@@ -105,55 +105,19 @@ pub fn main() {
         include_bytes!("../shader/myshader_150.glslf"),
         pipe::new()
     ).unwrap();
-    let mut encoder: gfx::Encoder<_, _> = factory.create_command_buffer().into(); 
-    let tri1 = mktri(
-        [ -1.0, -1.0, 0.0 ],
-        [ 1.0, -1.0, 0.0 ],
-        [ -1.0, 1.0, 0.0 ],
-        [[-1.0, 0.0, -1.0],
-        [0.0, 0.5, 0.0],
-        [1.0, 1.0, 1.0]],
-	0, false);
-
-    let tri2 = mktri(
-        [ 1.0, 1.0, 0.0 ],
-        [ -1.0, 1.0, 0.0 ],
-        [ 1.0, -1.0, 0.0 ],
-        [[-1.0, 0.0, -1.0],
-        [0.0, 0.5, 0.0],
-        [1.0, 1.0, 1.0]],
-	0, true);
-//Identity Matrix
+    let mut encoder: gfx::Encoder<_, _> = factory.create_command_buffer().into();
+    //Identity Matrix
     const TRANSFORM: Transform = Transform {
         transform: [[1.0, 0.0, 0.0, 0.0],
                     [0.0, 1.0, 0.0, 0.0],
                     [0.0, 0.0, 1.0, 0.0],
                     [0.0, 0.0, 0.0, 1.0]]
     };
-    let shape0: [Vertex; 3] = septri(&tri1);
-    let (vb1, s1) = factory.create_vertex_buffer_with_slice(&shape0, ());
-    let tb1 = factory.create_constant_buffer(1);
-    let smp1 = factory.create_sampler_linear();
-    let t1 = gfx_load_texture(tri1.tex, &mut factory);
-    let vd1 = pipe::Data {
-        vbuf: vb1,
-        transform: tb1,
-        tex: (t1, smp1),
-        out: color_view.clone(),
-    };
-    let shape1: [Vertex; 3] = septri(&tri2);
-    let (vb2, s2) = factory.create_vertex_buffer_with_slice(&shape1, ());
-    let tb2 = factory.create_constant_buffer(1);
-    let smp2 = factory.create_sampler_linear();
-    let t2 = gfx_load_texture(tri2.tex, &mut factory);
-    let vd2 = pipe::Data {
-        vbuf: vb2,
-        transform: tb2,
-        tex: (t2, smp2),
-        out: color_view.clone(),
-    };
+    let tex0 = gfx_load_texture(0, &mut factory);
     let mut running = true;
+    let mut timerunning : f32 = 0.0;
     while running {
+        timerunning = timerunning + 0.1;
         events_loop.poll_events(|event| {
             if let glutin::Event::WindowEvent { event, .. } = event {
                 match event {
@@ -162,6 +126,45 @@ pub fn main() {
                 }
             }
         });
+    let tri1 = mktri(
+        [ -1.0, -1.0, 0.0 ],
+        [ 1.0, -1.0, 0.0 ],
+        [ -1.0, 1.0, 0.0 ],
+        [[-1.0, 0.0, -1.0],
+        [0.0, 0.5, 0.0],
+        [1.0, timerunning.sin(), 1.0]],
+	0, false);
+
+    let tri2 = mktri(
+        [ 1.0, 1.0, 0.0 ],
+        [ -1.0, 1.0, 0.0 ],
+        [ 1.0, -1.0, 0.0 ],
+        [[-1.0, 0.0, -1.0],
+        [0.0, 0.5, 0.0],
+        [1.0, timerunning.sin(), 1.0]],
+	0, true);
+
+    let shape0: [Vertex; 3] = septri(&tri1);
+    let (vb1, s1) = factory.create_vertex_buffer_with_slice(&shape0, ());
+    let tb1 = factory.create_constant_buffer(1);
+    let smp1 = factory.create_sampler_linear();
+    let vd1 = pipe::Data {
+        vbuf: vb1,
+        transform: tb1,
+        tex: (tex0, smp1),
+        out: color_view.clone(),
+    };
+    let shape1: [Vertex; 3] = septri(&tri2);
+    let (vb2, s2) = factory.create_vertex_buffer_with_slice(&shape1, ());
+    let tb2 = factory.create_constant_buffer(1);
+    let smp2 = factory.create_sampler_linear();
+    let vd2 = pipe::Data {
+        vbuf: vb2,
+        transform: tb2,
+        tex: (tex0, smp2),
+        out: color_view.clone(),
+    };
+
 	encoder.clear(&color_view, BLACK); //clear the framebuffer with a color(color needs to be an array of 4 f32s, RGBa)
 	encoder.update_buffer(&vd1.transform, &[TRANSFORM], 0); //update buffers
 	encoder.draw(&s1, &pso, &vd1); // draw commands with buffer data and attached pso
