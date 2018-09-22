@@ -62,15 +62,7 @@ pub struct Triangle {
     tex: u16,
 }
 
-pub struct Quad {
-    v1: Vertex,
-    v2: Vertex,
-    v3: Vertex,
-    v4: Vertex,
-    tex: u16,
-}
-
-pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], te: u16) -> Triangle {
+pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], te: u16, uvflip: bool) -> Triangle {
 	let translation = tm[0];
 	let rot = tm[1];
 	let scale = tm[2];
@@ -80,21 +72,22 @@ pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], 
         v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
 	tex: te
     };
+    if uvflip
+    {
+        let mut tri = Triangle {
+            v1: Vertex { pos: [vrt1[0], vrt1[1], vrt1[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 1.0] },
+            v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
+            v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
+	    tex: te
+        };
+        return tri;
+    }
     return tri;
 }
 
-pub fn mkquad(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], vrt4: [f32; 3], tm: [[f32; 3]; 3], te: u16) -> Quad {
-	let translation = tm[0];
-	let rot = tm[1];
-	let scale = tm[2];
-    let mut quad = Quad {
-        v1: Vertex { pos: [vrt1[0], vrt1[1], vrt1[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 0.0] },
-        v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
-        v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
-        v4: Vertex { pos: [vrt4[0], vrt4[1], vrt4[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 1.0] },
-	tex: te
-    };
-    return quad;
+pub fn septri(tri: &Triangle) -> [Vertex; 3]
+{
+    return [tri.v1, tri.v2, tri.v3];
 }
 
 pub fn main() {
@@ -137,15 +130,26 @@ pub fn main() {
                     [0.0, 0.0, 1.0, 0.0],
                     [0.0, 0.0, 0.0, 1.0]]
     };
-    let verts: [Vertex; 3] = [testTriangle.v1, testTriangle.v2, testTriangle.v3];
-    let (vertex_buffer, slice) = factory.create_vertex_buffer_with_slice(&verts, ());
-    let transform_buffer = factory.create_constant_buffer(1);
-    let sampler = factory.create_sampler_linear();
-    let texture = gfx_load_texture(testTriangle.tex, &mut factory);
-    let data = pipe::Data {
-        vbuf: vertex_buffer,
-        transform: transform_buffer,
-        tex: (texture, sampler),
+    let shape0: [Vertex; 3] = septri(&tri1);
+    let (vb1, s1) = factory.create_vertex_buffer_with_slice(&shape0, ());
+    let tb1 = factory.create_constant_buffer(1);
+    let smp1 = factory.create_sampler_linear();
+    let t1 = gfx_load_texture(tri1.tex, &mut factory);
+    let vd1 = pipe::Data {
+        vbuf: vb1,
+        transform: tb1,
+        tex: (t1, smp1),
+        out: color_view.clone(),
+    };
+    let shape1: [Vertex; 3] = septri(&tri2);
+    let (vb2, s2) = factory.create_vertex_buffer_with_slice(&shape1, ());
+    let tb2 = factory.create_constant_buffer(1);
+    let smp2 = factory.create_sampler_linear();
+    let t2 = gfx_load_texture(tri2.tex, &mut factory);
+    let vd2 = pipe::Data {
+        vbuf: vb2,
+        transform: tb2,
+        tex: (t2, smp2),
         out: color_view.clone(),
     };
     let mut running = true;
@@ -159,8 +163,10 @@ pub fn main() {
             }
         });
 	encoder.clear(&color_view, BLACK); //clear the framebuffer with a color(color needs to be an array of 4 f32s, RGBa)
-	encoder.update_buffer(&data.transform, &[TRANSFORM], 0); //update buffers
-	encoder.draw(&slice, &pso, &data); // draw commands with buffer data and attached pso
+	encoder.update_buffer(&vd1.transform, &[TRANSFORM], 0); //update buffers
+	encoder.draw(&s1, &pso, &vd1); // draw commands with buffer data and attached pso
+	encoder.update_buffer(&vd2.transform, &[TRANSFORM], 0); //update buffers
+    encoder.draw(&s2, &pso, &vd2);
 	encoder.flush(&mut device); // execute draw commands
         window.swap_buffers().unwrap();
         device.cleanup();
