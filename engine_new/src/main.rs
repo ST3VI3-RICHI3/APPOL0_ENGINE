@@ -117,7 +117,7 @@ pub fn main() {
     let mut running = true;
     let mut timerunning : f32 = 0.0;
     while running {
-        timerunning = timerunning + 0.1;
+        timerunning = timerunning + 0.01;
         events_loop.poll_events(|event| {
             if let glutin::Event::WindowEvent { event, .. } = event {
                 match event {
@@ -127,21 +127,57 @@ pub fn main() {
             }
         });
     let tri1 = mktri(
-        [ -1.0, -1.0, 0.0 ],
-        [ 1.0, -1.0, 0.0 ],
-        [ -1.0, 1.0, 0.0 ],
-        [[-1.0, 0.0, -1.0],
-        [0.0, 0.5, 0.0],
-        [1.0, timerunning.sin(), 1.0]],
+        [ -1.0, -1.0, -1.0 ],
+        [ 1.0, -1.0, -1.0 ],
+        [ -1.0, 1.0, -1.0 ],
+        [[0.0, 0.0, -2.0],
+        [0.0, timerunning.sin() * 3.14, 0.0],
+        [1.0, 1.0, 1.0]],
 	0, false);
 
     let tri2 = mktri(
-        [ 1.0, 1.0, 0.0 ],
-        [ -1.0, 1.0, 0.0 ],
-        [ 1.0, -1.0, 0.0 ],
-        [[-1.0, 0.0, -1.0],
-        [0.0, 0.5, 0.0],
-        [1.0, timerunning.sin(), 1.0]],
+        [ 1.0, 1.0, -1.0 ],
+        [ -1.0, 1.0, -1.0 ],
+        [ 1.0, -1.0, -1.0 ],
+        [[0.0, 0.0, -2.0],
+        [0.0, timerunning.sin() * 3.14, 0.0],
+        [1.0, 1.0, 1.0]],
+	0, true);
+
+    let tri3 = mktri(
+        [ -1.0, -1.0, -1.0 ],
+        [ 1.0, -1.0, -1.0 ],
+        [ -1.0, -1.0, 1.0 ],
+        [[0.0, 0.0, -2.0],
+        [0.0, timerunning.sin() * 3.14, 0.0],
+        [1.0, 1.0, 1.0]],
+	0, false);
+
+    let tri4 = mktri(
+        [ 1.0, -1.0, 1.0 ],
+        [ -1.0, -1.0, 1.0 ],
+        [ 1.0, -1.0, -1.0 ],
+        [[0.0, 0.0, -2.0],
+        [0.0, timerunning.sin() * 3.14, 0.0],
+        [1.0, 1.0, 1.0]],
+	0, true);
+
+    let tri5 = mktri(
+        [ -1.0, -1.0, -1.0 ],
+        [ -1.0, 1.0, -1.0 ],
+        [ -1.0, -1.0, 1.0 ],
+        [[0.0, 0.0, -2.0],
+        [0.0, timerunning.sin() * 3.14, 0.0],
+        [1.0, 1.0, 1.0]],
+	0, false);
+
+    let tri6 = mktri(
+        [ -1.0, 1.0, 1.0 ],
+        [ -1.0, -1.0, 1.0 ],
+        [ -1.0, 1.0, -1.0 ],
+        [[0.0, 0.0, -2.0],
+        [0.0, timerunning.sin() * 3.14, 0.0],
+        [1.0, 1.0, 1.0]],
 	0, true);
 
     let shape0: [Vertex; 3] = septri(&tri1);
@@ -151,7 +187,7 @@ pub fn main() {
     let vd1 = pipe::Data {
         vbuf: vb1,
         transform: tb1,
-        tex: (tex0, smp1),
+        tex: (tex0.clone(), smp1),
         out: color_view.clone(),
     };
     let shape1: [Vertex; 3] = septri(&tri2);
@@ -161,7 +197,49 @@ pub fn main() {
     let vd2 = pipe::Data {
         vbuf: vb2,
         transform: tb2,
-        tex: (tex0, smp2),
+        tex: (tex0.clone(), smp2),
+        out: color_view.clone(),
+    };
+
+    let shape2: [Vertex; 3] = septri(&tri3);
+    let (vb3, s3) = factory.create_vertex_buffer_with_slice(&shape2, ());
+    let tb3 = factory.create_constant_buffer(1);
+    let smp3 = factory.create_sampler_linear();
+    let vd3 = pipe::Data {
+        vbuf: vb3,
+        transform: tb3,
+        tex: (tex0.clone(), smp3),
+        out: color_view.clone(),
+    };
+    let shape3: [Vertex; 3] = septri(&tri4);
+    let (vb4, s4) = factory.create_vertex_buffer_with_slice(&shape3, ());
+    let tb4 = factory.create_constant_buffer(1);
+    let smp4 = factory.create_sampler_linear();
+    let vd4 = pipe::Data {
+        vbuf: vb4,
+        transform: tb4,
+        tex: (tex0.clone(), smp4),
+        out: color_view.clone(),
+    };
+
+    let shape4: [Vertex; 3] = septri(&tri5);
+    let (vb5, s5) = factory.create_vertex_buffer_with_slice(&shape4, ());
+    let tb5 = factory.create_constant_buffer(1);
+    let smp5 = factory.create_sampler_linear();
+    let vd5 = pipe::Data {
+        vbuf: vb5,
+        transform: tb5,
+        tex: (tex0.clone(), smp5),
+        out: color_view.clone(),
+    };
+    let shape5: [Vertex; 3] = septri(&tri6);
+    let (vb6, s6) = factory.create_vertex_buffer_with_slice(&shape5, ());
+    let tb6 = factory.create_constant_buffer(1);
+    let smp6 = factory.create_sampler_linear();
+    let vd6 = pipe::Data {
+        vbuf: vb6,
+        transform: tb6,
+        tex: (tex0.clone(), smp6),
         out: color_view.clone(),
     };
 
@@ -170,6 +248,14 @@ pub fn main() {
 	encoder.draw(&s1, &pso, &vd1); // draw commands with buffer data and attached pso
 	encoder.update_buffer(&vd2.transform, &[TRANSFORM], 0); //update buffers
     encoder.draw(&s2, &pso, &vd2);
+	encoder.update_buffer(&vd3.transform, &[TRANSFORM], 0); //update buffers
+	encoder.draw(&s3, &pso, &vd3); // draw commands with buffer data and attached pso
+	encoder.update_buffer(&vd4.transform, &[TRANSFORM], 0); //update buffers
+    encoder.draw(&s4, &pso, &vd4);
+	encoder.update_buffer(&vd5.transform, &[TRANSFORM], 0); //update buffers
+	encoder.draw(&s5, &pso, &vd5); // draw commands with buffer data and attached pso
+	encoder.update_buffer(&vd6.transform, &[TRANSFORM], 0); //update buffers
+    encoder.draw(&s6, &pso, &vd6);
 	encoder.flush(&mut device); // execute draw commands
         window.swap_buffers().unwrap();
         device.cleanup();

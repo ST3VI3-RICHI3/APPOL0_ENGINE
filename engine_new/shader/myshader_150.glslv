@@ -35,7 +35,7 @@ void main() {
     rz[1][0] = sin(a_Rotation.z);
 
     mat4 rt = rx * ry * rz;
-    mat4 transform = tl * rt * sc;
+    mat4 transform = rt * sc * tl;
 
     mat4 proj = mat4(1);
 
