@@ -73,9 +73,23 @@ pub fn calcnormal(tri: &Triangle,) -> [f32; 3] {
     return a;
 }
 
-pub fn classifypoint(tri: &Triangle, pnt: [f32; 3]) -> i32 {
-    let sv: [f32; 3] = [calcnormal(tri)[0] * pnt[0], calcnormal(tri)[1] * pnt[1], calcnormal(tri)[2] * pnt[2]];
+pub fn classifypoint(tri: &Triangle, pnt: [f32; 3]) -> i8 {
+    let sv: f32 = calcnormal(tri)[0] * pnt[0] + calcnormal(tri)[1] * pnt[1] + calcnormal(tri)[2] * pnt[2];
+    if (sv == ((calcnormal(tri)[0] - pnt[0]).powf(2) + (calcnormal(tri)[1] - pnt[1]).powf(2) + (calcnormal(tri)[2] - pnt[2]).powf(2)).powf(0.5)) {
+        return 0;
+    }
+    else if (sv < (((calcnormal(tri)[0] - pnt[0]).powf(2) + (calcnormal(tri)[1] - pnt[1]).powf(2) + (calcnormal(tri)[2] - pnt[2]).powf(2))).powf(0.5)) {
+        return -1;
+    }
+    else {return 1;}
     return 0;
+}
+
+pub fn triinfront(tri1: &Triangle, tri2: &Triangle) -> bool {
+    if classifypoint(tri1, [tri2.v1.pos[0],tri2.v1.pos[1],tri2.v1.pos[2]]) != 1 {return false;}
+    if classifypoint(tri1, [tri2.v2.pos[0],tri2.v2.pos[1],tri2.v2.pos[2]]) != 1 {return false;}
+    if classifypoint(tri1, [tri2.v3.pos[0],tri2.v3.pos[1],tri2.v3.pos[2]]) != 1 {return false;}
+    return true;
 }
 
 pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], te: u16, uvflip: bool) -> Triangle {
