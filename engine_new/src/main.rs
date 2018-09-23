@@ -62,6 +62,22 @@ pub struct Triangle {
     tex: u16,
 }
 
+pub fn calcnormal(tri: &Triangle,) -> [f32; 3] {
+    let b = tri.v1;
+    let c = tri.v2;
+    let d = tri.v3;
+    let mut a: [f32; 3] = [0.0,0.0,0.0];
+    a[0] = (b.pos[1] * c.pos[2] * d.pos[0]) - (b.pos[0] * c.pos[2] * d.pos[1]);
+    a[1] = (b.pos[2] * c.pos[0] * d.pos[1]) - (b.pos[1] * c.pos[0] * d.pos[2]);
+    a[2] = (b.pos[0] * c.pos[1] * d.pos[2]) - (b.pos[2] * c.pos[1] * d.pos[0]);
+    return a;
+}
+
+pub fn classifypoint(tri: &Triangle, pnt: [f32; 3]) -> i32 {
+    let sv: [f32; 3] = [calcnormal(tri)[0] * pnt[0], calcnormal(tri)[1] * pnt[1], calcnormal(tri)[2] * pnt[2]];
+    return 0;
+}
+
 pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], te: u16, uvflip: bool) -> Triangle {
 	let translation = tm[0];
 	let rot = tm[1];
