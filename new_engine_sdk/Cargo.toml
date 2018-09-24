@@ -1,0 +1,10 @@
+[package]
+name = "appoll0engineSDK"
+version = "0.1.0"
+authors = ["st3studi0s"]
+
+[dependencies]
+gfx = "0.17.1"
+glutin = "*"
+gfx_window_glutin = "*"
+image = "*"
