@@ -1,3 +1,8 @@
+extern crate gtk;
+#[macro_use]
+extern crate relm;
+#[macro_use]
+extern crate relm_derive;
 #[macro_use]
 extern crate gfx;
 
@@ -10,6 +15,8 @@ use gfx::Device;
 use gfx_window_glutin as gfx_glutin;
 use glutin::{GlContext, GlRequest};
 use glutin::Api::OpenGl;
+
+use relm::{Relm, Widget};
 
 pub type ColorFormat = gfx::format::Srgba8;
 pub type DepthFormat = gfx::format::DepthStencil;
@@ -124,7 +131,7 @@ pub fn main() {
     let mut events_loop = glutin::EventsLoop::new();
     let windowbuilder = glutin::WindowBuilder::new()
         .with_title("Triangle Example".to_string())
-        .with_dimensions(glutin::dpi::LogicalSize::new(640.0, 360.0));
+        .with_dimensions(glutin::dpi::LogicalSize::new(640.0, 480.0));
     let contextbuilder = glutin::ContextBuilder::new()
         .with_gl(GlRequest::Specific(OpenGl,(3,2)))
         .with_vsync(false);

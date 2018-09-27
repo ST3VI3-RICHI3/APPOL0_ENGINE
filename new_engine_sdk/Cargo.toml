@@ -1,10 +1,13 @@
 [package]
-name = "appoll0engineSDK"
+name = "appoll0enginesdk"
 version = "0.1.0"
-authors = ["st3studi0s"]
+authors = ["st3vi3studios"]
 
 [dependencies]
 gfx = "0.17.1"
 glutin = "*"
 gfx_window_glutin = "*"
 image = "*"
+gtk = "^0.3.0"
+relm = "^0.11.0"
+relm-derive = "^0.11.0"
