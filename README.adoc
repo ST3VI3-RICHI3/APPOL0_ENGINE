@@ -5,3 +5,13 @@ The next gen game engine & utility script.
 = About
 
 APOLL0 ENGINE (Project name "ST3 3NIGN3") is a 3D, 2D and Text game engine, The engine is of course in-development and will be for a unpredictable amount of time.
+
+= Installation
+
+== Main engine
+
+Currently, no install is required. If no exe exists simply run `cargo build` from a command line, note that Rust-Lang is required to do this.
+
+== Utility script
+
+No install required if you are a gamer or install a lot of programs written in C#, .NET is required to run the utility script applications.
