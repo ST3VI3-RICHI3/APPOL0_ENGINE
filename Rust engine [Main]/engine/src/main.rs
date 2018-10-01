@@ -75,10 +75,10 @@ pub fn calcnormal(tri: &Triangle,) -> [f32; 3] {
 
 pub fn classifypoint(tri: &Triangle, pnt: [f32; 3]) -> i8 {
     let sv: f32 = calcnormal(tri)[0] * pnt[0] + calcnormal(tri)[1] * pnt[1] + calcnormal(tri)[2] * pnt[2];
-    if (sv == ((calcnormal(tri)[0] - pnt[0]).powf(2) + (calcnormal(tri)[1] - pnt[1]).powf(2) + (calcnormal(tri)[2] - pnt[2]).powf(2)).powf(0.5)) {
+    if (sv == ((calcnormal(tri)[0] - pnt[0]).powf(2.0) + (calcnormal(tri)[1] - pnt[1]).powf(2.0) + (calcnormal(tri)[2] - pnt[2]).powf(2.0)).powf(0.5)) {
         return 0;
     }
-    else if (sv < (((calcnormal(tri)[0] - pnt[0]).powf(2) + (calcnormal(tri)[1] - pnt[1]).powf(2) + (calcnormal(tri)[2] - pnt[2]).powf(2))).powf(0.5)) {
+    else if (sv < (((calcnormal(tri)[0] - pnt[0]).powf(2.0) + (calcnormal(tri)[1] - pnt[1]).powf(2.0) + (calcnormal(tri)[2] - pnt[2]).powf(2.0))).powf(0.5)) {
         return -1;
     }
     else {return 1;}
