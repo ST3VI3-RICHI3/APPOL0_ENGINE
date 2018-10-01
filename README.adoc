@@ -14,4 +14,4 @@ Currently, no install is required. If no exe exists simply run `cargo build` fro
 
 == Utility script
 
-No install required if you are a gamer or install a lot of programs written in C#, .NET is required to run the utility script applications.
+No install required if you are a gamer or install a lot of programs written in C#, .NET 4.7 is required to run the utility script applications.
