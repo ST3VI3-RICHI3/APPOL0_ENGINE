@@ -15,3 +15,13 @@ Currently, no install is required. If no exe exists simply run `cargo build` fro
 == Utility script
 
 No install required if you are a gamer or install a lot of programs written in C#, .NET 4.7 is required to run the utility script applications.
+
+= Scripting for APOLL0
+
+== Rust
+
+There is currently no programming reference for APOLL0\Rust
+
+== C#
+
+There is documentation for APOLL0\CSharp, it can be found at: Here[link="https://st3.zapto.org/apoll0/docs"]
