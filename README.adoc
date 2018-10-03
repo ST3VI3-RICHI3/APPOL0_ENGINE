@@ -10,7 +10,7 @@ APOLL0 ENGINE (Project name "ST3 3NIGN3") is a 3D, 2D and Text game engine, The 
 
 == Main engine
 
-Currently, no install is required. If no exe exists simply run `cargo build` from a command line, note that Rust-Lang is required to do this.
+Currently, no install is required. If no exe exists simply run cargo run from a command line, note that Rust-Lang is required to do a run operation from the command line.
 
 == Utility script
 
