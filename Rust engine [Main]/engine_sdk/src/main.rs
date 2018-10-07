@@ -21,8 +21,16 @@ use relm::{Relm, Widget};
 pub type ColorFormat = gfx::format::Srgba8;
 pub type DepthFormat = gfx::format::DepthStencil;
 
-
+//--BEGIN COLOURS--\\
+//THE COLOUR BLACK\\
 const BLACK: [f32; 4] = [0.0, 0.0, 0.0, 1.0];
+//BASIC RGB\\
+const RED: [f32; 4] = [255.0, 0.0, 0.0, 1.0];
+const GREEN: [f32; 4] = [0.0, 255.0, 0.0, 1.0];
+const BLUE: [f32; 4] = [0.0, 0.0, 255.0, 1.0];
+//DEFAULT MONOGAME COLOUR\\
+const CORNFLOWERBLUE: [f32; 4] = [100.0, 149.0, 237.0, 1.0];
+//--END COLOURS--\\
 
 gfx_defines!{
 
@@ -82,7 +90,7 @@ pub fn calcnormal(tri: &Triangle,) -> [f32; 3] {
 
 pub fn classifypoint(tri: &Triangle, pnt: [f32; 3]) -> i8 {
     let sv: f32 = calcnormal(tri)[0] * pnt[0] + calcnormal(tri)[1] * pnt[1] + calcnormal(tri)[2] * pnt[2];
-    if (sv == ((calcnormal(tri)[0] - pnt[0]).powf(2) + (calcnormal(tri)[1] - pnt[1]).powf(2) + (calcnormal(tri)[2] - pnt[2]).powf(2)).powf(0.5)) {
+    if (sv == ((calcnormal(tri)[0] - pnt[0]).powf(2.0) + (calcnormal(tri)[1] - pnt[1]).powf(2.0) + (calcnormal(tri)[2] - pnt[2]).powf(2.0)).powf(0.5)) {
         return 0;
     }
     else if (sv < (((calcnormal(tri)[0] - pnt[0]).powf(2.0) + (calcnormal(tri)[1] - pnt[1]).powf(2.0) + (calcnormal(tri)[2] - pnt[2]).powf(2.0))).powf(0.5)) {
@@ -116,7 +124,7 @@ pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], 
             v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
             v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
 	    tex: te
-        };
+    };
         return tri;
     }
     return tri;
@@ -280,7 +288,7 @@ pub fn main() {
         out: color_view.clone(),
     };
 
-	encoder.clear(&color_view, BLACK); //clear the framebuffer with a color(color needs to be an array of 4 f32s, RGBa)
+	encoder.clear(&color_view, CORNFLOWERBLUE); //clear the framebuffer with a color(color needs to be an array of 4 f32s, RGBa)
 	encoder.update_buffer(&vd1.transform, &[TRANSFORM], 0); //update buffers
 	encoder.draw(&s1, &pso, &vd1); // draw commands with buffer data and attached pso
 	encoder.update_buffer(&vd2.transform, &[TRANSFORM], 0); //update buffers

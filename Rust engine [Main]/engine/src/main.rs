@@ -14,8 +14,16 @@ use glutin::Api::OpenGl;
 pub type ColorFormat = gfx::format::Srgba8;
 pub type DepthFormat = gfx::format::DepthStencil;
 
-
+//--BEGIN COLOURS--\\
+//THE COLOUR BLACK\\
 const BLACK: [f32; 4] = [0.0, 0.0, 0.0, 1.0];
+//BASIC RGB\\
+const RED: [f32; 4] = [255.0, 0.0, 0.0, 1.0];
+const GREEN: [f32; 4] = [0.0, 255.0, 0.0, 1.0];
+const BLUE: [f32; 4] = [0.0, 0.0, 255.0, 1.0];
+//DEFAULT MONOGAME COLOUR\\
+const CORNFLOWERBLUE: [f32; 4] = [100.0, 149.0, 237.0, 1.0];
+//--END COLOURS--\\
 
 gfx_defines!{
 
