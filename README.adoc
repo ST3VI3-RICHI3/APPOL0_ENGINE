@@ -20,7 +20,7 @@ No install required if you are a gamer or install a lot of programs written in C
 
 == Rust
 
-There is currently no programming reference for APOLL0\Rust
+There is a programming reference for APOLL0\Rust, It can be found at: https://st3.zapto.org/apoll0/docs
 
 == C#
 
