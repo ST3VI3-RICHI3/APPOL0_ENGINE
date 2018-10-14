@@ -14,7 +14,7 @@ echo #Batch hates newlines so this fills in for it. >> cargo.toml
 echo Writing dependencies...
 set DepNum = 0
 echo [dependencies] >> Cargo.toml
-rem remove "rem" to test file loading.
-rem set Deps = < deps.tmp
+set Deps = < deps.tmp
+echo Deps >> Cargo.toml
 echo Done!
 pause
