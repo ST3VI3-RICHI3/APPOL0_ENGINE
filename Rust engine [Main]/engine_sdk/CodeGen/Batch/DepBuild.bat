@@ -14,7 +14,7 @@ echo #Batch hates newlines so this fills in for it. >> cargo.toml
 echo Writing dependencies...
 set DepNum = 0
 echo [dependencies] >> Cargo.toml
-set Deps = < deps.tmp
-echo Deps >> Cargo.toml
+set /p Deps =<deps.tmp
+echo %Deps% >> Cargo.toml
 echo Done!
 pause
