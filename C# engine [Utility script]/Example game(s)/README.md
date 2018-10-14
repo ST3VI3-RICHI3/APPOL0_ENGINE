@@ -1,4 +1,3 @@
 # Example games
-[DISCONTINUED]
 
-Theese are example games for APOLL0
+Theese are example games for APOLL0 C#
