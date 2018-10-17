@@ -1,5 +1,6 @@
 @echo off
 
+rem STVI3 STUDIOS 2018
 echo Writing details...
 set ProjName=<ProjName.ini
 echo y | del ProjName.ini
