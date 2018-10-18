@@ -2,9 +2,9 @@
 
 rem STVI3 STUDIOS 2018
 echo Writing details...
-set ProjName=<ProjName.ini
+set "ProjName=<ProjName.ini"
 echo y | del ProjName.ini
-set Auhors=Test
+set "Auhors=Test"
 echo Project name: %ProjName%
 echo Project authors(s): %Authors%
 echo [package] > Cargo.toml
