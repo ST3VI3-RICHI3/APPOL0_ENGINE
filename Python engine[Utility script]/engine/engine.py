@@ -35,7 +35,7 @@ def Init(verbose = False):
 		ErrLog = open("ErrLog.txt", "w")
 		ErrLog.write("Engine error: Could not find expected keyword 'GameDir' on line 2.")
 		ErrLog.close()
-	GameDir = Config.read(21)
+	GameDir = Config.readline(2)
 	# if Config.readline(2)[7:8] != "=":
 		# ErrLog = open("ErrLog.txt", "w")
 		# ErrLog.write("Engine error: Syntax error on line 2, column 8, Could not find expected char '='.")
