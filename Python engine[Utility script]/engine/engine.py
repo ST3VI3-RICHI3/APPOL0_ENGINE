@@ -1,5 +1,8 @@
 import time
 import os
+from graphics import *
+
+global GameWin
 
 #Text functions
 class Text:

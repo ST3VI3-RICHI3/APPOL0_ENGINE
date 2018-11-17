@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-main",
+      "appliesTo": "Rust engine [Main]/engine_sdk/src/main.rs",
+      "type": "launch"
+    }
+  ]
+}

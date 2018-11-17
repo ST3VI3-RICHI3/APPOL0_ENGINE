@@ -183,7 +183,7 @@ namespace Cypher_Source
             }
             if (Stage == 1)
             {
-                Stage1(SavName);
+                tutorial(SavName);
             }
         }
         private static void title_slogan_animation()
@@ -249,7 +249,7 @@ namespace Cypher_Source
             time.sleep(1000);
             Text.print(true, " ");
         }
-        private static void Stage1(string SavName)
+        private static void tutorial(string SavName)
         {
             var random = Apollo.utility.random;
             string[] SaveData = Savefiles.Load(SavName);

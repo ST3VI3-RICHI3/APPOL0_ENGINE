@@ -1,8 +1,3 @@
-extern crate gtk;
-#[macro_use]
-extern crate relm;
-#[macro_use]
-extern crate relm_derive;
 #[macro_use]
 extern crate gfx;
 
@@ -15,8 +10,6 @@ use gfx::Device;
 use gfx_window_glutin as gfx_glutin;
 use glutin::{GlContext, GlRequest};
 use glutin::Api::OpenGl;
-
-use relm::{Relm, Widget};
 
 pub type ColorFormat = gfx::format::Srgba8;
 pub type DepthFormat = gfx::format::DepthStencil;
@@ -59,7 +52,7 @@ fn gfx_load_texture<F, R>(id: u16, factory: &mut F) -> gfx::handle::ShaderResour
           R: gfx::Resources
 {
     use gfx::format::Rgba8;
-    let path = format!("resources/{}.png", id);
+    let path = format!("resources/materials/{}.png", id);
     let mut img = image::open(path).unwrap().to_rgba();
     img = image::imageops::flip_vertical(&img);
     let (width, height) = img.dimensions();
@@ -124,7 +117,7 @@ pub fn mktri(vrt1: [f32; 3], vrt2: [f32; 3], vrt3: [f32; 3], tm: [[f32; 3]; 3], 
             v2: Vertex { pos: [vrt2[0], vrt2[1], vrt2[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [0.0, 1.0] },
             v3: Vertex { pos: [vrt3[0], vrt3[1], vrt3[2], 1.0], tl: translation, rt: rot, sc: scale, uv: [1.0, 0.0] },
 	    tex: te
-    };
+        };
         return tri;
     }
     return tri;
@@ -139,7 +132,7 @@ pub fn main() {
     let mut events_loop = glutin::EventsLoop::new();
     let windowbuilder = glutin::WindowBuilder::new()
         .with_title("Triangle Example".to_string())
-        .with_dimensions(glutin::dpi::LogicalSize::new(640.0, 480.0));
+        .with_dimensions(glutin::dpi::LogicalSize::new(640.0, 360.0));
     let contextbuilder = glutin::ContextBuilder::new()
         .with_gl(GlRequest::Specific(OpenGl,(3,2)))
         .with_vsync(false);
@@ -158,7 +151,9 @@ pub fn main() {
                     [0.0, 0.0, 1.0, 0.0],
                     [0.0, 0.0, 0.0, 1.0]]
     };
-    let tex0 = gfx_load_texture(0, &mut factory);
+    let MISSING = gfx_load_texture(0, &mut factory);
+    let tex0 = gfx_load_texture(1, &mut factory);
+    let tex1 = gfx_load_texture(2, &mut factory);
     let mut running = true;
     let mut timerunning : f32 = 0.0;
     while running {
@@ -232,7 +227,7 @@ pub fn main() {
     let vd1 = pipe::Data {
         vbuf: vb1,
         transform: tb1,
-        tex: (tex0.clone(), smp1),
+        tex: (MISSING.clone(), smp1),
         out: color_view.clone(),
     };
     let shape1: [Vertex; 3] = septri(&tri2);
@@ -242,7 +237,7 @@ pub fn main() {
     let vd2 = pipe::Data {
         vbuf: vb2,
         transform: tb2,
-        tex: (tex0.clone(), smp2),
+        tex: (MISSING.clone(), smp2),
         out: color_view.clone(),
     };
 
@@ -288,7 +283,7 @@ pub fn main() {
         out: color_view.clone(),
     };
 
-	encoder.clear(&color_view, CORNFLOWERBLUE); //clear the framebuffer with a color(color needs to be an array of 4 f32s, RGBa)
+	encoder.clear(&color_view, BLACK); //clear the framebuffer with a color(color needs to be an array of 4 f32s, RGBa)
 	encoder.update_buffer(&vd1.transform, &[TRANSFORM], 0); //update buffers
 	encoder.draw(&s1, &pso, &vd1); // draw commands with buffer data and attached pso
 	encoder.update_buffer(&vd2.transform, &[TRANSFORM], 0); //update buffers

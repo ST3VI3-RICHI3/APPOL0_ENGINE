@@ -52,7 +52,7 @@ fn gfx_load_texture<F, R>(id: u16, factory: &mut F) -> gfx::handle::ShaderResour
           R: gfx::Resources
 {
     use gfx::format::Rgba8;
-    let path = format!("resources/{}.png", id);
+    let path = format!("resources/materials/{}.png", id);
     let mut img = image::open(path).unwrap().to_rgba();
     img = image::imageops::flip_vertical(&img);
     let (width, height) = img.dimensions();
@@ -152,6 +152,7 @@ pub fn main() {
                     [0.0, 0.0, 0.0, 1.0]]
     };
     let tex0 = gfx_load_texture(0, &mut factory);
+    let tex1 = gfx_load_texture(1, &mut factory);
     let mut running = true;
     let mut timerunning : f32 = 0.0;
     while running {
