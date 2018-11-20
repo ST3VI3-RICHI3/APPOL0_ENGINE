@@ -81,8 +81,15 @@ namespace Cypher_Source
             }
             Console.Clear();
             Console.Beep();
-            Text.print(false, "Boot from CD/DVD");
-            time.sleep(5000);
+            Text.print(true, "Boot from CD/DVD");
+            time.sleep(250);
+            Text.print(true, "Boot from USB");
+            time.sleep(100);
+            Text.print(false, "boot from HDD");
+            time.sleep(150);
+            Console.Clear();
+            Text.print(false, "Loading operating system");
+            time.sleep(2500);
             Console.Clear();
             utility.title("Cipher Source");
             Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
@@ -420,7 +427,7 @@ namespace Cypher_Source
             time.sleep(250);
             Text.print(false, "login as: ");
             string puzz1_username = Console.ReadLine();
-            Text.print(false, "Password for "+puzz1_username+":");
+            Text.print(false, "Password for "+puzz1_username+": ");
             string puzz1_passwd = Console.ReadLine();
             if (puzz1_username == "admin")
             {
