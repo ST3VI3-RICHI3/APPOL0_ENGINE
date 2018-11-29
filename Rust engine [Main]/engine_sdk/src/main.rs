@@ -1,6 +1,6 @@
 #[macro_use]
 extern crate gfx;
-
+extern crate winit;
 extern crate gfx_window_glutin;
 extern crate glutin;
 extern crate image;
@@ -129,9 +129,23 @@ pub fn septri(tri: &Triangle) -> [Vertex; 3]
 }
 
 pub fn main() {
+    let mut events_loop = winit::EventsLoop::new();
+    let window = winit::Window::new(&events_loop).unwrap();
+    window.set_title("APOLL0 SDK");
+    events_loop.run_forever(|event| {
+        match event {
+            winit::Event::WindowEvent {
+              event: winit::WindowEvent::CloseRequested,
+              ..
+            } => winit::ControlFlow::Break,
+            _ => winit::ControlFlow::Continue,
+        }
+    });
+}
+pub fn TestRun(title: &str) {
     let mut events_loop = glutin::EventsLoop::new();
     let windowbuilder = glutin::WindowBuilder::new()
-        .with_title("Triangle Example".to_string())
+        .with_title(title.to_string())
         .with_dimensions(glutin::dpi::LogicalSize::new(640.0, 360.0));
     let contextbuilder = glutin::ContextBuilder::new()
         .with_gl(GlRequest::Specific(OpenGl,(3,2)))
@@ -151,9 +165,8 @@ pub fn main() {
                     [0.0, 0.0, 1.0, 0.0],
                     [0.0, 0.0, 0.0, 1.0]]
     };
-    let MISSING = gfx_load_texture(0, &mut factory);
-    let tex0 = gfx_load_texture(1, &mut factory);
-    let tex1 = gfx_load_texture(2, &mut factory);
+    let tex0 = gfx_load_texture(0, &mut factory);
+    let tex1 = gfx_load_texture(1, &mut factory);
     let mut running = true;
     let mut timerunning : f32 = 0.0;
     while running {
@@ -227,7 +240,7 @@ pub fn main() {
     let vd1 = pipe::Data {
         vbuf: vb1,
         transform: tb1,
-        tex: (MISSING.clone(), smp1),
+        tex: (tex1.clone(), smp1),
         out: color_view.clone(),
     };
     let shape1: [Vertex; 3] = septri(&tri2);
@@ -237,7 +250,7 @@ pub fn main() {
     let vd2 = pipe::Data {
         vbuf: vb2,
         transform: tb2,
-        tex: (MISSING.clone(), smp2),
+        tex: (tex1.clone(), smp2),
         out: color_view.clone(),
     };
 
