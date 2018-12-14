@@ -80,6 +80,12 @@ namespace Cypher_Source
                 }
             }
             Console.Clear();
+            Text.print(true, "Generic BIOS copyright 1987.");
+            Text.print(true, "");
+            Text.print(true, "Running RAM check...");
+            time.sleep(1200);
+            Text.print(true, "4GB detected");
+            Console.Clear();
             Console.Beep();
             Text.print(true, "Boot from CD/DVD");
             time.sleep(250);
@@ -101,9 +107,9 @@ namespace Cypher_Source
             Text.print(true, " ");
             title_slogan_animation();
             Text.print(true, " ");
+            NoVid:
             Text.typefast(false, "press any key to play.");
             Console.ReadKey(true);
-            NoVid:
             Console.Clear();
             Text.print(true, "Encryption is a fallacy.");
             time.sleep(100);
@@ -506,7 +512,22 @@ namespace Cypher_Source
                 Text.print(false, "Downloading file " + FTD);
                 for (var i = 0; i <= 3; i++)
                 {
-                    time.sleep(random.Next(500));
+                    time.sleep(250);
+                    Text.print(false, ".");
+                }
+                Text.newline();
+                Text.print(true, "File downloaded!");
+            }
+            if (FTD == "Testinfo")
+            {
+                Text.print(true, "Looking for file '" + FTD + "...");
+                time.sleep(100);
+                Text.print(true, "Found file: 'TestInfo.txt'.");
+                time.sleep(50);
+                Text.print(false, "Downloading file " + FTD + ".txt");
+                for (var i = 0; i <= 3; i++)
+                {
+                    time.sleep(250);
                     Text.print(false, ".");
                 }
                 Text.newline();
@@ -546,11 +567,20 @@ namespace Cypher_Source
             Continue5:
             Text.newline();
             time.sleep(250);
-            Text.print(true, "Message from 124.268.1.26: You did it! we've handled the rest for you as this is your'e first time.");
-            timerenabled = false;
-            if (gametime <= 10000) {
-                difficulty = "AbsolouteGod";
+            Text.print(true, "Disconnecting from: '124.268.1.26' ");
+            Text.print(true, "Disconnected.");
+            EndingCommandReset:
+            Text.print(false, "home/" + name + "/");
+            Command = Console.ReadLine();
+            Command = Command.ToLower();
+            if (Command == "help")
+            {
+                Text.print(true, "Help - Provides help on a spesific command.");
+                Text.print(true, "Nano - Basic text editor, allows documents to be veiwed and edited.");
+                goto EndingCommandReset;
+
             }
+
         }
     }
 }
