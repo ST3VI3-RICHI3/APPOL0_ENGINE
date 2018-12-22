@@ -13,7 +13,9 @@
 using System;
 using System.IO;
 using System.Threading;
+using System.Windows.Forms;
 using Apollo;
+using AutoUpdaterDotNET;
 
 namespace Cypher_Source
 {
@@ -24,13 +26,14 @@ namespace Cypher_Source
         private static string difficulty = "UNSET";
         static void Main(string[] args)
         {
-            string version = "0.1.5";
+            string version = "0.1.5.0";
             var random = Apollo.utility.random;
-            bool DeveloperMode = false;
+            Console.WriteLine("Check for updates...");
+            AutoUpdater.Start("https://st3.zapto.org/apoll0/games/cipher%20source/update.xml");
             Console.WriteLine("APOLL0 text test.");
             try
             {
-                Text.print(true, "Hello World");
+                Text.print("Hello World");
                 Console.WriteLine("Test successful!");
             }
             catch
@@ -39,7 +42,7 @@ namespace Cypher_Source
                 Thread.Sleep(5000);
                 Environment.Exit(-1);
             }
-            Text.print(true, "Loading recourses");
+            Text.print("Loading recourses");
             bool PizzaEE = false;
             System.Media.SoundPlayer pizzatime = null;
             for (var i = 0; i < args.Length; i++)
@@ -48,10 +51,6 @@ namespace Cypher_Source
                 {
                     pizzatime = new System.Media.SoundPlayer(@"pizza.wav");
                     PizzaEE = true;
-                }
-                if (args[i] == "-dev")
-                {
-                    DeveloperMode = true;
                 }
                 if (args[i] == "-save_Test")
                 {
@@ -80,41 +79,41 @@ namespace Cypher_Source
                 }
             }
             Console.Clear();
-            Text.print(true, "Generic BIOS copyright 1987.");
-            Text.print(true, "");
-            Text.print(true, "Running RAM check...");
+            Text.print("Generic BIOS copyright 1987.");
+            Text.print("");
+            Text.print("Running RAM check...");
             time.sleep(1200);
-            Text.print(true, "4GB detected");
+            Text.print("4GB detected");
             Console.Clear();
             Console.Beep();
-            Text.print(true, "Boot from CD/DVD");
+            Text.print("Boot from CD/DVD");
             time.sleep(250);
-            Text.print(true, "Boot from USB");
+            Text.print("Boot from USB");
             time.sleep(100);
-            Text.print(false, "boot from HDD");
+            Text.print("boot from HDD", false);
             time.sleep(150);
             Console.Clear();
-            Text.print(false, "Loading operating system");
+            Text.print("Loading operating system", false);
             time.sleep(2500);
             Console.Clear();
             utility.title("Cipher Source");
-            Text.print(true, "8\"\"\"\"8                               8\"\"\"\"8                        ");
-            Text.print(true, "8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
-            Text.print(true, "8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
-            Text.print(true, "88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
-            Text.print(true, "88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
-            Text.print(true, "88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
-            Text.print(true, " ");
+            Text.print("8\"\"\"\"8                               8\"\"\"\"8                        ");
+            Text.print("8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
+            Text.print("8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
+            Text.print("88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
+            Text.print("88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
+            Text.print("88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
+            Text.print(" ");
             title_slogan_animation();
-            Text.print(true, " ");
+            Text.print(" ");
             NoVid:
-            Text.typefast(false, "press any key to play.");
+            Text.typefast("press any key to play.", false);
             Console.ReadKey(true);
             Console.Clear();
-            Text.print(true, "Encryption is a fallacy.");
+            Text.print("Encryption is a fallacy.");
             time.sleep(100);
             Console.Clear();
-            Text.print(false, "Save name? ");
+            Text.print("Save name? ", false);
             string SavName = Console.ReadLine();
             string name;
             if (File.Exists(SavName + ".svp") == true)
@@ -122,7 +121,7 @@ namespace Cypher_Source
                 SaveData = Savefiles.Load(SavName);
                 goto SaveSkip;
             }
-            Text.print(false, "Character name? ");
+            Text.print("Character name? ", false);
             name = Console.ReadLine();
             if (name == "")
             {
@@ -175,7 +174,7 @@ namespace Cypher_Source
                     SavName = "Save" + s.ToString();
                 }
             }
-            Text.print(false, "Getting variables");
+            Text.print("Getting variables", false);
             int Stage = 1;
             SaveData = new string[6];
             SaveData[0] = "name";
@@ -184,9 +183,9 @@ namespace Cypher_Source
             SaveData[3] = "1";
             SaveData[4] = "Version";
             SaveData[5] = version;
-            Text.print(false, "..Creating save");
+            Text.print("..Creating save", false);
             Savefiles.Save(SavName, SaveData);
-            Text.print(false, "..starting");
+            Text.print("..starting", false);
             SaveSkip:
             name = SaveData[1];
             Stage = Int32.Parse(SaveData[3]);
@@ -201,66 +200,66 @@ namespace Cypher_Source
         }
         private static void title_slogan_animation()
         {
-            Text.print(false, "                      ");
-            Text.print(false, "E");
+            Text.print("                      ", false);
+            Text.print("E", false);
             time.sleep(100);
-            Text.print(false, "n");
+            Text.print("n", false);
             time.sleep(100);
-            Text.print(false, "c");
+            Text.print("c", false);
             time.sleep(100);
-            Text.print(false, "r");
+            Text.print("r", false);
             time.sleep(100);
-            Text.print(false, "y");
+            Text.print("y", false);
             time.sleep(100);
-            Text.print(false, "p");
+            Text.print("p", false);
             time.sleep(100);
-            Text.print(false, "t");
+            Text.print("t", false);
             time.sleep(150);
-            Text.print(false, "i");
+            Text.print("i", false);
             time.sleep(200);
-            Text.print(false, "o");
+            Text.print("o", false);
             time.sleep(250);
-            Text.print(false, "n");
+            Text.print("n", false);
             time.sleep(500);
-            Text.print(false, " ");
+            Text.print( " ", false);
             time.sleep(100);
-            Text.print(false, "i");
+            Text.print( "i", false);
             time.sleep(250);
-            Text.print(false, "s");
+            Text.print( "s", false);
             time.sleep(100);
-            Text.print(false, " ");
+            Text.print( " ", false);
             time.sleep(500);
-            Text.print(false, "o");
+            Text.print( "o", false);
             time.sleep(50);
-            Text.print(false, "n");
+            Text.print( "n", false);
             time.sleep(100);
-            Text.print(false, "l");
+            Text.print( "l", false);
             time.sleep(100);
-            Text.print(false, "y");
+            Text.print( "y", false);
             time.sleep(250);
-            Text.print(false, " ");
+            Text.print( " ");
             time.sleep(250);
-            Text.print(false, "a");
+            Text.print( "a");
             time.sleep(500);
-            Text.print(false, " ");
+            Text.print( " ");
             time.sleep(100);
-            Text.print(false, "f");
+            Text.print("f", false);
             time.sleep(100);
-            Text.print(false, "a");
+            Text.print( "a", false);
             time.sleep(100);
-            Text.print(false, "l");
+            Text.print( "l", false);
             time.sleep(250);
-            Text.print(false, "l");
+            Text.print("l", false);
             time.sleep(150);
-            Text.print(false, "a");
+            Text.print("a", false);
             time.sleep(100);
-            Text.print(false, "c");
+            Text.print("c", false);
             time.sleep(100);
-            Text.print(false, "y");
+            Text.print("y", false);
             time.sleep(500);
-            Text.print(false, ".");
+            Text.print(".", false);
             time.sleep(1000);
-            Text.print(true, " ");
+            Text.print(" ");
         }
         private static void tutorial(string SavName)
         {
@@ -280,33 +279,32 @@ namespace Cypher_Source
             });
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Text.type(true, "Imagine you are in 1991.");
-            Text.type(true, "You are an amateur hacker who chose a group named 'Cipher'.");
+            Text.type("Imagine you are in 1991.");
+            Text.type("You are an amateur hacker who chose a group named 'Cipher'.");
             time.sleep(1000);
-            Text.type(true, "Here is your test.");
+            Text.type("Here is your test.");
             Apollo.Text.newline();
-            Text.print(false, "Home/" + name + "> ");
+            Text.print("Home/" + name + "> ", false);
             time.sleep(1000);
-            Text.type(true, "clear");
+            Text.type("clear");
             time.sleep(250);
             Console.Clear();
-            Text.print(false, "Home/" + name + "> ");
+            Text.print( "Home/" + name + "> ", false);
             time.sleep(1000);
-            Text.type(true, "ssh 124.268.1.26");
+            Text.type("ssh 124.268.1.26");
             time.sleep(250);
-            Text.print(true, "Connecting to: " + "'124.268.1.26'");
-            time.sleep(random.Next(0, 10000));
-            Text.print(true, "Connected");
+            Text.print("Connecting to: " + "'124.268.1.26'");
+            time.sleep(5000);
+            Text.print("Connected");
             time.sleep(500);
-            S1Restart:
             Text.newline();
-            Text.print(true, "Message from 124.268.1.26: Welcome to the Cipher test server.");
-            Text.print(true, "This server will give you a series of tests ranging from easy to hard.");
-            Text.print(true, "This will set your skill level so we can send you missons of your'e difficulty.");
-            Text.print(true, "Type 'start' to start the test");
+            Text.print("Message from 124.268.1.26: Welcome to the Cipher test server.");
+            Text.print("This server will give you a series of tests ranging from easy to hard.");
+            Text.print("This will set your skill level so we can send you missons of your'e difficulty.");
+            Text.print("Type 'start' to start the test");
             Text.newline();
             CommandFail:
-            Text.print(false, "Home/" + name + "> ");
+            Text.print( "Home/" + name + "> ", false);
             string Command = Console.ReadLine();
             if (Command == "start")
             {
@@ -320,10 +318,10 @@ namespace Cypher_Source
             {
                 time.sleep(250);
                 Text.newline();
-                Text.print(true, "Current available commands:");
-                Text.print(true, "start");
-                Text.print(true, "help");
-                Text.print(true, "exit");
+                Text.print("Current available commands:");
+                Text.print("start");
+                Text.print("help");
+                Text.print("exit");
                 Text.newline();
                 time.sleep(250);
                 goto CommandFail;
@@ -331,21 +329,21 @@ namespace Cypher_Source
             if (Command == "") { goto CommandFail; }
             else
             {
-                Text.print(true, "Unknown command: '" + Command + "'");
+                Text.print("Unknown command: '" + Command + "'");
                 goto CommandFail;
             }
             Continue:
             GameTimeThread.Start();
             Text.newline();
-            Text.print(true, "Message from 124.268.1.26: The timer has started. We'll start out with simple stuff, then get harder as we go.");
-            Text.print(true, "Fist you need to open your'e cracker. At the moment you only have a simple one but you can buy better & faster ones later.");
+            Text.print("Message from 124.268.1.26: The timer has started. We'll start out with simple stuff, then get harder as we go.");
+            Text.print("Fist you need to open your'e cracker. At the moment you only have a simple one but you can buy better & faster ones later.");
             Text.newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print(true, "Open cracker by trping 'XCrack'");
+            Text.print("Open cracker by trping 'XCrack'");
             Console.ForegroundColor = ConsoleColor.Green;
             Text.newline();
             CommandFail2:
-            Text.print(false, "Home/" + name + "> ");
+            Text.print( "Home/" + name + "> ", false);
             Command = Console.ReadLine();
             if (Command == "XCrack")
             {
@@ -359,45 +357,47 @@ namespace Cypher_Source
             {
                 time.sleep(250);
                 Text.newline();
-                Text.print(true, "Current available commands:");
-                Text.print(true, "Help");
-                Text.print(true, "XCrack");
-                Text.print(true, "restart");
-                Text.print(true, "exit");
+                Text.print("Current available commands:");
+                Text.print("Help");
+                Text.print("XCrack");
+                Text.print("shutdown");
+                Text.print("exit");
                 Text.newline();
                 time.sleep(250);
                 goto CommandFail;
             }
-            if (Command == "restart")
+            if (Command == "shutdown")
             {
-                goto S1Restart;
+                int currentmin = DateTime.Now.Minute + 1;
+                Text.print("Shutdown sheduled for " + DateTime.Now + currentmin);
+                currentmin = 0;
             }
             else
             {
-                Text.print(true, "Unknown command: '" + Command + "'");
+                Text.print("Unknown command: '" + Command + "'");
                 goto CommandFail2;
             }
             Continue2:
             Text.newline();
-            Text.print(true, "XCrack");
-            Text.print(true, "Copyright to MrBitz.");
+            Text.print("XCrack");
+            Text.print("Copyright to MrBitz.");
             Text.newline();
-            Text.print(true, "Connection found, starting automaticly");
+            Text.print("Connection found, starting automaticly");
             Text.newline();
-            Text.print(false, "Crack: [==");
+            Text.print( "Crack: [==", false);
             time.sleep(500);
-            Text.print(false, "================================================");
+            Text.print("================================================", false);
             time.sleep(500);
-            Text.print(true, "==================================================]");
+            Text.print("==================================================]");
             Text.newline();
-            Text.print(true, "Username: admin");
-            Text.print(true, "Password: 123456");
+            Text.print("Username: admin");
+            Text.print("Password: 123456");
             Text.newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print(true, "Type 'login to log in. (obviously)'");
+            Text.print("Type 'login to log in. (obviously)'");
             Console.ForegroundColor = ConsoleColor.Green;
             CommandFail3:
-            Text.print(false, "Home/" + name + "> ");
+            Text.print("Home/" + name + "> ", false);
             Command = Console.ReadLine();
             if (Command == "login")
             {
@@ -411,29 +411,31 @@ namespace Cypher_Source
             {
                 time.sleep(250);
                 Text.newline();
-                Text.print(true, "Current available commands:");
-                Text.print(true, "Help");
-                Text.print(true, "login");
-                Text.print(true, "restart");
-                Text.print(true, "exit");
+                Text.print("Current available commands:");
+                Text.print("Help");
+                Text.print("login");
+                Text.print("shutdown");
+                Text.print("exit");
                 Text.newline();
                 time.sleep(250);
                 goto CommandFail3;
             }
-            if (Command == "restart")
+            if (Command == "shutdown")
             {
-                goto S1Restart;
+                int currentmin = DateTime.Now.Minute + 1;
+                Text.print("Shutdown sheduled for " + DateTime.Now + currentmin);
+                currentmin = 0;
             }
             else
             {
-                Text.print(true, "Unknown command: '" + Command + "'");
+                Text.print("Unknown command: '" + Command + "'");
                 goto CommandFail3;
             }
             Continue3:
             time.sleep(250);
-            Text.print(false, "login as: ");
+            Text.print("login as: ", false);
             string puzz1_username = Console.ReadLine();
-            Text.print(false, "Password for "+puzz1_username+": ");
+            Text.print("Password for "+puzz1_username+": ", false);
             string puzz1_passwd = Console.ReadLine();
             if (puzz1_username == "admin")
             {
@@ -447,19 +449,19 @@ namespace Cypher_Source
             }
             else
             {
-                Text.print(true, "Access denied");
+                Text.print("Access denied");
                 goto CommandFail3;
             }
             puzz1FinalStage:
-            Text.print(true, "Ok, your'e in. The following things should be simple, if you know the basic command line.");
-            Text.print(true, "It is just a simple file transfer.");
+            Text.print("Ok, your'e in. The following things should be simple, if you know the basic command line.");
+            Text.print("It is just a simple file transfer.");
             Text.newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print(true, "Type 'dir', then open 'File downloader' by typing 'FDownload'");
+            Text.print("Type 'dir', then open 'File downloader' by typing 'FDownload'");
             Console.ForegroundColor = ConsoleColor.Green;
             Text.newline();
             CommandFail4:
-            Text.print(false, "root/admin/"+"> ");
+            Text.print("root/admin/"+"> ", false);
             Command = Console.ReadLine();
             if (Command == "FDownload")
             {
@@ -468,9 +470,9 @@ namespace Cypher_Source
             if (Command == "dir")
             {
                 Text.newline();
-                Text.print(true, "Direcory listing of root/admin");
+                Text.print("Direcory listing of root/admin");
                 Text.newline();
-                Text.print(true, "TestInfo.txt");
+                Text.print("TestInfo.txt");
                 Text.newline();
                 goto CommandFail4;
             }
@@ -482,69 +484,71 @@ namespace Cypher_Source
             {
                 time.sleep(250);
                 Text.newline();
-                Text.print(true, "Current available commands:");
-                Text.print(true, "Help");
-                Text.print(true, "dir");
-                Text.print(true, "FDownload");
-                Text.print(true, "restart");
-                Text.print(true, "exit");
+                Text.print("Current available commands:");
+                Text.print("Help");
+                Text.print("dir");
+                Text.print("FDownload");
+                Text.print("shutdown");
+                Text.print("exit");
                 Text.newline();
                 time.sleep(250);
                 goto CommandFail3;
             }
-            if (Command == "restart")
+            if (Command == "shutdown")
             {
-                goto S1Restart;
+                int currentmin = DateTime.Now.Minute + 1;
+                Text.print("Shutdown sheduled for " + DateTime.Now + currentmin);
+                currentmin = 0;
             }
             else
             {
-                Text.print(true, "Unknown command: '" + Command + "'");
+                Text.print("Unknown command: '" + Command + "'");
                 goto CommandFail4;
             }
             Continue4:
-            Text.print(true, "File Download (FDOownload)    Copyright to SampleName.");
+            Text.print("File Download (FDOownload)    Copyright to SampleName.");
             FileNotFound:
             Text.newline();
-            Text.print(false, "File to download:");
+            Text.print("File to download:", false);
             string FTD = Console.ReadLine();
             if (FTD == "TestInfo.txt")
             {
-                Text.print(false, "Downloading file " + FTD);
+                Text.print("Downloading file " + FTD, false);
                 for (var i = 0; i <= 3; i++)
                 {
                     time.sleep(250);
-                    Text.print(false, ".");
+                    Text.print(".", false);
                 }
                 Text.newline();
-                Text.print(true, "File downloaded!");
+                Text.print("File downloaded!");
             }
-            if (FTD == "Testinfo")
+            if (FTD == "TestInfo")
             {
-                Text.print(true, "Looking for file '" + FTD + "...");
+                Text.print("Looking for file '" + FTD + "...");
                 time.sleep(100);
-                Text.print(true, "Found file: 'TestInfo.txt'.");
+                Text.print("Found file: 'TestInfo.txt'.");
                 time.sleep(50);
-                Text.print(false, "Downloading file " + FTD + ".txt");
+                Text.print("Downloading file " + FTD + ".txt", false);
                 for (var i = 0; i <= 3; i++)
                 {
                     time.sleep(250);
-                    Text.print(false, ".");
+                    Text.print(".", false);
                 }
                 Text.newline();
-                Text.print(true, "File downloaded!");
+                Text.print("File downloaded!");
             }
             else
             {
-                Text.print(true, "Error: File not found.");
+                Text.print("Error: File not found.");
                 goto FileNotFound;
             }
             Text.newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print(true, "Type exit disconnect & finish your task");
+            Text.print("Type exit disconnect & finish your task");
             Console.ForegroundColor = ConsoleColor.Green;
             CommandFail5:
             Text.newline();
-            Text.print(false, "Root/admin/" + ">");
+            Text.print("Root/admin/" + ">", false);
             Command = Console.ReadLine();
             if (Command == "exit")
             {
@@ -553,32 +557,58 @@ namespace Cypher_Source
             else if (Command == "help")
             {
                 Text.newline();
-                Text.print(true, "Current available commands:");
-                Text.print(true, "help");
-                Text.print(true, "exit");
+                Text.print("Current available commands:");
+                Text.print("help");
+                Text.print("exit");
                 goto CommandFail5;
             }
             else
             {
                 Text.newline();
-                Text.print(true, "Unknown command: '" + Command + "'");
+                Text.print("Unknown command: '" + Command + "'");
                 goto CommandFail5;
             }
             Continue5:
             Text.newline();
             time.sleep(250);
-            Text.print(true, "Disconnecting from: '124.268.1.26' ");
-            Text.print(true, "Disconnected.");
+            Text.print("Disconnecting from: '124.268.1.26' ");
+            Text.print("Disconnected.");
             EndingCommandReset:
-            Text.print(false, "home/" + name + "/");
+            Text.print("home/" + name + "/", false);
             Command = Console.ReadLine();
             Command = Command.ToLower();
             if (Command == "help")
             {
-                Text.print(true, "Help - Provides help on a spesific command.");
-                Text.print(true, "Nano - Basic text editor, allows documents to be veiwed and edited.");
+                Text.print("Help - Provides help on a spesific command.");
+                Text.print("ssh - Connects to another computer via secure shell");
                 goto EndingCommandReset;
 
+            }
+            if (Command.Length >= 3)
+            {
+                if (Command.Substring(0, 3) == "ssh")
+                {
+                    if (Command.Length >= 4)
+                    {
+                        if (Command.Substring(4) == "*")
+                        {
+                            Text.print("All know connections:");
+                            Text.print("124.268.1.26 - Cipher test server");
+                            Text.print("124.268.1.25 - Cipher internal server");
+                            Text.print("124.268.1.50 - Cipher drop server");
+                        }
+                    }
+                    else
+                    {
+                        Text.print("usage: ssh username@address");
+                        goto EndingCommandReset;
+                    }
+                }
+            }
+            else
+            {
+                Text.print("Unknown command: " + Command);
+                goto EndingCommandReset;
             }
 
         }

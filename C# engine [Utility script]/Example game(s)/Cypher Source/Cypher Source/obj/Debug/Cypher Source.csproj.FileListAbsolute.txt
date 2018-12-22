@@ -20,3 +20,7 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example 
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.application
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.exe
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.pdb
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example game(s)\Cypher Source\Cypher Source\bin\Debug\AutoUpdater.NET.dll
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example game(s)\Cypher Source\Cypher Source\bin\Debug\AutoUpdater.NET.pdb
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example game(s)\Cypher Source\Cypher Source\bin\Debug\AutoUpdater.NET.xml
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Example game(s)\Cypher Source\Cypher Source\obj\Debug\Cypher Source.csproj.CopyComplete

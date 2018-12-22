@@ -9,9 +9,17 @@ using System.Drawing;
 
 namespace Apollo
 {
+    /// <summary>
+    /// Aany console output funcions (Eg: printing text)
+    /// </summary>
     class Text
     {
-        public static void print(bool newline, string text)
+        /// <summary>
+        /// Prints the passed text to the console
+        /// </summary>
+        /// <param name="newline"></param>
+        /// <param name="text"></param>
+        public static void print(string text, bool newline = true)
         {
             if (newline == true)
             {
@@ -22,7 +30,12 @@ namespace Apollo
                 Console.Write(text);
             }
         }
-        public static void type(bool newline, string text)
+        /// <summary>
+        /// Simulates typing on a keyboard
+        /// </summary>
+        /// <param name="newline"></param>
+        /// <param name="text"></param>
+        public static void type(string text, bool newline = true)
         {
             bool newlineenabled = false;
             if (newline == true)
@@ -43,7 +56,12 @@ namespace Apollo
                 Console.WriteLine("");
             }
         }
-        public static void typefast(bool newline, string text)
+        /// <summary>
+        /// A fast variation of Text.type
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="newline"></param>
+        public static void typefast(string text, bool newline)
         {
             if (newline == true)
             {
@@ -55,13 +73,22 @@ namespace Apollo
                 Console.Write(text.Substring(i, 1));
             }
         }
+        /// <summary>
+        /// Prints a new line
+        /// </summary>
         public static void newline()
         {
             Console.WriteLine("");
         }
     }
+    /// <summary>
+    /// Anything to do with time based funtions
+    /// </summary>
     class time
     {
+        ///<summary>
+        /// Waits for the ammount of time in ms
+        /// </summary>
         public static void sleep(int time)
         {
             Thread.Sleep(time);

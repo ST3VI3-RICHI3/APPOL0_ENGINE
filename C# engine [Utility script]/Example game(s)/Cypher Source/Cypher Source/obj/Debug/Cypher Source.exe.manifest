@@ -42,14 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cypher Source.exe" size="21416">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoUpdater.NET.dll" size="388096">
+      <assemblyIdentity name="AutoUpdater.NET" version="1.4.11.0" publicKeyToken="501435C91B35F4BC" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>FCC1Gf6SdrsGbukOpsrNfZrxi2yGDSFzMa36pVeWKaM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cypher Source.exe" size="22440">
       <assemblyIdentity name="Cypher Source" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qEgxBB76jmsAyqDMy6vnVDDZcbqs30kdXPM9liIBINE=</dsig:DigestValue>
+        <dsig:DigestValue>1I3aWijdLit5znQ2p1Fg8uBEHITJfBJ+GSoRrgT0RNI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
