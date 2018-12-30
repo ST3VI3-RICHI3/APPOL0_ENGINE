@@ -27,13 +27,13 @@ namespace Cypher_Source
         static void Main(string[] args)
         {
             string version = "0.1.5.0";
-            var random = Apollo.utility.random;
+            var random = Apollo.Utility.random;
             Console.WriteLine("Check for updates...");
             AutoUpdater.Start("https://st3.zapto.org/apoll0/games/cipher%20source/update.xml");
             Console.WriteLine("APOLL0 text test.");
             try
             {
-                Text.print("Hello World");
+                Text.Print("Hello World");
                 Console.WriteLine("Test successful!");
             }
             catch
@@ -42,7 +42,7 @@ namespace Cypher_Source
                 Thread.Sleep(5000);
                 Environment.Exit(-1);
             }
-            Text.print("Loading recourses");
+            Text.Print("Loading recourses");
             bool PizzaEE = false;
             System.Media.SoundPlayer pizzatime = null;
             for (var i = 0; i < args.Length; i++)
@@ -54,13 +54,10 @@ namespace Cypher_Source
                 }
                 if (args[i] == "-save_Test")
                 {
-                    SaveData = new string[6];
-                    SaveData[0] = "name";
-                    SaveData[1] = "EGName";
-                    SaveData[2] = "Stage";
-                    SaveData[3] = "1";
-                    SaveData[4] = "Version";
-                    SaveData[5] = version;
+                    SaveData = new string[3];
+                    SaveData[0] = "name=EgName";
+                    SaveData[1] = "Stage=0";
+                    SaveData[2] = "Version=" + version;
                     Savefiles.Save("Test", SaveData);
                     Environment.Exit(0);
                 }
@@ -79,49 +76,65 @@ namespace Cypher_Source
                 }
             }
             Console.Clear();
-            Text.print("Generic BIOS copyright 1987.");
-            Text.print("");
-            Text.print("Running RAM check...");
-            time.sleep(1200);
-            Text.print("4GB detected");
+            Text.Print("Generic BIOS copyright 1987.");
+            Text.Print("");
+            Text.Print("Running RAM check...");
+            Time.Sleep(1200);
+            Text.Print("4GB detected");
             Console.Clear();
             Console.Beep();
-            Text.print("Boot from CD/DVD");
-            time.sleep(250);
-            Text.print("Boot from USB");
-            time.sleep(100);
-            Text.print("boot from HDD", false);
-            time.sleep(150);
+            Text.Print("Boot from CD/DVD");
+            Time.Sleep(250);
+            Text.Print("Boot from USB");
+            Time.Sleep(100);
+            Text.Print("boot from HDD", false);
+            Time.Sleep(150);
             Console.Clear();
-            Text.print("Loading operating system", false);
-            time.sleep(2500);
+            Text.Print("Loading operating system", false);
+            Time.Sleep(2500);
             Console.Clear();
-            utility.title("Cipher Source");
-            Text.print("8\"\"\"\"8                               8\"\"\"\"8                        ");
-            Text.print("8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
-            Text.print("8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
-            Text.print("88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
-            Text.print("88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
-            Text.print("88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
-            Text.print(" ");
-            title_slogan_animation();
-            Text.print(" ");
+            Utility.Title("Cipher Source");
+            Text.Print("8\"\"\"\"8                               8\"\"\"\"8                        ");
+            Text.Print("8    \" e  eeeee e   e eeee eeeee     8      eeeee e   e eeeee  eeee eeee  ");
+            Text.Print("8e     8  8   8 8   8 8    8   8     8eeeee 8  88 8   8 8   8  8  8 8      ");
+            Text.Print("88     8e 8eee8 8eee8 8eee 8eee8e        88 8   8 8e  8 8eee8e 8e   8eee   ");
+            Text.Print("88   e 88 88    88  8 88   88   8    e   88 8   8 88  8 88   8 88   88     ");
+            Text.Print("88eee8 88 88    88  8 88ee 88   8    8eee88 8eee8 88ee8 88   8 88e8 88ee   ");
+            Text.Print(" ");
+            Title_slogan_animation();
+            Text.Print(" ");
             NoVid:
-            Text.typefast("press any key to play.", false);
+            Text.Typefast("press any key to play.", false);
             Console.ReadKey(true);
             Console.Clear();
-            Text.print("Encryption is a fallacy.");
-            time.sleep(100);
+            Text.Print("Encryption is a fallacy.");
+            Time.Sleep(100);
             Console.Clear();
-            Text.print("Save name? ", false);
+            Text.Print("Save name? ", false);
             string SavName = Console.ReadLine();
             string name;
             if (File.Exists(SavName + ".svp") == true)
             {
                 SaveData = Savefiles.Load(SavName);
-                goto SaveSkip;
+                if (SaveData.Length < 3)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Text.Print("Fatal error:                                                                            ");
+                    Text.Print("             Load of save data was succsessful but returned the incorrect array size    ");
+                    Text.Print("--------------------------------------End of Error--------------------------------------");
+                    Time.Sleep(10*1000);
+                    Environment.Exit(-1);
+                }
+                if (version != (SaveData[2]))
+                {
+                    Text.Print("Save outdated, please create a new save.");
+                }
+                else
+                {
+                    goto SaveSkip;
+                }
             }
-            Text.print("Character name? ", false);
+            Text.Print("Character name? ", false);
             name = Console.ReadLine();
             if (name == "")
             {
@@ -162,6 +175,14 @@ namespace Cypher_Source
                 {
                     name = "Katie";
                 }
+                if (RNGName == 9)
+                {
+                    name = "kathryn";
+                }
+                if (RNGName == 10)
+                {
+                    name = "Lisa";
+                }
             }
 
             if (SavName == "")
@@ -174,98 +195,96 @@ namespace Cypher_Source
                     SavName = "Save" + s.ToString();
                 }
             }
-            Text.print("Getting variables", false);
+            Text.Print("Getting variables", false);
             int Stage = 1;
-            SaveData = new string[6];
-            SaveData[0] = "name";
-            SaveData[1] = "EGName";
-            SaveData[2] = "Stage";
-            SaveData[3] = "1";
-            SaveData[4] = "Version";
-            SaveData[5] = version;
-            Text.print("..Creating save", false);
+            SaveData = new string[3];
+            SaveData[0] = "name=" + name;
+            SaveData[1] = "stage=" + Stage;
+            SaveData[2] = "version=" + version;
+            Text.Print("..Creating save", false);
             Savefiles.Save(SavName, SaveData);
-            Text.print("..starting", false);
+            Text.Print("..starting", false);
             SaveSkip:
-            name = SaveData[1];
-            Stage = Int32.Parse(SaveData[3]);
+            name = SaveData[0];
+            Stage = int.Parse(SaveData[1]);
             if (PizzaEE == true)
             {
                 pizzatime.PlayLooping();
             }
-            if (Stage == 1)
+            if (Stage == 0)
             {
-                tutorial(SavName);
+                Tutorial(SavName);
             }
+
         }
-        private static void title_slogan_animation()
+        private static void Title_slogan_animation()
         {
-            Text.print("                      ", false);
-            Text.print("E", false);
-            time.sleep(100);
-            Text.print("n", false);
-            time.sleep(100);
-            Text.print("c", false);
-            time.sleep(100);
-            Text.print("r", false);
-            time.sleep(100);
-            Text.print("y", false);
-            time.sleep(100);
-            Text.print("p", false);
-            time.sleep(100);
-            Text.print("t", false);
-            time.sleep(150);
-            Text.print("i", false);
-            time.sleep(200);
-            Text.print("o", false);
-            time.sleep(250);
-            Text.print("n", false);
-            time.sleep(500);
-            Text.print( " ", false);
-            time.sleep(100);
-            Text.print( "i", false);
-            time.sleep(250);
-            Text.print( "s", false);
-            time.sleep(100);
-            Text.print( " ", false);
-            time.sleep(500);
-            Text.print( "o", false);
-            time.sleep(50);
-            Text.print( "n", false);
-            time.sleep(100);
-            Text.print( "l", false);
-            time.sleep(100);
-            Text.print( "y", false);
-            time.sleep(250);
-            Text.print( " ");
-            time.sleep(250);
-            Text.print( "a");
-            time.sleep(500);
-            Text.print( " ");
-            time.sleep(100);
-            Text.print("f", false);
-            time.sleep(100);
-            Text.print( "a", false);
-            time.sleep(100);
-            Text.print( "l", false);
-            time.sleep(250);
-            Text.print("l", false);
-            time.sleep(150);
-            Text.print("a", false);
-            time.sleep(100);
-            Text.print("c", false);
-            time.sleep(100);
-            Text.print("y", false);
-            time.sleep(500);
-            Text.print(".", false);
-            time.sleep(1000);
-            Text.print(" ");
+            Text.Print("                      ", false);
+            Text.Print("E", false);
+            Time.Sleep(100);
+            Text.Print("n", false);
+            Time.Sleep(100);
+            Text.Print("c", false);
+            Time.Sleep(100);
+            Text.Print("r", false);
+            Time.Sleep(100);
+            Text.Print("y", false);
+            Time.Sleep(100);
+            Text.Print("p", false);
+            Time.Sleep(100);
+            Text.Print("t", false);
+            Time.Sleep(150);
+            Text.Print("i", false);
+            Time.Sleep(200);
+            Text.Print("o", false);
+            Time.Sleep(250);
+            Text.Print("n", false);
+            Time.Sleep(500);
+            Text.Print( " ", false);
+            Time.Sleep(100);
+            Text.Print( "i", false);
+            Time.Sleep(250);
+            Text.Print( "s", false);
+            Time.Sleep(100);
+            Text.Print( " ", false);
+            Time.Sleep(500);
+            Text.Print( "o", false);
+            Time.Sleep(50);
+            Text.Print( "n", false);
+            Time.Sleep(100);
+            Text.Print( "l", false);
+            Time.Sleep(100);
+            Text.Print( "y", false);
+            Time.Sleep(250);
+            Text.Print( " ", false);
+            Time.Sleep(250);
+            Text.Print( "a", false);
+            Time.Sleep(500);
+            Text.Print( " ", false);
+            Time.Sleep(100);
+            Text.Print("f", false);
+            Time.Sleep(100);
+            Text.Print( "a", false);
+            Time.Sleep(100);
+            Text.Print( "l", false);
+            Time.Sleep(250);
+            Text.Print("l", false);
+            Time.Sleep(150);
+            Text.Print("a", false);
+            Time.Sleep(100);
+            Text.Print("c", false);
+            Time.Sleep(100);
+            Text.Print("y", false);
+            Time.Sleep(500);
+            Text.Print(".", false);
+            Time.Sleep(1000);
+            Text.Print(" ");
         }
-        private static void tutorial(string SavName)
+        private static void Tutorial(string SavName)
         {
-            var random = Apollo.utility.random;
+            var random = Apollo.Utility.random;
             string[] SaveData = Savefiles.Load(SavName);
-            string name = SaveData[1];
+            string name = SaveData[0];
             //string difficulty = SaveData[7];
             int gametime = 0; //how long it has been in seconds since timer starts
             bool timerenabled = true;
@@ -274,37 +293,37 @@ namespace Cypher_Source
                 while (timerenabled == true)
                 {
                     gametime = gametime + 1;
-                    time.sleep(1000);
+                    Time.Sleep(1000);
                 }
             });
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Text.type("Imagine you are in 1991.");
-            Text.type("You are an amateur hacker who chose a group named 'Cipher'.");
-            time.sleep(1000);
-            Text.type("Here is your test.");
-            Apollo.Text.newline();
-            Text.print("Home/" + name + "> ", false);
-            time.sleep(1000);
-            Text.type("clear");
-            time.sleep(250);
+            Text.Type("Imagine you are in 1991.");
+            Text.Type("You are an amateur hacker who chose a group named 'Cipher'.");
+            Time.Sleep(1000);
+            Text.Type("Here is your test.");
+            Apollo.Text.Newline();
+            Text.Print("Home/" + name + "> ", false);
+            Time.Sleep(1000);
+            Text.Type("clear");
+            Time.Sleep(250);
             Console.Clear();
-            Text.print( "Home/" + name + "> ", false);
-            time.sleep(1000);
-            Text.type("ssh 124.268.1.26");
-            time.sleep(250);
-            Text.print("Connecting to: " + "'124.268.1.26'");
-            time.sleep(5000);
-            Text.print("Connected");
-            time.sleep(500);
-            Text.newline();
-            Text.print("Message from 124.268.1.26: Welcome to the Cipher test server.");
-            Text.print("This server will give you a series of tests ranging from easy to hard.");
-            Text.print("This will set your skill level so we can send you missons of your'e difficulty.");
-            Text.print("Type 'start' to start the test");
-            Text.newline();
+            Text.Print( "Home/" + name + "> ", false);
+            Time.Sleep(1000);
+            Text.Type("ssh 124.268.1.26");
+            Time.Sleep(250);
+            Text.Print("Connecting to: " + "'124.268.1.26'");
+            Time.Sleep(5000);
+            Text.Print("Connected");
+            Time.Sleep(500);
+            Text.Newline();
+            Text.Print("Message from 124.268.1.26: Welcome to the Cipher test server.");
+            Text.Print("This server will give you a series of tests ranging from easy to hard.");
+            Text.Print("This will set your skill level so we can send you missons of your'e difficulty.");
+            Text.Print("Type 'start' to start the test");
+            Text.Newline();
             CommandFail:
-            Text.print( "Home/" + name + "> ", false);
+            Text.Print( "Home/" + name + "> ", false);
             string Command = Console.ReadLine();
             if (Command == "start")
             {
@@ -316,34 +335,34 @@ namespace Cypher_Source
             }
             if (Command == "help")
             {
-                time.sleep(250);
-                Text.newline();
-                Text.print("Current available commands:");
-                Text.print("start");
-                Text.print("help");
-                Text.print("exit");
-                Text.newline();
-                time.sleep(250);
+                Time.Sleep(250);
+                Text.Newline();
+                Text.Print("Current available commands:");
+                Text.Print("start");
+                Text.Print("help");
+                Text.Print("exit");
+                Text.Newline();
+                Time.Sleep(250);
                 goto CommandFail;
             }
             if (Command == "") { goto CommandFail; }
             else
             {
-                Text.print("Unknown command: '" + Command + "'");
+                Text.Print("Unknown command: '" + Command + "'");
                 goto CommandFail;
             }
             Continue:
             GameTimeThread.Start();
-            Text.newline();
-            Text.print("Message from 124.268.1.26: The timer has started. We'll start out with simple stuff, then get harder as we go.");
-            Text.print("Fist you need to open your'e cracker. At the moment you only have a simple one but you can buy better & faster ones later.");
-            Text.newline();
+            Text.Newline();
+            Text.Print("Message from 124.268.1.26: The timer has started. We'll start out with simple stuff, then get harder as we go.");
+            Text.Print("Fist you need to open your'e cracker. At the moment you only have a simple one but you can buy better & faster ones later.");
+            Text.Newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print("Open cracker by trping 'XCrack'");
+            Text.Print("Open cracker by trping 'XCrack'");
             Console.ForegroundColor = ConsoleColor.Green;
-            Text.newline();
+            Text.Newline();
             CommandFail2:
-            Text.print( "Home/" + name + "> ", false);
+            Text.Print( "Home/" + name + "> ", false);
             Command = Console.ReadLine();
             if (Command == "XCrack")
             {
@@ -355,49 +374,49 @@ namespace Cypher_Source
             }
             if (Command == "help")
             {
-                time.sleep(250);
-                Text.newline();
-                Text.print("Current available commands:");
-                Text.print("Help");
-                Text.print("XCrack");
-                Text.print("shutdown");
-                Text.print("exit");
-                Text.newline();
-                time.sleep(250);
+                Time.Sleep(250);
+                Text.Newline();
+                Text.Print("Current available commands:");
+                Text.Print("Help");
+                Text.Print("XCrack");
+                Text.Print("shutdown");
+                Text.Print("exit");
+                Text.Newline();
+                Time.Sleep(250);
                 goto CommandFail;
             }
             if (Command == "shutdown")
             {
                 int currentmin = DateTime.Now.Minute + 1;
-                Text.print("Shutdown sheduled for " + DateTime.Now + currentmin);
+                Text.Print("Shutdown sheduled for " + DateTime.Now + currentmin);
                 currentmin = 0;
             }
             else
             {
-                Text.print("Unknown command: '" + Command + "'");
+                Text.Print("Unknown command: '" + Command + "'");
                 goto CommandFail2;
             }
             Continue2:
-            Text.newline();
-            Text.print("XCrack");
-            Text.print("Copyright to MrBitz.");
-            Text.newline();
-            Text.print("Connection found, starting automaticly");
-            Text.newline();
-            Text.print( "Crack: [==", false);
-            time.sleep(500);
-            Text.print("================================================", false);
-            time.sleep(500);
-            Text.print("==================================================]");
-            Text.newline();
-            Text.print("Username: admin");
-            Text.print("Password: 123456");
-            Text.newline();
+            Text.Newline();
+            Text.Print("XCrack");
+            Text.Print("Copyright to MrBitz.");
+            Text.Newline();
+            Text.Print("Connection found, starting automaticly");
+            Text.Newline();
+            Text.Print( "Crack: [==", false);
+            Time.Sleep(500);
+            Text.Print("================================================", false);
+            Time.Sleep(500);
+            Text.Print("==================================================]");
+            Text.Newline();
+            Text.Print("Username: admin");
+            Text.Print("Password: 123456");
+            Text.Newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print("Type 'login to log in. (obviously)'");
+            Text.Print("Type 'login to log in. (obviously)'");
             Console.ForegroundColor = ConsoleColor.Green;
             CommandFail3:
-            Text.print("Home/" + name + "> ", false);
+            Text.Print("Home/" + name + "> ", false);
             Command = Console.ReadLine();
             if (Command == "login")
             {
@@ -409,33 +428,33 @@ namespace Cypher_Source
             }
             if (Command == "help")
             {
-                time.sleep(250);
-                Text.newline();
-                Text.print("Current available commands:");
-                Text.print("Help");
-                Text.print("login");
-                Text.print("shutdown");
-                Text.print("exit");
-                Text.newline();
-                time.sleep(250);
+                Time.Sleep(250);
+                Text.Newline();
+                Text.Print("Current available commands:");
+                Text.Print("Help");
+                Text.Print("login");
+                Text.Print("shutdown");
+                Text.Print("exit");
+                Text.Newline();
+                Time.Sleep(250);
                 goto CommandFail3;
             }
             if (Command == "shutdown")
             {
                 int currentmin = DateTime.Now.Minute + 1;
-                Text.print("Shutdown sheduled for " + DateTime.Now + currentmin);
+                Text.Print("Shutdown sheduled for " + DateTime.Now + currentmin);
                 currentmin = 0;
             }
             else
             {
-                Text.print("Unknown command: '" + Command + "'");
+                Text.Print("Unknown command: '" + Command + "'");
                 goto CommandFail3;
             }
             Continue3:
-            time.sleep(250);
-            Text.print("login as: ", false);
+            Time.Sleep(250);
+            Text.Print("login as: ", false);
             string puzz1_username = Console.ReadLine();
-            Text.print("Password for "+puzz1_username+": ", false);
+            Text.Print("Password for "+puzz1_username+": ", false);
             string puzz1_passwd = Console.ReadLine();
             if (puzz1_username == "admin")
             {
@@ -449,19 +468,19 @@ namespace Cypher_Source
             }
             else
             {
-                Text.print("Access denied");
+                Text.Print("Access denied");
                 goto CommandFail3;
             }
             puzz1FinalStage:
-            Text.print("Ok, your'e in. The following things should be simple, if you know the basic command line.");
-            Text.print("It is just a simple file transfer.");
-            Text.newline();
+            Text.Print("Ok, your'e in. The following things should be simple, if you know the basic command line.");
+            Text.Print("It is just a simple file transfer.");
+            Text.Newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print("Type 'dir', then open 'File downloader' by typing 'FDownload'");
+            Text.Print("Type 'dir', then open 'File downloader' by typing 'FDownload'");
             Console.ForegroundColor = ConsoleColor.Green;
-            Text.newline();
+            Text.Newline();
             CommandFail4:
-            Text.print("root/admin/"+"> ", false);
+            Text.Print("root/admin/"+"> ", false);
             Command = Console.ReadLine();
             if (Command == "FDownload")
             {
@@ -469,11 +488,11 @@ namespace Cypher_Source
             }
             if (Command == "dir")
             {
-                Text.newline();
-                Text.print("Direcory listing of root/admin");
-                Text.newline();
-                Text.print("TestInfo.txt");
-                Text.newline();
+                Text.Newline();
+                Text.Print("Direcory listing of root/admin");
+                Text.Newline();
+                Text.Print("TestInfo.txt");
+                Text.Newline();
                 goto CommandFail4;
             }
             if (Command == "exit")
@@ -482,73 +501,73 @@ namespace Cypher_Source
             }
             if (Command == "help")
             {
-                time.sleep(250);
-                Text.newline();
-                Text.print("Current available commands:");
-                Text.print("Help");
-                Text.print("dir");
-                Text.print("FDownload");
-                Text.print("shutdown");
-                Text.print("exit");
-                Text.newline();
-                time.sleep(250);
+                Time.Sleep(250);
+                Text.Newline();
+                Text.Print("Current available commands:");
+                Text.Print("Help");
+                Text.Print("dir");
+                Text.Print("FDownload");
+                Text.Print("shutdown");
+                Text.Print("exit");
+                Text.Newline();
+                Time.Sleep(250);
                 goto CommandFail3;
             }
             if (Command == "shutdown")
             {
                 int currentmin = DateTime.Now.Minute + 1;
-                Text.print("Shutdown sheduled for " + DateTime.Now + currentmin);
+                Text.Print("Shutdown sheduled for " + DateTime.Now + currentmin);
                 currentmin = 0;
             }
             else
             {
-                Text.print("Unknown command: '" + Command + "'");
+                Text.Print("Unknown command: '" + Command + "'");
                 goto CommandFail4;
             }
             Continue4:
-            Text.print("File Download (FDOownload)    Copyright to SampleName.");
+            Text.Print("File Download (FDOownload)    Copyright to SampleName.");
             FileNotFound:
-            Text.newline();
-            Text.print("File to download:", false);
+            Text.Newline();
+            Text.Print("File to download:", false);
             string FTD = Console.ReadLine();
             if (FTD == "TestInfo.txt")
             {
-                Text.print("Downloading file " + FTD, false);
+                Text.Print("Downloading file " + FTD, false);
                 for (var i = 0; i <= 3; i++)
                 {
-                    time.sleep(250);
-                    Text.print(".", false);
+                    Time.Sleep(250);
+                    Text.Print(".", false);
                 }
-                Text.newline();
-                Text.print("File downloaded!");
+                Text.Newline();
+                Text.Print("File downloaded!");
             }
             if (FTD == "TestInfo")
             {
-                Text.print("Looking for file '" + FTD + "...");
-                time.sleep(100);
-                Text.print("Found file: 'TestInfo.txt'.");
-                time.sleep(50);
-                Text.print("Downloading file " + FTD + ".txt", false);
+                Text.Print("Looking for file '" + FTD + "...");
+                Time.Sleep(100);
+                Text.Print("Found file: 'TestInfo.txt'.");
+                Time.Sleep(50);
+                Text.Print("Downloading file " + FTD + ".txt", false);
                 for (var i = 0; i <= 3; i++)
                 {
-                    time.sleep(250);
-                    Text.print(".", false);
+                    Time.Sleep(250);
+                    Text.Print(".", false);
                 }
-                Text.newline();
-                Text.print("File downloaded!");
+                Text.Newline();
+                Text.Print("File downloaded!");
             }
             else
             {
-                Text.print("Error: File not found.");
+                Text.Print("Error: File not found.");
                 goto FileNotFound;
             }
-            Text.newline();
+            Text.Newline();
             Console.ForegroundColor = ConsoleColor.Blue;
-            Text.print("Type exit disconnect & finish your task");
+            Text.Print("Type exit disconnect & finish your task");
             Console.ForegroundColor = ConsoleColor.Green;
             CommandFail5:
-            Text.newline();
-            Text.print("Root/admin/" + ">", false);
+            Text.Newline();
+            Text.Print("Root/admin/" + ">", false);
             Command = Console.ReadLine();
             if (Command == "exit")
             {
@@ -556,31 +575,31 @@ namespace Cypher_Source
             }
             else if (Command == "help")
             {
-                Text.newline();
-                Text.print("Current available commands:");
-                Text.print("help");
-                Text.print("exit");
+                Text.Newline();
+                Text.Print("Current available commands:");
+                Text.Print("help");
+                Text.Print("exit");
                 goto CommandFail5;
             }
             else
             {
-                Text.newline();
-                Text.print("Unknown command: '" + Command + "'");
+                Text.Newline();
+                Text.Print("Unknown command: '" + Command + "'");
                 goto CommandFail5;
             }
             Continue5:
-            Text.newline();
-            time.sleep(250);
-            Text.print("Disconnecting from: '124.268.1.26' ");
-            Text.print("Disconnected.");
+            Text.Newline();
+            Time.Sleep(250);
+            Text.Print("Disconnecting from: '124.268.1.26' ");
+            Text.Print("Disconnected.");
             EndingCommandReset:
-            Text.print("home/" + name + "/", false);
+            Text.Print("home/" + name + "/", false);
             Command = Console.ReadLine();
             Command = Command.ToLower();
             if (Command == "help")
             {
-                Text.print("Help - Provides help on a spesific command.");
-                Text.print("ssh - Connects to another computer via secure shell");
+                Text.Print("Help - Provides help on a spesific command.");
+                Text.Print("ssh - Connects to another computer via secure shell");
                 goto EndingCommandReset;
 
             }
@@ -592,22 +611,26 @@ namespace Cypher_Source
                     {
                         if (Command.Substring(4) == "*")
                         {
-                            Text.print("All know connections:");
-                            Text.print("124.268.1.26 - Cipher test server");
-                            Text.print("124.268.1.25 - Cipher internal server");
-                            Text.print("124.268.1.50 - Cipher drop server");
+                            Text.Print("All know connections:");
+                            Text.Print("124.268.1.26 - Cipher test server");
+                            Text.Print("124.268.1.25 - Cipher internal server");
+                            Text.Print("124.268.1.50 - Cipher drop server");
                         }
                     }
                     else
                     {
-                        Text.print("usage: ssh username@address");
+                        Text.Print("usage: ssh username@address");
                         goto EndingCommandReset;
                     }
                 }
             }
+            if (Command == "exit")
+            {
+                Environment.Exit(0);
+            }
             else
             {
-                Text.print("Unknown command: " + Command);
+                Text.Print("Unknown command: " + Command);
                 goto EndingCommandReset;
             }
 

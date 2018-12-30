@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cypher Source.exe" size="22440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cypher Source.exe" size="23976">
       <assemblyIdentity name="Cypher Source" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1I3aWijdLit5znQ2p1Fg8uBEHITJfBJ+GSoRrgT0RNI=</dsig:DigestValue>
+        <dsig:DigestValue>El/0dTuqLflN7wAEsRaTmSv0DHh/EL1+3iYgpo8N0DI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
