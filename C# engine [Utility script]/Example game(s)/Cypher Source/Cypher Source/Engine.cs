@@ -209,7 +209,8 @@ namespace Apollo
     {
         public static string[] Load(string file)
         {
-            throw new NotImplementedException;
+            throw new NotImplementedException();
+            string filetoload = file;
         }
     }
     class Savefiles
