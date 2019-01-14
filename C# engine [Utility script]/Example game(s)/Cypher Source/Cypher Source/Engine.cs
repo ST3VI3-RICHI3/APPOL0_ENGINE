@@ -207,10 +207,17 @@ namespace Apollo
     }
     class Files
     {
-        public static string[] Load(string file)
+        public static string[] Read(string file)
         {
-            throw new NotImplementedException();
             string filetoload = file;
+            StreamReader reader = new StreamReader(file);
+            string[] Data = new string[File.ReadAllLines(filetoload).Length];
+            int i = 0;
+            while (i != Data.Length)
+            {
+                Data[i] = reader.ReadLine();
+            }
+            return Data;
         }
     }
     class Savefiles
@@ -376,6 +383,14 @@ namespace Apollo
                 }
                 i = 0;
                 int o = 0;
+                int O_Origonal = 0;
+                buffer = " ";
+                while (buffer == " ")
+                {
+                    buffer = data[i].ToString().Substring(o, 1);
+                    o++;
+                }
+                O_Origonal = o;
                 bool found = false;
                 while (i != data.Length)
                 {
@@ -391,7 +406,7 @@ namespace Apollo
                         o++;
                     }
                     i++;
-                    o = 0;
+                    o = O_Origonal;
                     found = false;
                 }
                 return data;

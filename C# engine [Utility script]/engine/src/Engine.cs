@@ -9,9 +9,17 @@ using System.Drawing;
 
 namespace Apollo
 {
+    /// <summary>
+    /// Aany console output funcions (Eg: printing text)
+    /// </summary>
     class Text
     {
-        public static void print(bool newline, string text)
+        /// <summary>
+        /// Prints the passed text to the console
+        /// </summary>
+        /// <param name="newline"></param>
+        /// <param name="text"></param>
+        public static void Print(string text, bool newline = true)
         {
             if (newline == true)
             {
@@ -22,7 +30,12 @@ namespace Apollo
                 Console.Write(text);
             }
         }
-        public static void type(bool newline, string text)
+        /// <summary>
+        /// Simulates typing on a keyboard
+        /// </summary>
+        /// <param name="newline"></param>
+        /// <param name="text"></param>
+        public static void Type(string text, bool newline = true)
         {
             bool newlineenabled = false;
             if (newline == true)
@@ -43,7 +56,12 @@ namespace Apollo
                 Console.WriteLine("");
             }
         }
-        public static void typefast(bool newline, string text)
+        /// <summary>
+        /// A fast variation of Text.type
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="newline"></param>
+        public static void Typefast(string text, bool newline)
         {
             if (newline == true)
             {
@@ -55,33 +73,44 @@ namespace Apollo
                 Console.Write(text.Substring(i, 1));
             }
         }
-        public static void newline()
+        /// <summary>
+        /// Prints a new line
+        /// </summary>
+        public static void Newline()
         {
             Console.WriteLine("");
         }
     }
-    class time
+    /// <summary>
+    /// Anything to do with time based funtions
+    /// </summary>
+    class Time
     {
-        public static void sleep(int time)
+        ///<summary>
+        /// Waits for the ammount of time in ms
+        /// </summary>
+        public static void Sleep(int time)
         {
             Thread.Sleep(time);
         }
     }
-    class utility
+    class Utility
     {
-        public static void title(string title)
+        public static void Title(string title)
         {
             Console.Title = title;
         }
         public static Random random = new Random();
-        public class notifications
+        public class Notifications
         {
             public static void Send(string title, string text, int time)
             {
-                System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
-                notifyIcon.BalloonTipTitle = title;
-                notifyIcon.BalloonTipText = text;
-                notifyIcon.Visible = true;
+                System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon
+                {
+                    BalloonTipTitle = title,
+                    BalloonTipText = text,
+                    Visible = true
+                };
                 notifyIcon.ShowBalloonTip(time);
                 notifyIcon.Dispose();
             }
@@ -176,15 +205,24 @@ namespace Apollo
             return na;
         }
     }
+    class Files
+    {
+        public static string[] Read(string file)
+        {
+            string filetoload = file;
+            StreamReader reader = new StreamReader(file);
+            string[] Data = new string[File.ReadAllLines(filetoload).Length];
+            int i = 0;
+            while (i != Data.Length)
+            {
+                Data[i] = reader.ReadLine();
+            }
+            return Data;
+        }
+    }
     class Savefiles
     {
-        public static string[] Check(string savefile)
-        {
-            string[] na = { "na" };
-            return na;
-        }
-
-        public static string[] Save(string savefile, string[] data, string ending = ".svp")
+        public static string[] Save_Legacy(string savefile, string[] data, string ending = ".svp")
         {
             string filetosave = Environment.CurrentDirectory + "/" + savefile + ending;
             using (BinaryWriter sw = new BinaryWriter(File.Open(filetosave, FileMode.Create)))
@@ -220,7 +258,25 @@ namespace Apollo
             return returnval;
         }
 
-        public static string[] Load(string savefile, string ending = ".svp")
+        public static string[] Save(string savefile, string[] data, string ending = ".svp")
+        {
+            string filetosave = Environment.CurrentDirectory + "/" + savefile + ending;
+            using (StreamWriter writer = new StreamWriter(filetosave))
+            {
+                writer.WriteLine("[Save start]");
+                writer.WriteLine("{");
+                for (int i = 0; i != data.Length; i++)
+                {
+                    writer.WriteLine("  " + data[i]);
+                }
+                writer.WriteLine("}");
+            }
+            string[] returnval = new string[1];
+            returnval[0] = "Done.";
+            return returnval;
+        }
+
+        public static string[] Load_Legacy(string savefile, string ending = ".svp")
         {
             string filetoload = Environment.CurrentDirectory + "/" + savefile + ending;
             if (!File.Exists(filetoload))
@@ -279,24 +335,82 @@ namespace Apollo
                 return files;
             }
         }
-
-
-        public static string[] Sav(string option, string svp, string[] dat)
+        public static string[] Load(string savefile, string ending = ".svp")
         {
-            if (option == "/C")
+            var filetoload = Environment.CurrentDirectory + "/" + savefile + ending;
+            using (StreamReader reader = new StreamReader(filetoload))
             {
-                return Check(svp);
+                int i = 0;
+                string buffer = "NONE";
+                bool loading = false;
+                string[] data = new string[File.ReadAllLines(filetoload).Length-3];
+                while (buffer != null)
+                {
+                    if (buffer == "NONE")
+                    {
+                        goto next;
+                    }
+                    if (buffer == "[Save start]")
+                    {
+                        Console.WriteLine("[[Load start]]");
+                        goto next;
+                    }
+                    if (buffer == "{")
+                    {
+                        loading = true;
+                        goto next;
+                    }
+                    if (buffer == "}")
+                    {
+                        Console.WriteLine("[[Load end]]");
+                        loading = false;
+                        goto next;
+                    }
+                    if (loading == true)
+                    {
+                        data[i] = buffer;
+                        i++;
+                    }
+                    next:
+                    try
+                    {
+                        buffer = reader.ReadLine().ToString();
+                    }
+                    catch
+                    {
+                        buffer = null;
+                    }
+                }
+                i = 0;
+                int o = 0;
+                int O_Origonal = 0;
+                buffer = " ";
+                while (buffer == " ")
+                {
+                    buffer = data[i].ToString().Substring(o, 1);
+                    o++;
+                }
+                O_Origonal = o;
+                bool found = false;
+                while (i != data.Length)
+                {
+                    while (found != true)
+                    {
+                        buffer = data[i].ToString().Substring(o, 1);
+                        if (buffer == "=")
+                        {
+                            buffer = data[i].ToString().Substring(o+1);
+                            found = true;
+                            data[i] = buffer;
+                        }
+                        o++;
+                    }
+                    i++;
+                    o = O_Origonal;
+                    found = false;
+                }
+                return data;
             }
-            if (option == "-S")
-            {
-                return Save(svp, dat);
-            }
-            if (option == "-L")
-            {
-                return Load(svp);
-            }
-            string[] na = { "Could not load SaVePack: No option chosen..." };
-            return na;
         }
     }
     class Graphics
@@ -307,8 +421,7 @@ namespace Apollo
             private static int Y = 0;
             public static void Draw(int LengthX, int LengthY)
             {
-                Pen DrawingSystem = null;
-                DrawingSystem.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
+                throw new NotImplementedException();
             }
         }
     }

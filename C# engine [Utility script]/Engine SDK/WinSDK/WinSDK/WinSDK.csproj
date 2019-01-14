@@ -104,18 +104,18 @@
     <Compile Include="DevMenu.Designer.cs">
       <DependentUpon>DevMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectSelect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectSelect.Designer.cs">
-      <DependentUpon>ProjectSelect.cs</DependentUpon>
-    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MonoGame\Framework\XamlGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,9 +124,6 @@
     </Compile>
     <EmbeddedResource Include="DevMenu.resx">
       <DependentUpon>DevMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectSelect.resx">
-      <DependentUpon>ProjectSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
@@ -141,6 +138,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
