@@ -19,9 +19,9 @@ def Init(verbose = False):
 	try:
 		Config = open("engine_config.cfg", "r")
 	except:
-		print("Engine error: Unable to find engine_config.cfg")
+		print("Engine error: Unable to find or read engine_config.cfg")
 		ErrLog = open("ErrLog.txt", "w")
-		ErrLog.write("Engine error: Unable to find engine_config.cfg")
+		ErrLog.write("Engine error: Unable to find or read engine_config.cfg")
 		ErrLog.close()
 		exit(-1)
 	if verbose == True:
