@@ -28,7 +28,7 @@ namespace WinSDK
             try
             {
                 Text.Print("Hello World");
-                Console.Beep();
+                Console.Beep(2700, 250);
                 Text.Print("Ok!");
             }
             catch

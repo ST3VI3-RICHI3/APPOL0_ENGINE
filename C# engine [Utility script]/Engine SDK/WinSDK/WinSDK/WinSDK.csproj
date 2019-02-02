@@ -94,10 +94,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCommand.Designer.cs">
+      <DependentUpon>EditCommand.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditorPlaceholderVeiw.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Engine.cs" />
+    <Compile Include="Engine.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="DevMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +116,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MonoGame\Framework\XamlGame.cs" />
+    <Compile Include="Newproject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Newproject.Designer.cs">
+      <DependentUpon>Newproject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs">
@@ -125,8 +139,14 @@
     <EmbeddedResource Include="DevMenu.resx">
       <DependentUpon>DevMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditCommand.resx">
+      <DependentUpon>EditCommand.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Newproject.resx">
+      <DependentUpon>Newproject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

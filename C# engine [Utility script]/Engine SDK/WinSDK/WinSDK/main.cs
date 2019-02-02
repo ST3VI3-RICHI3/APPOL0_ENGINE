@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Xml;
 using MonoGame;
 using MonoGame.Framework.WpfInterop;
 using WinSDK;
+using Apollo;
 
 namespace MainWindow
 {
@@ -33,17 +35,24 @@ namespace MainWindow
         private ToolStripMenuItem closeProjectToolStripMenuItem;
         private ToolStripMenuItem applicatonToolStripMenuItem;
         private ToolStripMenuItem runToolStripMenuItem;
-        private ListBox listBox1;
+        private ListBox CommandsListBox;
         public System.Windows.Forms.Timer SettingsTimer;
         private IContainer components;
         private Label CommandsLabel;
-        private Panel CommandEditPanel;
-        private Button EditCommandConfirm;
-        private TextBox EditCommandBox;
-        private Label EditCommandLabel;
         private ToolStripMenuItem buildToolStripMenuItem;
         private ToolStripMenuItem openToolStripMenuItem;
+        private Label AssetsLabel;
+        private ListBox AssetsListBox;
         private string language = null;
+        private string savedir = null;
+        private string savename = null;
+        [DllImport("kernel32.dll")]
+        static extern IntPtr GetConsoleWindow();
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        const int SW_HIDE = 0;
+        const int SW_SHOW = 5;
+        private IntPtr handle = GetConsoleWindow();
 
         public MainWindow()
         {
@@ -69,17 +78,14 @@ namespace MainWindow
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applicatonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.CommandsListBox = new System.Windows.Forms.ListBox();
             this.SettingsTimer = new System.Windows.Forms.Timer(this.components);
             this.CommandsLabel = new System.Windows.Forms.Label();
-            this.CommandEditPanel = new System.Windows.Forms.Panel();
-            this.EditCommandLabel = new System.Windows.Forms.Label();
-            this.EditCommandBox = new System.Windows.Forms.TextBox();
-            this.EditCommandConfirm = new System.Windows.Forms.Button();
-            this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AssetsLabel = new System.Windows.Forms.Label();
+            this.AssetsListBox = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
-            this.CommandEditPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -187,10 +193,16 @@ namespace MainWindow
             // runToolStripMenuItem
             // 
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.runToolStripMenuItem.Text = "Run";
             this.runToolStripMenuItem.Visible = false;
             this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
+            // 
+            // buildToolStripMenuItem
+            // 
+            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
+            this.buildToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.buildToolStripMenuItem.Text = "Build";
             // 
             // openFileDialog
             // 
@@ -199,18 +211,19 @@ namespace MainWindow
             this.openFileDialog.Filter = "Apoll0 project files|*.aprog";
             this.openFileDialog.InitialDirectory = "C:\\Users\\%username%\\Documents";
             // 
-            // listBox1
+            // CommandsListBox
             // 
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
+            this.CommandsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CommandsListBox.FormattingEnabled = true;
+            this.CommandsListBox.Items.AddRange(new object[] {
             "Print(\"Hello, World!\");",
             "Input();"});
-            this.listBox1.Location = new System.Drawing.Point(15, 48);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(169, 689);
-            this.listBox1.TabIndex = 1;
-            this.listBox1.Visible = false;
+            this.CommandsListBox.Location = new System.Drawing.Point(15, 48);
+            this.CommandsListBox.Name = "CommandsListBox";
+            this.CommandsListBox.Size = new System.Drawing.Size(169, 689);
+            this.CommandsListBox.TabIndex = 1;
+            this.CommandsListBox.Visible = false;
+            this.CommandsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CommandsListBox_MouseDoubleClick);
             // 
             // SettingsTimer
             // 
@@ -229,58 +242,34 @@ namespace MainWindow
             this.CommandsLabel.Text = "Application Sequence (Commands)";
             this.CommandsLabel.Visible = false;
             // 
-            // CommandEditPanel
+            // AssetsLabel
             // 
-            this.CommandEditPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CommandEditPanel.Controls.Add(this.EditCommandConfirm);
-            this.CommandEditPanel.Controls.Add(this.EditCommandBox);
-            this.CommandEditPanel.Controls.Add(this.EditCommandLabel);
-            this.CommandEditPanel.Location = new System.Drawing.Point(494, 372);
-            this.CommandEditPanel.Name = "CommandEditPanel";
-            this.CommandEditPanel.Size = new System.Drawing.Size(112, 74);
-            this.CommandEditPanel.TabIndex = 3;
+            this.AssetsLabel.AutoSize = true;
+            this.AssetsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AssetsLabel.Location = new System.Drawing.Point(1186, 28);
+            this.AssetsLabel.Name = "AssetsLabel";
+            this.AssetsLabel.Size = new System.Drawing.Size(38, 13);
+            this.AssetsLabel.TabIndex = 4;
+            this.AssetsLabel.Text = "Assets";
+            this.AssetsLabel.Visible = false;
             // 
-            // EditCommandLabel
+            // AssetsListBox
             // 
-            this.EditCommandLabel.AutoSize = true;
-            this.EditCommandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditCommandLabel.Location = new System.Drawing.Point(4, 4);
-            this.EditCommandLabel.Name = "EditCommandLabel";
-            this.EditCommandLabel.Size = new System.Drawing.Size(74, 13);
-            this.EditCommandLabel.TabIndex = 0;
-            this.EditCommandLabel.Text = "Edit command";
-            // 
-            // EditCommandBox
-            // 
-            this.EditCommandBox.Location = new System.Drawing.Point(7, 20);
-            this.EditCommandBox.Name = "EditCommandBox";
-            this.EditCommandBox.Size = new System.Drawing.Size(100, 20);
-            this.EditCommandBox.TabIndex = 1;
-            // 
-            // EditCommandConfirm
-            // 
-            this.EditCommandConfirm.Location = new System.Drawing.Point(32, 46);
-            this.EditCommandConfirm.Name = "EditCommandConfirm";
-            this.EditCommandConfirm.Size = new System.Drawing.Size(75, 23);
-            this.EditCommandConfirm.TabIndex = 2;
-            this.EditCommandConfirm.Text = "Confirm";
-            this.EditCommandConfirm.UseVisualStyleBackColor = true;
-            // 
-            // buildToolStripMenuItem
-            // 
-            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
-            this.buildToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.buildToolStripMenuItem.Text = "Build";
+            this.AssetsListBox.FormattingEnabled = true;
+            this.AssetsListBox.Location = new System.Drawing.Point(1189, 44);
+            this.AssetsListBox.Name = "AssetsListBox";
+            this.AssetsListBox.Size = new System.Drawing.Size(169, 680);
+            this.AssetsListBox.TabIndex = 5;
+            this.AssetsListBox.Visible = false;
             // 
             // MainWindow
             // 
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.CommandEditPanel);
+            this.Controls.Add(this.AssetsListBox);
+            this.Controls.Add(this.AssetsLabel);
             this.Controls.Add(this.CommandsLabel);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.CommandsListBox);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
@@ -289,28 +278,81 @@ namespace MainWindow
             this.Text = "APOLL0 SDK";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Validated += new System.EventHandler(this.MainWindow_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.CommandEditPanel.ResumeLayout(false);
-            this.CommandEditPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Newproject newproject = new Newproject();
+            newproject.ShowDialog();
+            if (newproject.created == true)
+            {
+                goto CreateProject;
+            }
+            else if (newproject.DialogResult == DialogResult.Cancel | newproject.DialogResult == DialogResult.Abort | newproject.DialogResult == DialogResult.None)
+            {
+                goto cancel;
+            }
+            CreateProject:
+            Directory.CreateDirectory(newproject.ProjDir);
+            using (StreamWriter writer = new StreamWriter(newproject.ProjDir + "/" + newproject.Projname + ".aproj"))
+            {
+                Directory.CreateDirectory(newproject.ProjDir + "/build");
+                Directory.CreateDirectory(newproject.ProjDir + "/assets/");
+                if (!File.Exists(newproject.ProjDir + "/assets/Engine.cs"))
+                {
+                    File.Copy("Engine.cs", newproject.ProjDir + "/assets/Engine.cs");
+                }
+                writer.WriteLine("ProjData{");
+                //file details
+                writer.WriteLine("    Projname=" + newproject.Projname);
+                writer.WriteLine("    ProjDir=" + newproject.ProjDir);
+                writer.WriteLine("    ProjType=C#");
+                //Put commands / data above this comment, DO NOT put outside the '{' '}' symbols.
+                writer.WriteLine("}");
+                writer.WriteLine("ProjCommands{");
+                //This is a hello world program due to a new project.
+                writer.WriteLine("    Text.Print(\"Hello, World!\");");
+                writer.WriteLine("    Console.ReadLine();");
+                writer.WriteLine("}");
+            }
             closeProjectToolStripMenuItem.Visible = true;
             toolStripSeparator3.Visible = true;
-            listBox1.Visible = true;
+            CommandsListBox.Visible = true;
             CommandsLabel.Visible = true;
             applicatonToolStripMenuItem.Visible = true;
+            AssetsLabel.Visible = true;
+            AssetsListBox.Items.Clear();
+            DirectoryInfo dinfo = new DirectoryInfo(newproject.ProjDir+"\\assets");
+            FileInfo[] smFiles = dinfo.GetFiles("*.*");
+            foreach (FileInfo fi in smFiles)
+            {
+                AssetsListBox.Items.Add(Path.GetFileName(fi.Name));
+            }
+            AssetsListBox.Visible = true;
+            runToolStripMenuItem.Visible = true;
+            
             if (language == "C#")
             {
-                listBox1.Items.Clear();
-                listBox1.Items.Add("Console.WriteLine(\"Hello, World!\");");
-                listBox1.Items.Add("Console.ReadLine();");
+                CommandsListBox.Items.Clear();
+                CommandsListBox.Items.Add("Text.Print(\"Hello, World!\");");
+                CommandsListBox.Items.Add("Console.ReadLine();");
             }
+            if (language == "Simple")
+            {
+                CommandsListBox.Items.Clear();
+                CommandsListBox.Items.Add("Print \"Hello, World!\"");
+                CommandsListBox.Items.Add("Input");
+            }
+            cancel:
+            savedir = newproject.ProjDir;
+            savename = newproject.Projname;
+            this.Text = newproject.Projname + " | APOLL0 SDK";
+            newproject.Dispose();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -324,7 +366,7 @@ namespace MainWindow
             int i = 0;
             while (i != FileData.Length)
             {
-                if (FileData[i] == "Project-Type=Text")
+                if (FileData[i] == "ProjData")
                 {
                     ProjectText();
                 }
@@ -364,7 +406,7 @@ namespace MainWindow
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
+            ShowWindow(handle, SW_HIDE);
         }
 
         private void elementHost1_ChildChanged_1(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
@@ -376,7 +418,12 @@ namespace MainWindow
         {
             closeProjectToolStripMenuItem.Visible = false;
             toolStripSeparator3.Visible = false;
-            listBox1.Visible = false;
+            CommandsListBox.Visible = false;
+            projectToolStripMenuItem.Visible = false;
+            AssetsLabel.Visible = false;
+            AssetsListBox.Visible = false;
+            CommandsLabel.Visible = false;
+            runToolStripMenuItem.Visible = false;
         }
 
         private void toolStripSeparator3_Click(object sender, EventArgs e)
@@ -390,7 +437,57 @@ namespace MainWindow
 
         private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowWindow(handle, SW_SHOW);
+            Apollo.Text.Newline();
+            Apollo.Text.Print("Saving...");
+            if (language == "C#")
+            {
+                using (StreamWriter writer = new StreamWriter(savedir + "/assets/program.cs"))
+                {
+                    writer.WriteLine("using system;");
+                    writer.WriteLine("using Apollo;");
+                    writer.WriteLine("");
+                    writer.WriteLine("namespace " + savename);
+                    writer.WriteLine("{");
+                    writer.WriteLine("  public class Program");
+                    writer.WriteLine("  {");
+                    writer.WriteLine("      public static void Main(string[] args)");
+                    writer.WriteLine("      {");
+                    int i = 0;
+                    while (i != CommandsListBox.Items.Count)
+                    {
+                        writer.WriteLine("          " + CommandsListBox.Items[i]);
+                        i++;
+                    }
+                    writer.WriteLine("      }");
+                    writer.WriteLine("  }");
+                    writer.WriteLine("}");
+                }
+            }
+            Apollo.Text.Print("Done");
+            Apollo.Text.Newline();
+            Apollo.Text.Print("Building project...");
+            Process cmd = new Process();
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.FileName = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\MSBuild\\15.0\\Bin\\MSBuild.exe";
+            cmd.StartInfo.Arguments = "-p:OutputPath="+savedir+"\\build -t:NotInSolutionfolder:" + savedir + "\\assets\\program.cs:Build";
+            cmd.Start();
+            int o = 0;
+            string buffer = "unset";
+            string[] output = new string[7];
+            while (buffer != null)
+            {
+                buffer = cmd.StandardOutput.ReadLine();
+                if (buffer != null)
+                {
+                    output[o] = buffer;
+                    Console.WriteLine(buffer);
+                }
+                o++;
+            }
+            cmd.WaitForExit();
+            Apollo.Text.Print("Done");
         }
 
         private void SettingsTimer_Tick(object sender, EventArgs e)
@@ -400,18 +497,18 @@ namespace MainWindow
             {
                 this.BackColor = Color.White;
                 this.ForeColor = Color.Black;
-                listBox1.BackColor = Color.White;
-                listBox1.ForeColor = Color.Black;
-                menuStrip1.BackColor = Color.White;
+                CommandsListBox.BackColor = Color.White;
+                CommandsListBox.ForeColor = Color.Black;
+                menuStrip1.BackColor = Color.WhiteSmoke;
                 menuStrip1.ForeColor = Color.Black;
             }
             if (Settings[0].Substring(6) == "Dark")
             {
                 this.BackColor = Color.DimGray;
                 this.ForeColor = Color.WhiteSmoke;
-                listBox1.BackColor = Color.DimGray;
-                listBox1.ForeColor = Color.WhiteSmoke;
-                listBox1.BorderStyle = BorderStyle.None;
+                CommandsListBox.BackColor = Color.DimGray;
+                CommandsListBox.ForeColor = Color.WhiteSmoke;
+                CommandsListBox.BorderStyle = BorderStyle.None;
                 menuStrip1.BackColor = Color.DimGray;
                 menuStrip1.ForeColor = Color.WhiteSmoke;
             }
@@ -419,7 +516,6 @@ namespace MainWindow
             {
                 this.BackColor = System.Drawing.SystemColors.Window;
                 this.ForeColor = System.Drawing.SystemColors.WindowText;
-
             }
             if (Settings[1].Substring(9) == "Simple")
             {
@@ -430,6 +526,22 @@ namespace MainWindow
                 language = "C#";
             }
             SettingsTimer.Enabled = false;
+        }
+
+        private void CommandsListBox_MouseDoubleClick(object sender, EventArgs e)
+        {
+            EditCommand edit = new EditCommand();
+            edit.ShowDialog();
+            int index = CommandsListBox.SelectedIndex;
+            CommandsListBox.Items[index] = edit.NewCommand;
+            CommandsListBox.Enabled = true;
+            index = 0;
+            edit.Dispose();
+        }
+
+        private void EditCommandConfirm_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

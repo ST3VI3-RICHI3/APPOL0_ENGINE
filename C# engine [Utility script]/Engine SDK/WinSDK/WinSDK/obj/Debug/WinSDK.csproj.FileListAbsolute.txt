@@ -48,16 +48,15 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.Direct2D1.xml
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.XInput.xml
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.ProjectSelect.resources
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csprojAssemblyReference.cache
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.exe.config
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.DevMenu.resources
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\MainWindow.MainWindow.resources
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Newproject.resources
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Settings.resources
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.SplashScreen.resources
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.GenerateResource.cache
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.CoreCompileInputs.cache
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.exe
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.pdb
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\bin\Debug\testfile.pkf
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\bin\Debug\WinSDK.exe.config
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\bin\Debug\WinSDK.exe
@@ -87,4 +86,8 @@ C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine S
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.Direct2D1.xml
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\bin\Debug\SharpDX.XInput.xml
 C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csproj.CopyComplete
-C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.Settings.resources
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.exe
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.pdb
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\bin\Debug\Engine.cs
+C:\Users\Alex\Documents\GitHub\APPOL0_ENGINE\C# engine [Utility script]\Engine SDK\WinSDK\WinSDK\obj\Debug\WinSDK.EditCommand.resources
