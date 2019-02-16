@@ -444,7 +444,7 @@ namespace MainWindow
             {
                 using (StreamWriter writer = new StreamWriter(savedir + "/assets/program.cs"))
                 {
-                    writer.WriteLine("using system;");
+                    writer.WriteLine("using System;");
                     writer.WriteLine("using Apollo;");
                     writer.WriteLine("");
                     writer.WriteLine("namespace " + savename);
@@ -467,27 +467,35 @@ namespace MainWindow
             Apollo.Text.Print("Done");
             Apollo.Text.Newline();
             Apollo.Text.Print("Building project...");
+            File.Delete(savedir + "\\build\\" + savename + ".exe");
             Process cmd = new Process();
             cmd.StartInfo.UseShellExecute = false;
             cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.FileName = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\MSBuild\\15.0\\Bin\\MSBuild.exe";
-            cmd.StartInfo.Arguments = "-p:OutputPath="+savedir+"\\build -t:NotInSolutionfolder:" + savedir + "\\assets\\program.cs:Build";
+            cmd.StartInfo.FileName = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\csc.exe";
+            cmd.StartInfo.Arguments = "/target:exe /out:\"" + savedir +"\\build\\"+ savename + ".exe\" \"" + savedir + "\\assets\\program.cs\" \"" + savedir + "\\assets\\Engine.cs\"";
             cmd.Start();
             int o = 0;
             string buffer = "unset";
-            string[] output = new string[7];
             while (buffer != null)
             {
                 buffer = cmd.StandardOutput.ReadLine();
                 if (buffer != null)
                 {
-                    output[o] = buffer;
                     Console.WriteLine(buffer);
                 }
                 o++;
             }
             cmd.WaitForExit();
             Apollo.Text.Print("Done");
+            Apollo.Text.Newline();
+            Apollo.Text.Print("Running program...");
+            Process Program = new Process();
+            Program.StartInfo.UseShellExecute = true;
+            Program.StartInfo.RedirectStandardOutput = false;
+            Program.StartInfo.FileName = "\"" + savedir + "\\build\\" + savename + ".exe\"";
+            Program.Start();
+            Program.WaitForExit();
+            ShowWindow(handle, SW_HIDE);
         }
 
         private void SettingsTimer_Tick(object sender, EventArgs e)
@@ -530,9 +538,9 @@ namespace MainWindow
 
         private void CommandsListBox_MouseDoubleClick(object sender, EventArgs e)
         {
-            EditCommand edit = new EditCommand();
-            edit.ShowDialog();
             int index = CommandsListBox.SelectedIndex;
+            EditCommand edit = new EditCommand(CommandsListBox.Items[index].ToString());
+            edit.ShowDialog();
             CommandsListBox.Items[index] = edit.NewCommand;
             CommandsListBox.Enabled = true;
             index = 0;

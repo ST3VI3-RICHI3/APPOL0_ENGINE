@@ -13,9 +13,10 @@ namespace WinSDK
     public partial class EditCommand : Form
     {
         public string NewCommand = null;
-        public EditCommand()
+        public EditCommand(string Current_Command)
         {
             InitializeComponent();
+            textBox1.Text = Current_Command;
         }
 
         private void button1_Click(object sender, EventArgs e)
