@@ -24,4 +24,4 @@ There is a programming reference for APOLL0\Rust, It can be found at: https://st
 
 == C#
 
-There is documentation for APOLL0\CSharp, it can be found at: https://st3.zapto.org/apoll0/docs
+--OUTDATED-- There is documentation for APOLL0\CSharp, it can be found at: https://st3.zapto.org/apoll0/docs
