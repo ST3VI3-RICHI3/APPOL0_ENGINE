@@ -340,78 +340,88 @@ namespace Apollo
         public static string[] Load(string savefile, string ending = ".svp")
         {
             var filetoload = Environment.CurrentDirectory + "/" + savefile + ending;
-            using (StreamReader reader = new StreamReader(filetoload))
+            try
             {
-                int i = 0;
-                string buffer = "NONE";
-                bool loading = false;
-                string[] data = new string[File.ReadAllLines(filetoload).Length - 3];
-                while (buffer != null)
+                using (StreamReader reader = new StreamReader(filetoload))
                 {
-                    if (buffer == "NONE")
+                    int i = 0;
+                    string buffer = "NONE";
+                    bool loading = false;
+                    string[] data = new string[File.ReadAllLines(filetoload).Length - 3];
+                    while (buffer != null)
                     {
-                        goto next;
+                        if (buffer == "NONE")
+                        {
+                            goto next;
+                        }
+                        if (buffer == "[Save start]")
+                        {
+                            Console.WriteLine("[[Load start]]");
+                            goto next;
+                        }
+                        if (buffer == "{")
+                        {
+                            loading = true;
+                            goto next;
+                        }
+                        if (buffer == "}")
+                        {
+                            Console.WriteLine("[[Load end]]");
+                            loading = false;
+                            goto next;
+                        }
+                        if (loading == true)
+                        {
+                            data[i] = buffer;
+                            i++;
+                        }
+                    next:
+                        try
+                        {
+                            buffer = reader.ReadLine().ToString();
+                        }
+                        catch
+                        {
+                            buffer = null;
+                        }
                     }
-                    if (buffer == "[Save start]")
-                    {
-                        Console.WriteLine("[[Load start]]");
-                        goto next;
-                    }
-                    if (buffer == "{")
-                    {
-                        loading = true;
-                        goto next;
-                    }
-                    if (buffer == "}")
-                    {
-                        Console.WriteLine("[[Load end]]");
-                        loading = false;
-                        goto next;
-                    }
-                    if (loading == true)
-                    {
-                        data[i] = buffer;
-                        i++;
-                    }
-                next:
-                    try
-                    {
-                        buffer = reader.ReadLine().ToString();
-                    }
-                    catch
-                    {
-                        buffer = null;
-                    }
-                }
-                i = 0;
-                int o = 0;
-                int O_Origonal = 0;
-                buffer = " ";
-                while (buffer == " ")
-                {
-                    buffer = data[i].ToString().Substring(o, 1);
-                    o++;
-                }
-                O_Origonal = o;
-                bool found = false;
-                while (i != data.Length)
-                {
-                    while (found != true)
+                    i = 0;
+                    int o = 0;
+                    int O_Origonal = 0;
+                    buffer = " ";
+                    while (buffer == " ")
                     {
                         buffer = data[i].ToString().Substring(o, 1);
-                        if (buffer == "=")
-                        {
-                            buffer = data[i].ToString().Substring(o + 1);
-                            found = true;
-                            data[i] = buffer;
-                        }
                         o++;
                     }
-                    i++;
-                    o = O_Origonal;
-                    found = false;
+                    O_Origonal = o;
+                    bool found = false;
+                    while (i != data.Length)
+                    {
+                        while (found != true)
+                        {
+                            buffer = data[i].ToString().Substring(o, 1);
+                            if (buffer == "=")
+                            {
+                                buffer = data[i].ToString().Substring(o + 1);
+                                found = true;
+                                data[i] = buffer;
+                            }
+                            o++;
+                        }
+                        i++;
+                        o = O_Origonal;
+                        found = false;
+                    }
+                    return data;
                 }
-                return data;
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("Failed to load file \"" + filetoload + "\". Not found: " + ex);
+                string[] err = new string[1];
+                err[0] = "Failed to load file \"" + filetoload + "\". Not found: " + ex;
+                return err;
             }
         }
     }
@@ -432,21 +442,21 @@ namespace Apollo
             }
         }
     }
-}
-class Networking
-{
-    class P2P
+    public class Networking
     {
-        public static void StartServer(Int32 port, IPAddress IP)
+        public class P2P
         {
-            throw new NotImplementedException();
+            public static void StartServer(Int32 port, IPAddress IP)
+            {
+                throw new NotImplementedException();
+            }
         }
-    }
-    class ClientServer
-    {
-        public virtual void StartServer(Int32 port, IPAddress IP)
+        public class ClientServer
         {
-            throw new NotImplementedException();
+            public virtual void StartServer(Int32 port, IPAddress IP)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

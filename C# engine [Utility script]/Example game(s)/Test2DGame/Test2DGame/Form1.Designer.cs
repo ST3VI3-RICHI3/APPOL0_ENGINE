@@ -1,6 +1,6 @@
 ﻿namespace Test2DGame
 {
-    partial class Form1
+    partial class GameWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,41 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.StartTimer = new System.Windows.Forms.Timer(this.components);
+            this.DrawUpdateTImer = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // StartTimer
+            // 
+            this.StartTimer.Enabled = true;
+            this.StartTimer.Interval = 1;
+            this.StartTimer.Tick += new System.EventHandler(this.StartTimer_Tick);
+            // 
+            // DrawUpdateTImer
+            // 
+            this.DrawUpdateTImer.Interval = 1;
+            this.DrawUpdateTImer.Tick += new System.EventHandler(this.DrawUpdateTImer_Tick);
+            // 
+            // GameWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(950, 600);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "GameWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "GameWindow";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.GameWindow_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer StartTimer;
+        private System.Windows.Forms.Timer DrawUpdateTImer;
     }
 }
 
