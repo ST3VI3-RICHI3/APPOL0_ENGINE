@@ -1,7 +1,0 @@
-/home/ron/appol0/APPOL0_ENGINE/engine/bin/Debug/engine.exe.config
-/home/ron/appol0/APPOL0_ENGINE/engine/bin/Debug/engine.exe
-/home/ron/appol0/APPOL0_ENGINE/engine/bin/Debug/engine.pdb
-/home/ron/appol0/APPOL0_ENGINE/engine/obj/Debug/engine.csprojResolveAssemblyReference.cache
-/home/ron/appol0/APPOL0_ENGINE/engine/obj/Debug/engine.csproj.CoreCompileInputs.cache
-/home/ron/appol0/APPOL0_ENGINE/engine/obj/Debug/engine.exe
-/home/ron/appol0/APPOL0_ENGINE/engine/obj/Debug/engine.pdb

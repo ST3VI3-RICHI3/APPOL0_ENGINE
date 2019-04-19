@@ -1,27 +1,8 @@
 = APOLL0 ENGINE
 
-The next gen game engine & utility script.
+Current branch: Master
+Supported language: C++
 
-= About
+== What is APOLL0?
 
-APOLL0 ENGINE (Project name "ST3 3NIGN3") is a 3D, 2D and Text game engine, The engine is of course in-development and will be for a unpredictable amount of time.
-
-= Installation
-
-== Main engine
-
-Currently, no install is required. If no exe exists simply run cargo run from a command line, note that Rust-Lang is required to do a run operation from the command line.
-
-== Utility script
-
-No install required if you are a gamer or install a lot of programs written in C#, .NET 4.7 is required to run the utility script applications.
-
-= Scripting for APOLL0
-
-== Rust
-
-There is a programming reference for APOLL0\Rust, It can be found at: https://st3.zapto.org/apoll0/docs
-
-== C#
-
---OUTDATED-- There is documentation for APOLL0\CSharp, it can be found at: https://st3.zapto.org/apoll0/docs
+APOLL0 (Apollo) engine is a game engine started mid-2018, the engine aims to allow the creation of games and programs utilizing the engine's features, for example a racing game.
