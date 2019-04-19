@@ -1,6 +1,7 @@
 = APOLL0 ENGINE
-<br/>
-Current branch: Master<br/>
+
+Current branch: Master<
+
 Supported language: C++
 
 == What is APOLL0?
