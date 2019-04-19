@@ -1,6 +1,6 @@
 = APOLL0 ENGINE
 
-Current branch: Master<
+Current branch: Master
 
 Supported language: C++
 
