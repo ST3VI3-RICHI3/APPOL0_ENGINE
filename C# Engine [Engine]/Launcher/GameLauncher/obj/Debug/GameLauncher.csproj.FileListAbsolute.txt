@@ -1,0 +1,15 @@
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\bin\Debug\GameLauncher.exe.config
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\bin\Debug\GameLauncher.exe
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\bin\Debug\GameLauncher.pdb
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\MainWindow.g.cs
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\App.g.cs
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher_MarkupCompile.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher_MarkupCompile.lref
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\MainWindow.baml
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher.g.resources
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher.csproj.GenerateResource.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher.exe
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\C# Engine [Engine]\Launcher\GameLauncher\obj\Debug\GameLauncher.pdb
