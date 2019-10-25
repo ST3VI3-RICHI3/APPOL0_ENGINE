@@ -14,6 +14,7 @@ namespace APOLL0
             if (AudioFile.FullName.ToString().Contains("."))
             {
                 FileStream Stream = new FileStream(AudioFile.FullName, FileMode.Open);
+                //somehow feed a audio player, perhaps builtin, a small stream and every few seconds update the buffer with new data and play the data.
             }
             else
             {
