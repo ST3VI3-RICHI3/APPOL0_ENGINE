@@ -11,9 +11,14 @@ namespace APOLL0
     /// </summary>
     public class Engine
     {
-        public static void Initialize()
+        /// <summary>
+        /// Initialises the engine, mode 1; console. 2l 2D. 3; 3D.
+        /// </summary>
+        /// <param name="mode"></param>
+        public static void Initialize(int mode)
         {
-            Console.ConsoleInit();
+            Console.ConsoleInit(mode);
+            GraphicsManager.VInit(mode);
         }
     }
 }

@@ -1,0 +1,8 @@
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\bin\Debug\APOLL0.dll
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\bin\Debug\APOLL0.pdb
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\obj\Debug\APOLL0.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\obj\Debug\APOLL0.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\obj\Debug\APOLL0.dll
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\obj\Debug\APOLL0.pdb
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\obj\Debug\APOLL0.GameWindow.resources
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Engine\APOLL0\obj\Debug\APOLL0.csproj.GenerateResource.cache

@@ -1,0 +1,13 @@
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\bin\Debug\2D_Test_Env.exe.config
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\bin\Debug\2D_Test_Env.exe
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\bin\Debug\2D_Test_Env.pdb
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\2D_Test_Env.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\_2D_Test_Env.Launch_Window.resources
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\_2D_Test_Env.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\2D_Test_Env.csproj.GenerateResource.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\2D_Test_Env.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\2D_Test_Env.exe
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\2D_Test_Env.pdb
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\bin\Debug\APOLL0.dll
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\bin\Debug\APOLL0.pdb
+C:\Users\Alex\Documents\GitHub\APPOLL0_ENGINE\Test-Games-And-Apps\2D_Test_Env\obj\Debug\2D_Test_Env.csproj.CopyComplete

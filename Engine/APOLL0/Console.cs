@@ -14,7 +14,7 @@ namespace APOLL0
         /// <summary>
         /// Not to be called by user, used by engine initialisation to setup printing functions.
         /// </summary>
-        public static void ConsoleInit()
+        public static void ConsoleInit(int mode)
         {
             PrintThread.Start();
         }
